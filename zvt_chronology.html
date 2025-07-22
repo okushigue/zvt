@@ -42,7 +42,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeta Vibration Theory: Cronologia</title>
+    <meta name="description" content="Cronologia da Zeta Vibration Theory: evolução da teoria unificando física clássica e quântica.">
+    <title>Cronologia da ZVT</title>
     <style>
         body {
             background-color: #121212;
@@ -107,7 +108,14 @@
             font-size: 1.8rem;
             margin-bottom: 1rem;
         }
-        p, li {
+        h3 {
+            color: #00CED1;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 2rem;
             margin-bottom: 1.5rem;
         }
         .math {
@@ -142,83 +150,68 @@
             }
         }
     </style>
+    <script>
+        function switchLanguage(lang) {
+            const buttons = document.querySelectorAll('.lang-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-button[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            document.getElementById('chronology-content').style.display = lang === 'pt' ? 'block' : 'none';
+            document.getElementById('chronology-content-en').style.display = lang === 'en' ? 'block' : 'none';
+        }
+    </script>
 </head>
-<body>
+<body onload="switchLanguage('pt')">
     <header>
-        <h1>Zeta Vibration Theory: Cronologia</h1>
+        <h1>Cronologia da ZVT</h1>
         <nav>
             <button class="lang-button active" onclick="switchLanguage('pt')">Português</button>
             <button class="lang-button" onclick="switchLanguage('en')">English</button>
         </nav>
     </header>
     <main>
-        <article id="article-content">
-            <h2>Cronologia da ZVT: A Evolução do Cosmos</h2>
-            <p>A seguir, a sequência cronológica dos eventos e fenômenos explicados pela Zeta Vibration Theory (ZVT), desde o “início” até o futuro do universo:</p>
-            <ol>
-                <li><strong>Vibrações no Vácuo Quântico (Antes do Espaço-Tempo)</strong>: Vibrações amorfas do campo <span class="math">Φ</span>, guiadas pelos zeros da zeta, criam o espaço-tempo a partir de flutuações quânticas organizadas.</li>
-                <li><strong>Origem da Entropia Baixa e Flecha do Tempo</strong>: Padrões fractais dos zeros da zeta geram um estado inicial de baixa entropia, definindo a direção do tempo.</li>
-                <li><strong>Emergência do Espaço-Tempo</strong>: Vibrações do campo <span class="math">Φ</span> formam o tecido do espaço-tempo, criando a métrica geométrica clássica.</li>
-                <li><strong>Unificação das Forças</strong>: Gravidade, eletromagnetismo e forças nucleares emergem como modos vibracionais do campo <span class="math">Φ</span> em diferentes escalas.</li>
-                <li><strong>Assimetria Matéria-Antimatéria</strong>: Vibrações do campo <span class="math">Φ</span> induzem um viés, favorecendo a formação de matéria.</li>
-                <li><strong>Flutuações na Radiação Cósmica de Fundo</strong>: Padrões fractais das vibrações geram flutuações de densidade (~10^-5), sementes da radiação cósmica.</li>
-                <li><strong>Problemas do Horizonte e da Planura</strong>: A coerência das vibrações cria um universo uniforme e plano, sem inflação.</li>
-                <li><strong>Formação de Bolsões de Energia e Galáxias (JWST)</strong>: “Nós” vibracionais colapsam em bolsões densos, formando galáxias massivas vistas pelo JWST.</li>
-                <li><strong>Matéria Escura</strong>: Oscilações do campo <span class="math">Φ</span> criam densidades gravitacionais sem emitir luz, estabilizando galáxias.</li>
-                <li><strong>Gravidade Quântica</strong>: Gradientes do campo <span class="math">Φ</span> geram curvatura do espaço-tempo, unindo o quântico ao clássico.</li>
-                <li><strong>Expansão do Universo</strong>: Dispersão das vibrações do campo <span class="math">Φ</span> gera pressão negativa, impulsionando a expansão acelerada.</li>
-                <li><strong>Buracos Negros</strong>: “Nós” intensos do campo <span class="math">Φ</span> criam curvaturas finitas, preservando informações quânticas.</li>
-                <li><strong>Unificação Física Clássica e Quântica</strong>: Vibrações quânticas do campo <span class="math">Φ</span> manifestam fenômenos clássicos em escalas grandes.</li>
-                <li><strong>Futuro do Universo</strong>: Vibrações continuam, criando bolsões de energia, estruturas ou ciclos suaves, evitando o Big Freeze.</li>
-            </ol>
-            <p><a href="index.html">Voltar para a Página Principal</a></p>
+        <article id="chronology-content">
+            <h2>Cronologia da Zeta Vibration Theory</h2>
+            <p><strong>Por Jefferson M. Okushigue</strong></p>
+            <h3>Origens Conceituais (2020-2022)</h3>
+            <ul>
+                <li><strong>2020</strong>: Início da exploração das vibrações amorfas no vácuo quântico como alternativa ao Big Bang.</li>
+                <li><strong>2021</strong>: Primeiras conexões com os zeros não-triviais da função zeta de Riemann, sugerindo uma modulação quântica.</li>
+                <li><strong>2022</strong>: Formulação inicial do campo <span class="math">Φ(τ)</span> como base da ZVT, unindo física clássica e quântica.</li>
+            </ul>
+            <h3>Desenvolvimento Teórico (2023-2024)</h3>
+            <ul>
+                <li><strong>2023</strong>: Integração da Hipótese de Riemann, propondo que <span class="math">ℜ(s_n) = 1/2</span> é essencial para a estabilidade do universo.</li>
+                <li><strong>2024</strong>: Expansão para explicar a formação de galáxias precoces (JWST) e a matéria escura via flutuações de <span class="math">ρ(τ)</span>.</li>
+            </ul>
+            <h3>Validação Computacional (2025)</h3>
+            <ul>
+                <li><strong>Julho de 2025</strong>: Simulações do campo <span class="math">Φ(τ)</span> e da curvatura espaço-temporal, confirmando a necessidade da Hipótese de Riemann.</li>
+            </ul>
+            <p><a href="zvt_article_with_github_and_chronology.html">Voltar à Página Principal</a></p>
         </article>
-        <article id="article-content-en" style="display: none;">
-            <h2>ZVT Timeline: The Evolution of the Cosmos</h2>
-            <p>The following is the chronological sequence of events and phenomena explained by the Zeta Vibration Theory (ZVT), from the “beginning” to the future of the universe:</p>
-            <ol>
-                <li><strong>Vibrations in the Quantum Vacuum (Before Space-Time)</strong>: Amorphous vibrations of the field <span class="math">Φ</span>, guided by zeta zeros, create space-time from organized quantum fluctuations.</li>
-                <li><strong>Origin of Low Entropy and the Arrow of Time</strong>: Fractal patterns from zeta zeros generate a low-entropy initial state, defining the direction of time.</li>
-                <li><strong>Emergence of Space-Time</strong>: Vibrations of the field <span class="math">Φ</span> form the fabric of space-time, creating the classical geometric metric.</li>
-                <li><strong>Unification of Forces</strong>: Gravity, electromagnetism, and nuclear forces emerge as vibrational modes of the field <span class="math">Φ</span> at different scales.</li>
-                <li><strong>Matter-Antimatter Asymmetry</strong>: Vibrations of the field <span class="math">Φ</span> induce a bias, favoring matter formation.</li>
-                <li><strong>Cosmic Microwave Background Fluctuations</strong>: Fractal patterns from vibrations generate density fluctuations (~10^-5), seeding the cosmic microwave background.</li>
-                <li><strong>Horizon and Flatness Problems</strong>: Vibration coherence creates a uniform, flat universe without inflation.</li>
-                <li><strong>Formation of Energy Pockets and Galaxies (JWST)</strong>: Vibrational “knots” collapse into dense pockets, forming massive galaxies seen by JWST.</li>
-                <li><strong>Dark Matter</strong>: Oscillations of the field <span class="math">Φ</span> create gravitational density without emitting light, stabilizing galaxies.</li>
-                <li><strong>Quantum Gravity</strong>: Gradients of the field <span class="math">Φ</span> generate space-time curvature, bridging quantum and classical realms.</li>
-                <li><strong>Universe Expansion</strong>: Dispersion of the field <span class="math">Φ</span>’s vibrations generates negative pressure, driving accelerated expansion.</li>
-                <li><strong>Black Holes</strong>: Intense “knots” of the field <span class="math">Φ</span> create finite curvatures, preserving quantum information.</li>
-                <li><strong>Unification of Classical and Quantum Physics</strong>: Quantum vibrations of the field <span class="math">Φ</span> manifest as classical phenomena on large scales.</li>
-                <li><strong>Future of the Universe</strong>: Vibrations continue, creating energy pockets, structures, or smooth cycles, avoiding a sterile Big Freeze.</li>
-            </ol>
-            <p><a href="index.html">Return to Main Page</a></p>
+        <article id="chronology-content-en" style="display: none;">
+            <h2>ZVT Timeline</h2>
+            <p><strong>By Jefferson M. Okushigue</strong></p>
+            <h3>Conceptual Origins (2020-2022)</h3>
+            <ul>
+                <li><strong>2020</strong>: Initial exploration of amorphous vibrations in the quantum vacuum as an alternative to the Big Bang.</li>
+                <li><strong>2021</strong>: First connections with the non-trivial zeros of the Riemann zeta function, suggesting quantum modulation.</li>
+                <li><strong>2022</strong>: Initial formulation of the field <span class="math">Φ(τ)</span> as the foundation of ZVT, unifying classical and quantum physics.</li>
+            </ul>
+            <h3>Theoretical Development (2023-2024)</h3>
+            <ul>
+                <li><strong>2023</strong>: Integration of the Riemann Hypothesis, proposing that <span class="math">ℜ(s_n) = 1/2</span> is essential for universe stability.</li>
+                <li><strong>2024</strong>: Expansion to explain early galaxy formation (JWST) and dark matter via fluctuations of <span class="math">ρ(τ)</span>.</li>
+            </ul>
+            <h3>Computational Validation (2025)</h3>
+            <ul>
+                <li><strong>July 2025</strong>: Simulations of the field <span class="math">Φ(τ)</span> and spacetime curvature, confirming the necessity of the Riemann Hypothesis.</li>
+            </ul>
+            <p><a href="index.html">Back to Main Page</a></p>
         </article>
     </main>
     <footer>
-        <p>© 2025 Jefferson M. Okushigue. All rights reserved.</p>
+        <p>© 2025 Jefferson M. Okushigue. All rights reserved. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
     </footer>
-    <script>
-        function switchLanguage(lang) {
-            const ptArticle = document.getElementById('article-content');
-            const enArticle = document.getElementById('article-content-en');
-            const ptButton = document.querySelector('button[onclick="switchLanguage(\'pt\')]');
-            const enButton = document.querySelector('button[onclick="switchLanguage(\'en\')]');
-            
-            if (lang === 'pt') {
-                ptArticle.style.display = 'block';
-                enArticle.style.display = 'none';
-                ptButton.classList.add('active');
-                enButton.classList.remove('active');
-                document.documentElement.lang = 'pt';
-            } else {
-                ptArticle.style.display = 'none';
-                enArticle.style.display = 'block';
-                ptButton.classList.remove('active');
-                enButton.classList.add('active');
-                document.documentElement.lang = 'en';
-            }
-        }
-    </script>
 </body>
 </html>
