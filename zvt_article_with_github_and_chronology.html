@@ -1,0 +1,217 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zeta Vibration Theory: A new theory unifying classical and quantum physics, explaining JWST galaxies, gravity, and more.">
+    <title>Zeta Vibration Theory</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(90deg, #1e1e1e, #2a2a2a);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #00CED1;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .lang-button, .supplemental-button {
+            background-color: #333;
+            color: #00CED1;
+            border: 1px solid #00CED1;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .lang-button:hover, .supplemental-button:hover {
+            background-color: #00CED1;
+            color: #121212;
+            transform: scale(1.05);
+        }
+        .lang-button.active {
+            background-color: #00CED1;
+            color: #121212;
+        }
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+        article {
+            background: #1e1e1e;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            color: #00CED1;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        h3 {
+            color: #00CED1;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+        p, li {
+            margin-bottom: 1.5rem;
+        }
+        .math {
+            font-style: italic;
+            color: #b0b0b0;
+        }
+        a {
+            color: #00CED1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #66d9db;
+            text-decoration: underline;
+        }
+        footer {
+            background: #1e1e1e;
+            text-align: center;
+            padding: 1rem;
+            color: #b0b0b0;
+            margin-top: auto;
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 0 1rem;
+            }
+            article {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+    <script>
+        function switchLanguage(lang) {
+            const buttons = document.querySelectorAll('.lang-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-button[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            document.getElementById('article-content').style.display = lang === 'pt' ? 'block' : 'none';
+            document.getElementById('article-content-en').style.display = lang === 'en' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body onload="switchLanguage('pt')">
+    <header>
+        <h1>Zeta Vibration Theory</h1>
+        <nav>
+            <button class="lang-button active" onclick="switchLanguage('pt')">Português</button>
+            <button class="lang-button" onclick="switchLanguage('en')">English</button>
+        </nav>
+    </header>
+    <main>
+        <article id="article-content">
+            <h2>A Zeta Vibration Theory: Uma Nova Sinfonia para o Cosmos</h2>
+            <p><strong>Por Jefferson M. Okushigue</strong></p>
+            <p>O universo é um mistério que intriga cientistas e filósofos há séculos. O modelo padrão, centrado no Big Bang, descreve um universo que começa num ponto quente e denso, mas deixa perguntas sem resposta: como algo pode ser “quente” sem espaço ou matéria? Como galáxias massivas, vistas pelo James Webb Space Telescope (JWST), surgiram apenas 100-200 milhões de anos após o Big Bang? Por que a gravidade, a expansão, os buracos negros e a matéria escura permanecem enigmas? A <strong>Zeta Vibration Theory (ZVT)</strong> oferece uma resposta revolucionária: o universo não começou com uma explosão, mas com vibrações amorfas no vácuo quântico, guiadas pelos zeros não-triviais da função zeta de Riemann. Essas vibrações, eternas e auto-sustentadas, explicam tudo — do nascimento das galáxias ao destino do cosmos — unindo a física clássica e quântica numa sinfonia cósmica.</p>
+            <h2>Antes do Início: Vibrações no Vácuo Quântico</h2>
+            <p>No “antes” que não era antes, onde espaço e tempo não existiam, o vácuo quântico pulsava com vibrações amorfas. Diferente do “nada” vazio, esse vácuo, descrito pela mecânica quântica, é um mar de energia flutuante, regido pelo princípio de incerteza (<span class="math">ΔE Δt ≥ ℏ/2</span>). Na ZVT, essas vibrações são moduladas pelos zeros não-triviais da função zeta, localizados na linha crítica <span class="math">σ = 1/2</span>, formando o campo fundamental <span class="math">Φ(τ)</span>.</p>
+            <h2>A Hipótese de Riemann na ZVT</h2>
+            <p>A estabilidade do universo depende da natureza dos zeros da função zeta. O campo <span class="math">Φ(τ) = ∑_{n=1}^{∞} w_n A_0 exp(-0.5 (τ ω_n)^2) cos(ω_n τ)</span>, com <span class="math">ω_n = t_n / τ_{scale}</span> e <span class="math">w_n = log(n+2) / |ζ(1/2 + i t_n)|^2 (1 + 0.01 t_n^2)</span>, deve permanecer real e finito. Se algum zero <span class="math">s_n = σ + i t_n</span> tiver <span class="math">σ ≠ 1/2</span>, <span class="math">Φ(τ)</span> torna-se assimétrico, complexo e divergente, levando a uma densidade <span class="math">ρ(τ) = |Φ(τ)|^2</span> caótica. Isso viola a coerência do vácuo quântico e os padrões observacionais. Assim, a ZVT exige que <span class="math">ℜ(s_n) = 1/2</span>, tornando a Hipótese de Riemann fisicamente obrigatória.</p>
+            <h2>Por que a ZVT?</h2>
+            <p>A ZVT resolve problemas como o horizonte, a planura e a formação precoce de galáxias. As vibrações de <span class="math">Φ(τ)</span> criam flutuações quânticas que colapsam em galáxias, enquanto a curvatura do espaço-tempo, derivada de <span class="math">∂_μ Φ ∂_ν Φ</span>, explica a gravidade e a matéria escura. Simulações computacionais validam essa estrutura.</p>
+            <h2>Contato e Colaboração</h2>
+            <p>Explore mais em <a href="https://github.com/okushigue/zvt">GitHub</a>. Contribuições são bem-vindas. Entre em contato: <a href="mailto:jefferson.okushigue@gmail.com">jefferson.okushigue@gmail.com</a>.</p>
+            <h2>Visualizações da ZVT</h2>
+            <p>Simulações computacionais das vibrações do campo <span class="math">Φ</span> e da curvatura do espaço-tempo:</p>
+            <ul>
+                <li><a href="zvt_field_simulation.png">Simulação do Campo Vibracional e Densidade de Energia</a></li>
+                <li><a href="zvt_gravity_simulation.png">Curvatura do Espaço-Tempo (Gravidade Quântica)</a></li>
+                <li><a href="riemann_hypothesis_test.png">Teste da Hipótese de Riemann via ZVT</a></li>
+            </ul>
+            <p><button class="supplemental-button" onclick="window.location.href='zvt_chronology.html'">Material Adicional: Cronologia da ZVT</button></p>
+        </article>
+        <article id="article-content-en" style="display: none;">
+            <h2>Zeta Vibration Theory: A New Symphony for the Cosmos</h2>
+            <p><strong>By Jefferson M. Okushigue</strong></p>
+            <p>The universe has puzzled scientists and philosophers for centuries. The standard model, centered on the Big Bang, describes a universe beginning from a hot, dense point, yet leaves unanswered questions: how can something be “hot” without space or matter? How did massive galaxies, observed by the James Webb Space Telescope (JWST), form just 100-200 million years after the Big Bang? Why do gravity, expansion, black holes, and dark matter remain enigmas? The <strong>Zeta Vibration Theory (ZVT)</strong> offers a revolutionary answer: the universe did not begin with an explosion but with amorphous vibrations in the quantum vacuum, guided by the non-trivial zeros of the Riemann zeta function. These eternal, self-sustaining vibrations explain everything—from the birth of galaxies to the cosmos’ fate—unifying classical and quantum physics in a cosmic symphony.</p>
+            <h2>Before the Beginning: Vibrations in the Quantum Vacuum</h2>
+            <p>In the “before” that was not a before, where space and time did not exist, the quantum vacuum pulsed with amorphous vibrations. Unlike an empty void, this vacuum, described by quantum mechanics, is a sea of fluctuating energy governed by the uncertainty principle (<span class="math">ΔE Δt ≥ ℏ/2</span>). In the ZVT, these vibrations are modulated by the non-trivial zeros of the zeta function, located on the critical line <span class="math">σ = 1/2</span>, forming the fundamental field <span class="math">Φ(τ)</span>.</p>
+            <h2>The Riemann Hypothesis in ZVT</h2>
+            <p>The stability of the universe hinges on the nature of the zeta function’s zeros. The field <span class="math">Φ(τ) = ∑_{n=1}^{∞} w_n A_0 exp(-0.5 (τ ω_n)^2) cos(ω_n τ)</span>, with <span class="math">ω_n = t_n / τ_{scale}</span> and <span class="math">w_n = log(n+2) / |ζ(1/2 + i t_n)|^2 (1 + 0.01 t_n^2)</span>, must remain real and finite. If any zero <span class="math">s_n = σ + i t_n</span> has <span class="math">σ ≠ 1/2</span>, <span class="math">Φ(τ)</span> becomes asymmetric, complex, and divergent, leading to a chaotic density <span class="math">ρ(τ) = |Φ(τ)|^2</span>. This violates the coherence of the quantum vacuum and observational patterns. Thus, the ZVT requires <span class="math">ℜ(s_n) = 1/2</span>, making the Riemann Hypothesis physically mandatory.</p>
+            <h2>Why ZVT?</h2>
+            <p>ZVT addresses issues like the horizon, flatness, and early galaxy formation. The vibrations of <span class="math">Φ(τ)</span> create quantum fluctuations that collapse into galaxies, while the spacetime curvature, derived from <span class="math">∂_μ Φ ∂_ν Φ</span>, explains gravity and dark matter. Computational simulations validate this framework.</p>
+            <h2>Contact and Collaboration</h2>
+            <p>Explore more on <a href="https://github.com/okushigue/zvt">GitHub</a>. Contributions are welcome. Contact: <a href="mailto:jefferson.okushigue@gmail.com">jefferson.okushigue@gmail.com</a>.</p>
+            <h2>ZVT Visualizations</h2>
+            <p>Computational simulations of the vibrational field <span class="math">Φ</span> and spacetime curvature:</p>
+            <ul>
+                <li><a href="zvt_field_simulation.png">Simulation of the Vibrational Field and Energy Density</a></li>
+                <li><a href="zvt_gravity_simulation.png">Space-Time Curvature (Quantum Gravity)</a></li>
+                <li><a href="riemann_hypothesis_test.png">Test of the Riemann Hypothesis via ZVT</a></li>
+            </ul>
+            <p><button class="supplemental-button" onclick="window.location.href='zvt_chronology.html'">Supplemental Material: ZVT Timeline</button></p>
+        </article>
+    </main>
+    <footer>
+        <p>© 2025 Jefferson M. Okushigue. All rights reserved. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+    </footer>
+</body>
+</html>
