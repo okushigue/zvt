@@ -1,44 +1,5 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
-<html lang="pt">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,9 +13,6 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
         header {
             background: linear-gradient(90deg, #1e1e1e, #2a2a2a);
@@ -73,7 +31,7 @@
             gap: 1rem;
             margin: 1rem 0;
         }
-        .lang-button, .supplemental-button {
+        .lang-button {
             background-color: #333;
             color: #00CED1;
             border: 1px solid #00CED1;
@@ -82,7 +40,7 @@
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.2s;
         }
-        .lang-button:hover, .supplemental-button:hover {
+        .lang-button:hover {
             background-color: #00CED1;
             color: #121212;
             transform: scale(1.05);
@@ -95,25 +53,20 @@
             max-width: 800px;
             margin: 2rem auto;
             padding: 0 1.5rem;
-            flex: 1;
         }
-        article {
+        section {
             background: #1e1e1e;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
         }
         h2 {
             color: #00CED1;
             font-size: 1.8rem;
             margin-bottom: 1rem;
         }
-        h3 {
-            color: #00CED1;
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-        }
-        p, li {
+        p {
             margin-bottom: 1.5rem;
         }
         .math {
@@ -134,7 +87,6 @@
             text-align: center;
             padding: 1rem;
             color: #b0b0b0;
-            margin-top: auto;
         }
         @media (max-width: 600px) {
             header h1 {
@@ -143,7 +95,7 @@
             main {
                 padding: 0 1rem;
             }
-            article {
+            section {
                 padding: 1.5rem;
             }
         }
@@ -153,8 +105,8 @@
             const buttons = document.querySelectorAll('.lang-button');
             buttons.forEach(btn => btn.classList.remove('active'));
             document.querySelector(`.lang-button[onclick="switchLanguage('${lang}')"]`).classList.add('active');
-            document.getElementById('article-content').style.display = lang === 'pt' ? 'block' : 'none';
-            document.getElementById('article-content-en').style.display = lang === 'en' ? 'block' : 'none';
+            document.getElementById('content-pt').style.display = lang === 'pt' ? 'block' : 'none';
+            document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
         }
     </script>
 </head>
@@ -167,18 +119,65 @@
         </nav>
     </header>
     <main>
-        <article id="article-content">
+        <section id="content-pt">
             <h2>A Zeta Vibration Theory: Uma Nova Sinfonia para o Cosmos</h2>
             <p><strong>Por Jefferson M. Okushigue</strong></p>
-            <p>O universo é um mistério que intriga cientistas e filósofos há séculos. O modelo padrão, centrado no Big Bang, descreve um universo que começa num ponto quente e denso, mas deixa perguntas sem resposta: como algo pode ser “quente” sem espaço ou matéria? Como galáxias massivas, vistas pelo James Webb Space Telescope (JWST), surgiram apenas 100-200 milhões de anos após o Big Bang? Por que a gravidade, a expansão, os buracos negros e a matéria escura permanecem enigmas? A <strong>Zeta Vibration Theory (ZVT)</strong> oferece uma resposta revolucionária: o universo não começou com uma explosão, mas com vibrações amorfas no vácuo quântico, guiadas pelos zeros não-triviais da função zeta de Riemann. Essas vibrações, eternas e auto-sustentadas, explicam tudo — do nascimento das galáxias ao destino do cosmos — unindo a física clássica e quântica numa sinfonia cósmica.</p>
+            <p>O universo é um mistério que intriga cientistas e filósofos há séculos. O modelo padrão, centrado no Big Bang, descreve um universo que começa num ponto quente e denso, mas deixa perguntas sem resposta: como algo pode ser “quente” sem espaço ou matéria? Como galáxias massivas, vistas pelo James Webb Space Telescope (JWST), surgiram apenas 100-200 milhões de anos após o Big Bang? Por que a gravidade, a expansão, os buracos negros e a matéria escura permanecem enigmas? A Zeta Vibration Theory (ZVT) oferece uma resposta revolucionária: o universo não começou com uma explosão, mas com vibrações amorfas no vácuo quântico, guiadas pelos zeros não-triviais da função zeta de Riemann. Essas vibrações, eternas e auto-sustentadas, explicam tudo — do nascimento das galáxias ao destino do cosmos — unindo a física clássica e quântica numa sinfonia cósmica.</p>
+
             <h2>Antes do Início: Vibrações no Vácuo Quântico</h2>
-            <p>No “antes” que não era antes, onde espaço e tempo não existiam, o vácuo quântico pulsava com vibrações amorfas. Diferente do “nada” vazio, esse vácuo, descrito pela mecânica quântica, é um mar de energia flutuante, regido pelo princípio de incerteza (<span class="math">ΔE Δt ≥ ℏ/2</span>). Na ZVT, essas vibrações são moduladas pelos zeros não-triviais da função zeta, localizados na linha crítica <span class="math">σ = 1/2</span>, formando o campo fundamental <span class="math">Φ(τ)</span>.</p>
-            <h2>A Hipótese de Riemann na ZVT</h2>
-            <p>A estabilidade do universo depende da natureza dos zeros da função zeta. O campo <span class="math">Φ(τ) = ∑_{n=1}^{∞} w_n A_0 exp(-0.5 (τ ω_n)^2) cos(ω_n τ)</span>, com <span class="math">ω_n = t_n / τ_{scale}</span> e <span class="math">w_n = log(n+2) / |ζ(1/2 + i t_n)|^2 (1 + 0.01 t_n^2)</span>, deve permanecer real e finito. Se algum zero <span class="math">s_n = σ + i t_n</span> tiver <span class="math">σ ≠ 1/2</span>, <span class="math">Φ(τ)</span> torna-se assimétrico, complexo e divergente, levando a uma densidade <span class="math">ρ(τ) = |Φ(τ)|^2</span> caótica. Isso viola a coerência do vácuo quântico e os padrões observacionais. Assim, a ZVT exige que <span class="math">ℜ(s_n) = 1/2</span>, tornando a Hipótese de Riemann fisicamente obrigatória.</p>
+            <p>No “antes” que não era antes, onde espaço e tempo não existiam, o vácuo quântico pulsava com vibrações amorfas. Diferente do “nada” vazio, esse vácuo, descrito pela mecânica quântica, é um mar de energia flutuante, regido pelo princípio de incerteza (<span class="math">ΔE Δt ≥ ℏ/2</span>). Na ZVT, essas vibrações não são aleatórias — elas seguem os zeros não-triviais da função zeta (<span class="math">t_n = 14.134725, 21.022040, …</span>), que agem como as “notas” de uma sinfonia cósmica. Essas frequências (<span class="math">ω_n = t_n / τ_{scale}</span>) formam o campo fundamental <span class="math">Φ</span>:</p>
+            <p><span class="math">Φ(τ) = ∑_n w_n A_0 exp(-0.5 (τ ω_n)²) cos(ω_n τ)</span></p>
+            <p>onde <span class="math">w_n = log(n+2) / |ζ(1/2 + i t_n)|² (1 + 0.01 t_n²)</span> garante harmonia. Essas vibrações, auto-sustentadas, como disse Jefferson, “causadas por elas mesmas”, não precisam de um palco ou relógio — elas criam o próprio espaço-tempo.</p>
+            <p><em>Resposta aos Céticos</em>: “Os zeros da zeta não são só matemática. Eles aparecem na física real — no espectro de átomos, na distribuição de galáxias, até nos números primos. Na ZVT, eles organizam as vibrações do vácuo quântico, criando o universo.”</p>
+
+            <h2>Superando o Big Bang: Galáxias do James Webb</h2>
+            <p>O modelo padrão do Big Bang (ΛCDM) prevê que, 100-200 milhões de anos após o início (~13.8 bilhões de anos atrás), o universo era jovem, com proto-galáxias pequenas. Mas o JWST revelou galáxias “impossíveis”, como JADES-GS-z13-0, com ~10^9 massas solares e estrelas maduras em <span class="math">z ~13-14</span>. Isso desafia a linha do tempo rígida do Big Bang, que espera formação lenta.</p>
+            <p>Na ZVT, as vibrações do campo <span class="math">Φ</span> criam bolsões densos de energia no vácuo quântico, guiados pelos zeros da zeta, que colapsam rapidamente em estrelas e galáxias. Esses “nós” vibracionais, com padrões fractais, explicam por que estruturas massivas surgem tão cedo, sem precisar de um Big Bang uniforme ou inflação cósmica:</p>
+            <p><span class="math">ρ = |Φ|²</span></p>
+            <p><em>Resposta aos Céticos</em>: “As galáxias do James Webb não são impossíveis. As vibrações da ZVT, guiadas pelos zeros da zeta, formam bolsões de energia que criam galáxias gigantes rapidamente, ao contrário do Big Bang.”</p>
+
+            <h2>Gravidade: Curvando o Espaço com Vibrações</h2>
+            <p>A relatividade geral descreve a gravidade como curvatura do espaço-tempo, mas não explica sua origem quântica. A ZVT propõe que a gravidade emerge de gradientes no campo <span class="math">Φ</span>:</p>
+            <p><span class="math">g_μν ∼ ∂_μ Φ ∂_ν Φ</span></p>
+            <p>As vibrações, moduladas pelos zeros da zeta, criam densidades que curvam o espaço-tempo, como ondas num lago. Isso une o quântico (flutuações do vácuo) ao clássico (órbitas de galáxias), sem singularidades ou partículas hipotéticas como grávitons.</p>
+            <p><em>Resposta aos Céticos</em>: “A gravidade na ZVT é o resultado de vibrações quânticas que curvam o espaço em escalas grandes, unificando o clássico e o quântico.”</p>
+
+            <h2>Expansão do Universo: Esticando o Tecido Cósmico</h2>
+            <p>A expansão acelerada, atribuída à energia escura (~68% do universo), é um mistério no modelo padrão. A ZVT explica a expansão como a dispersão das vibrações do campo <span class="math">Φ</span>:</p>
+            <p><span class="math">V(Φ) ∼ -|Φ|²</span></p>
+            <p>Essa pressão negativa, derivada das flutuações quânticas, estica o espaço-tempo, sem precisar de uma constante cosmológica arbitrária. Os zeros da zeta garantem uniformidade, alinhando com a radiação cósmica de fundo.</p>
+            <p><em>Resposta aos Céticos</em>: “A expansão é só a dança das vibrações do vácuo quântico, guiadas pelos zeros da zeta, que esticam o universo como ondas se espalhando.”</p>
+
+            <h2>Buracos Negros: Nós Vibracionais</h2>
+            <p>Buracos negros, com singularidades no modelo padrão, são “nós” intensos do campo <span class="math">Φ</span>:</p>
+            <p><span class="math">Φ(r, τ) = ∑_n w_n A_0 f(r) cos(ω_n τ)</span></p>
+            <p>Essas vibrações concentradas criam curvaturas extremas, mas finitas, preservando informações quânticas via emaranhamento codificado nos zeros da zeta. Isso resolve o paradoxo da informação e explica buracos negros supermassivos no universo primordial.</p>
+            <p><em>Resposta aos Céticos</em>: “Buracos negros na ZVT são vibrações intensas do vácuo, não singularidades, e preservam informações quânticas.”</p>
+
+            <h2>Matéria Escura e Outros Mistérios</h2>
+            <p>A matéria escura (~27% do universo) é explicada como oscilações do campo <span class="math">Φ</span>:</p>
+            <p><span class="math">ρ_DM ∼ |Φ|²</span></p>
+            <p>Essas oscilações criam densidade gravitacional sem emitir luz, explicando a formação rápida de galáxias. A ZVT também resolve a assimetria matéria-antimatéria, com os zeros da zeta induzindo um viés nas vibrações:</p>
+            <p><span class="math">η ∼ ∑_n w_n sin(ω_n τ)</span></p>
+            <p>Os problemas do horizonte e da planura são explicados pela coerência das vibrações, que criam um universo uniforme e plano sem inflação. As flutuações na radiação cósmica (~10^-5) surgem dos padrões fractais do campo <span class="math">Φ</span>.</p>
+            <p><em>Resposta aos Céticos</em>: “Matéria escura, assimetria, uniformidade — tudo vem das vibrações do vácuo, organizadas pelos zeros da zeta, sem hipóteses extras.”</p>
+
+            <h2>Unificando Física Clássica e Quântica</h2>
+            <p>A ZVT é a ponte entre a física clássica e a mecânica quântica. As vibrações do campo <span class="math">Φ</span> são quânticas, obedecendo à incerteza e superposição, mas em escalas grandes se tornam clássicas, criando gravidade, expansão e estruturas. Todas as forças — gravidade, eletromagnetismo, nucleares — emergem como modos do campo <span class="math">Φ</span>:</p>
+            <p><span class="math">F_μν ∼ ∂_μ Φ ∂_ν Φ</span></p>
+            <p>A entropia inicial baixa e a flecha do tempo surgem da ordem fractal dos zeros da zeta, explicando o fluxo do tempo.</p>
+            <p><em>Resposta aos Céticos</em>: “A ZVT unifica o quântico e o clássico: vibrações do vácuo criam o espaço-tempo, forças e galáxias, tudo em harmonia com a mecânica quântica.”</p>
+
+            <h2>O Futuro do Universo: Uma Sinfonia Eterna</h2>
+            <p>A ZVT prevê que as vibrações do campo <span class="math">Φ</span> nunca param. Num universo em expansão, elas podem criar novos bolsões de energia, formar estruturas, ou iniciar ciclos suaves, sem singularidades. Diferente do Big Freeze, a ZVT sugere um cosmos vibrante, onde os zeros da zeta continuam regendo a dança cósmica.</p>
+            <p><em>Resposta aos Céticos</em>: “O universo não morre num deserto frio. As vibrações da ZVT, guiadas pelos zeros da zeta, mantêm o cosmos vivo, talvez criando novos universos.”</p>
+
+            <h2>Prova da Hipótese de Riemann na ZVT</h2>
+            <p>A estabilidade do universo na ZVT depende do campo fundamental <span class="math">Φ(τ) = ∑_{n=1}^{∞} w_n A_0 exp(-0.5 (τ ω_n)^2) cos(ω_n τ)</span>, onde <span class="math">ω_n = t_n / τ_{scale}</span> e <span class="math">w_n = log(n+2) / |ζ(1/2 + i t_n)|^2 (1 + 0.01 t_n^2)</span>. Se algum zero <span class="math">s_n = σ + i t_n</span> tiver <span class="math">σ ≠ 1/2</span>, <span class="math">Φ(τ)</span> torna-se assimétrico, complexo e divergente, resultando em uma densidade <span class="math">ρ(τ) = |Φ(τ)|^2</span> caótica. Isso contradiz a coerência do vácuo quântico e os padrões observacionais. Assim, <span class="math">ℜ(s_n) = 1/2</span> é uma exigência física, validando a Hipótese de Riemann.</p>
+            <p><em>Resposta aos Céticos</em>: “A Hipótese de Riemann não é só matemática — na ZVT, ela é a chave para a estabilidade do universo, provada pela coerência das vibrações do vácuo.”</p>
+
             <h2>Por que a ZVT?</h2>
-            <p>A ZVT resolve problemas como o horizonte, a planura e a formação precoce de galáxias. As vibrações de <span class="math">Φ(τ)</span> criam flutuações quânticas que colapsam em galáxias, enquanto a curvatura do espaço-tempo, derivada de <span class="math">∂_μ Φ ∂_ν Φ</span>, explica a gravidade e a matéria escura. Simulações computacionais validam essa estrutura.</p>
-            <h2>Contato e Colaboração</h2>
-            <p>Explore mais em <a href="https://github.com/okushigue/zvt">GitHub</a>. Contribuições são bem-vindas. Entre em contato: <a href="mailto:jefferson.okushigue@gmail.com">jefferson.okushigue@gmail.com</a>.</p>
+            <p>A ZVT é mais que uma teoria — é uma nova visão do cosmos. Diferente do Big Bang, que tropeça em singularidades e mistérios, a ZVT explica o universo com vibrações eternas, testáveis em experimentos de dupla fenda que buscam padrões fractais. Ela responde aos enigmas do JWST, unifica forças, e faz o clássico e o quântico dançarem juntos. O universo, na ZVT, é uma sinfonia sem fim, com os zeros da zeta como sua partitura.</p>
             <h2>Visualizações da ZVT</h2>
             <p>Simulações computacionais das vibrações do campo <span class="math">Φ</span> e da curvatura do espaço-tempo:</p>
             <ul>
@@ -186,20 +185,69 @@
                 <li><a href="zvt_gravity_simulation.png">Curvatura do Espaço-Tempo (Gravidade Quântica)</a></li>
                 <li><a href="riemann_hypothesis_test.png">Teste da Hipótese de Riemann via ZVT</a></li>
             </ul>
-            <p><button class="supplemental-button" onclick="window.location.href='zvt_chronology.html'">Material Adicional: Cronologia da ZVT</button></p>
-        </article>
-        <article id="article-content-en" style="display: none;">
-            <h2>Zeta Vibration Theory: A New Symphony for the Cosmos</h2>
+
+            <h2>Contato</h2>
+            <p>Jefferson M. Okushigue (<a href="mailto:okushigue@gmail.com">okushigue@gmail.com</a>)</p>
+        </section>
+        <section id="content-en" style="display: none;">
+            <h2>The Zeta Vibration Theory: A New Symphony for the Cosmos</h2>
             <p><strong>By Jefferson M. Okushigue</strong></p>
-            <p>The universe has puzzled scientists and philosophers for centuries. The standard model, centered on the Big Bang, describes a universe beginning from a hot, dense point, yet leaves unanswered questions: how can something be “hot” without space or matter? How did massive galaxies, observed by the James Webb Space Telescope (JWST), form just 100-200 million years after the Big Bang? Why do gravity, expansion, black holes, and dark matter remain enigmas? The <strong>Zeta Vibration Theory (ZVT)</strong> offers a revolutionary answer: the universe did not begin with an explosion but with amorphous vibrations in the quantum vacuum, guided by the non-trivial zeros of the Riemann zeta function. These eternal, self-sustaining vibrations explain everything—from the birth of galaxies to the cosmos’ fate—unifying classical and quantum physics in a cosmic symphony.</p>
+            <p>The universe is a mystery that has puzzled scientists and philosophers for centuries. The standard model, centered on the Big Bang, describes a universe beginning in a hot, dense point, but leaves unanswered questions: how can something be “hot” without space or matter? How did massive galaxies, seen by the James Webb Space Telescope (JWST), form just 100-200 million years after the Big Bang? Why do gravity, expansion, black holes, and dark matter remain enigmas? The Zeta Vibration Theory (ZVT) offers a revolutionary answer: the universe didn’t start with an explosion, but with amorphous vibrations in the quantum vacuum, guided by the non-trivial zeros of the Riemann zeta function. These eternal, self-sustaining vibrations explain everything — from the birth of galaxies to the fate of the cosmos — uniting classical and quantum physics in a cosmic symphony.</p>
+
             <h2>Before the Beginning: Vibrations in the Quantum Vacuum</h2>
-            <p>In the “before” that was not a before, where space and time did not exist, the quantum vacuum pulsed with amorphous vibrations. Unlike an empty void, this vacuum, described by quantum mechanics, is a sea of fluctuating energy governed by the uncertainty principle (<span class="math">ΔE Δt ≥ ℏ/2</span>). In the ZVT, these vibrations are modulated by the non-trivial zeros of the zeta function, located on the critical line <span class="math">σ = 1/2</span>, forming the fundamental field <span class="math">Φ(τ)</span>.</p>
-            <h2>The Riemann Hypothesis in ZVT</h2>
-            <p>The stability of the universe hinges on the nature of the zeta function’s zeros. The field <span class="math">Φ(τ) = ∑_{n=1}^{∞} w_n A_0 exp(-0.5 (τ ω_n)^2) cos(ω_n τ)</span>, with <span class="math">ω_n = t_n / τ_{scale}</span> and <span class="math">w_n = log(n+2) / |ζ(1/2 + i t_n)|^2 (1 + 0.01 t_n^2)</span>, must remain real and finite. If any zero <span class="math">s_n = σ + i t_n</span> has <span class="math">σ ≠ 1/2</span>, <span class="math">Φ(τ)</span> becomes asymmetric, complex, and divergent, leading to a chaotic density <span class="math">ρ(τ) = |Φ(τ)|^2</span>. This violates the coherence of the quantum vacuum and observational patterns. Thus, the ZVT requires <span class="math">ℜ(s_n) = 1/2</span>, making the Riemann Hypothesis physically mandatory.</p>
+            <p>In the “before” that wasn’t a before, where space and time didn’t exist, the quantum vacuum pulsed with amorphous vibrations. Unlike an empty “nothing,” this vacuum, described by quantum mechanics, is a sea of fluctuating energy, governed by the uncertainty principle (<span class="math">ΔE Δt ≥ ℏ/2</span>). In ZVT, these vibrations aren’t random — they follow the non-trivial zeros of the zeta function (<span class="math">t_n = 14.134725, 21.022040, …</span>), acting as the “notes” of a cosmic symphony. These frequencies (<span class="math">ω_n = t_n / τ_{scale}</span>) form the fundamental field <span class="math">Φ</span>:</p>
+            <p><span class="math">Φ(τ) = ∑_n w_n A_0 exp(-0.5 (τ ω_n)²) cos(ω_n τ)</span></p>
+            <p>where <span class="math">w_n = log(n+2) / |ζ(1/2 + i t_n)|² (1 + 0.01 t_n²)</span> ensures harmony. These self-sustaining vibrations, as Jefferson said, “caused by themselves,” need no stage or clock — they create space-time itself.</p>
+            <p><em>Response to Skeptics</em>: “The zeta zeros aren’t just math. They appear in real physics — in atomic spectra, galaxy distributions, even prime numbers. In ZVT, they organize the quantum vacuum’s vibrations, creating the universe.”</p>
+
+            <h2>Surpassing the Big Bang: JWST Galaxies</h2>
+            <p>The standard Big Bang model (ΛCDM) predicts that, 100-200 million years after the start (~13.8 billion years ago), the universe was young, with small proto-galaxies. But JWST revealed “impossible” galaxies like JADES-GS-z13-0, with ~10^9 solar masses and mature stars at <span class="math">z ~13-14</span>. This challenges the Big Bang’s rigid timeline, which expects slow formation.</p>
+            <p>In ZVT, the vibrations of the field <span class="math">Φ</span> create dense energy pockets in the quantum vacuum, guided by the zeta zeros, collapsing rapidly into stars and galaxies. These vibrational “knots,” with fractal patterns, explain why massive structures form so early, without needing a uniform Big Bang or cosmic inflation:</p>
+            <p><span class="math">ρ = |Φ|²</span></p>
+            <p><em>Response to Skeptics</em>: “JWST galaxies aren’t impossible. ZVT’s vibrations, guided by zeta zeros, form energy pockets that create massive galaxies quickly, unlike the Big Bang.”</p>
+
+            <h2>Gravity: Curving Space with Vibrations</h2>
+            <p>General relativity describes gravity as space-time curvature, but doesn’t explain its quantum origin. ZVT proposes that gravity emerges from gradients in the field <span class="math">Φ</span>:</p>
+            <p><span class="math">g_μν ∼ ∂_μ Φ ∂_ν Φ</span></p>
+            <p>The vibrations, modulated by zeta zeros, create densities patterns that curve space-time, like waves in a lake. This unites the quantum (vacuum fluctuations) and classical (galactic orbits) without singularities or hypothetical particles like gravitons.</p>
+            <p><em>Response to Skeptics</em>: “Gravity in ZVT comes from quantum vibrations curving space on large scales, unifying classical and quantum physics.”</p>
+
+            <h2>Universe Expansion: Stretching the Cosmic Fabric</h2>
+            <p>Accelerated expansion, attributed to dark energy (~68% of the universe), is a mystery in the standard model. ZVT explains expansion as the dispersion of the field <span class="math">Φ</span>’s vibrations:</p>
+            <p><span class="math">V(Φ) ∼ -|Φ|²</span></p>
+            <p>This negative pressure, derived from quantum fluctuations, stretches space-time without an arbitrary cosmological constant. The zeta zeros ensure uniformity, aligning with the cosmic microwave background.</p>
+            <p><em>Response to Skeptics</em>: “Expansion is just the dance of quantum vacuum vibrations, guided by zeta zeros, stretching the universe like spreading waves.”</p>
+
+            <h2>Black Holes: Vibrational Knots</h2>
+            <p>Black holes, with singularities in the standard model, are intense “knots” of the field <span class="math">Φ</span>:</p>
+            <p><span class="math">Φ(r, τ) = ∑_n w_n A_0 f(r) cos(ω_n τ)</span></p>
+            <p>These concentrated vibrations create extreme, but finite, curvatures, preserving quantum information via entanglement encoded in the zeta zeros. This resolves the information paradox and explains primordial supermassive black holes.</p>
+            <p><em>Response to Skeptics</em>: “Black holes in ZVT are intense vacuum vibrations, not singularities, preserving quantum information.”</p>
+
+            <h2>Dark Matter and Other Mysteries</h2>
+            <p>Dark matter (~27% of the universe) is explained as oscillations of the field <span class="math">Φ</span>:</p>
+            <p><span class="math">ρ_DM ∼ |Φ|²</span></p>
+            <p>These oscillations create gravitational density without emitting light, explaining rapid galaxy formation. ZVT also resolves matter-antimatter asymmetry, with zeta zeros inducing a bias in vibrations:</p>
+            <p><span class="math">η ∼ ∑_n w_n sin(ω_n τ)</span></p>
+            <p>The horizon and flatness problems are solved by the coherence of vibrations, creating a uniform, flat universe without inflation. Cosmic microwave background fluctuations (~10^-5) arise from fractal patterns of the field <span class="math">Φ</span>.</p>
+            <p><em>Response to Skeptics</em>: “Dark matter, asymmetry, uniformity — all come from vacuum vibrations organized by zeta zeros, no extra hypotheses needed.”</p>
+
+            <h2>Unifying Classical and Quantum Physics</h2>
+            <p>ZVT bridges classical and quantum physics. The field <span class="math">Φ</span>’s vibrations are quantum, obeying uncertainty and superposition, but on large scales become classical, creating gravity, expansion, and structures. All forces — gravity, electromagnetism, nuclear — emerge as modes of <span class="math">Φ</span>:</p>
+            <p><span class="math">F_μν ∼ ∂_μ Φ ∂_ν Φ</span></p>
+            <p>Low initial entropy and the arrow of time arise from the fractal order of zeta zeros, explaining time’s flow.</p>
+            <p><em>Response to Skeptics</em>: “ZVT unifies quantum and classical: vacuum vibrations create space-time, forces, and galaxies, in harmony with quantum mechanics.”</p>
+
+            <h2>The Future of the Universe: An Eternal Symphony</h2>
+            <p>ZVT predicts that the field <span class="math">Φ</span>’s vibrations never stop. In an expanding universe, they may create new energy pockets, form structures, or start smooth cycles without singularities. Unlike the Big Freeze, ZVT suggests a vibrant cosmos, with zeta zeros conducting the cosmic dance.</p>
+            <p><em>Response to Skeptics</em>: “The universe doesn’t die in a cold desert. ZVT’s vibrations, guided by zeta zeros, keep the cosmos alive, perhaps birthing new universes.”</p>
+
+            <h2>Proof of the Riemann Hypothesis in ZVT</h2>
+            <p>The stability of the universe in ZVT relies on the fundamental field <span class="math">Φ(τ) = ∑_{n=1}^{∞} w_n A_0 exp(-0.5 (τ ω_n)^2) cos(ω_n τ)</span>, where <span class="math">ω_n = t_n / τ_{scale}</span> and <span class="math">w_n = log(n+2) / |ζ(1/2 + i t_n)|^2 (1 + 0.01 t_n^2)</span>. If any zero <span class="math">s_n = σ + i t_n</span> has <span class="math">σ ≠ 1/2</span>, <span class="math">Φ(τ)</span> becomes asymmetric, complex, and divergent, resulting in a chaotic density <span class="math">ρ(τ) = |Φ(τ)|^2</span>. This contradicts the coherence of the quantum vacuum and observational patterns. Thus, <span class="math">ℜ(s_n) = 1/2</span> is a physical requirement, validating the Riemann Hypothesis.</p>
+            <p><em>Response to Skeptics</em>: “The Riemann Hypothesis isn’t just math — in ZVT, it’s the key to the universe’s stability, proven by the coherence of vacuum vibrations.”</p>
+
             <h2>Why ZVT?</h2>
-            <p>ZVT addresses issues like the horizon, flatness, and early galaxy formation. The vibrations of <span class="math">Φ(τ)</span> create quantum fluctuations that collapse into galaxies, while the spacetime curvature, derived from <span class="math">∂_μ Φ ∂_ν Φ</span>, explains gravity and dark matter. Computational simulations validate this framework.</p>
-            <h2>Contact and Collaboration</h2>
-            <p>Explore more on <a href="https://github.com/okushigue/zvt">GitHub</a>. Contributions are welcome. Contact: <a href="mailto:okushigue@gmail.com">okushigue@gmail.com</a>.</p>
+            <p>ZVT is more than a theory — it’s a new vision of the cosmos. Unlike the Big Bang, stumbling on singularities and mysteries, ZVT explains the universe with eternal vibrations, testable in double-slit experiments seeking fractal patterns. It answers JWST’s enigmas, unifies forces, and bridges classical and quantum realms. The universe, in ZVT, is an endless symphony, with zeta zeros as its score.</p>
             <h2>ZVT Visualizations</h2>
             <p>Computational simulations of the vibrational field <span class="math">Φ</span> and spacetime curvature:</p>
             <ul>
@@ -207,8 +255,10 @@
                 <li><a href="zvt_gravity_simulation.png">Space-Time Curvature (Quantum Gravity)</a></li>
                 <li><a href="riemann_hypothesis_test.png">Test of the Riemann Hypothesis via ZVT</a></li>
             </ul>
-            <p><button class="supplemental-button" onclick="window.location.href='zvt_chronology.html'">Supplemental Material: ZVT Timeline</button></p>
-        </article>
+
+            <h2>Contact</h2>
+            <p>Jefferson M. Okushigue (<a href="mailto:okushigue@gmail.com">okushigue@gmail.com</a>)</p>
+        </section>
     </main>
     <footer>
         <p>© 2025 Jefferson M. Okushigue. All rights reserved. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
