@@ -1,399 +1,300 @@
-<!DOCTYPE html>
-<html lang="en">
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <title>Zeta Vibration Theory (ZVT)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <style>
-    body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:0;line-height:1.6;background:#fafafa;color:#333}
-    header{background:#0d1b2a;color:#fff;padding:2rem 1rem;text-align:center}
-    main{max-width:900px;margin:2rem auto;padding:0 1rem}
-    section{margin-bottom:2rem;background:#fff;padding:1.5rem;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
-    h2{color:#1b263b;border-bottom:2px solid #415a77;padding-bottom:.3rem}
-    h3{color:#415a77;margin-top:1.5rem}
-    .btn-group{margin:1rem 0}
-    .btn{background:#415a77;color:#fff;border:none;padding:.6rem 1.2rem;margin:.2rem;cursor:pointer;border-radius:4px;font-size:.9rem}
-    .btn:hover{background:#778da9}
-    .hidden{display:none}
-    pre{background:#f5f5f5;padding:1rem;border-left:4px solid #415a77;overflow:auto}
-    footer{background:#0d1b2a;color:#fff;text-align:center;padding:1rem;margin-top:2rem;font-size:.8rem}
-    .equation{background:#f8f9fa;padding:1rem;margin:1rem 0;border-radius:4px;overflow-x:auto}
-    .nav-tabs{display:flex;border-bottom:1px solid #ddd;margin-bottom:1rem;flex-wrap:wrap}
-    .nav-tabs button{padding:0.5rem 1rem;background:none;border:none;cursor:pointer;margin-right:0.5rem;margin-bottom:0.5rem}
-    .nav-tabs button.active{border-bottom:2px solid #415a77;font-weight:bold}
-    table{border-collapse:collapse;width:100%;margin:1rem 0}
-    th,td{border:1px solid #ddd;padding:8px;text-align:left}
-    th{background-color:#f2f2f2}
-    .highlight-box{background:#e8f4f8;border-left:4px solid #2196f3;padding:1rem;margin:1rem 0;border-radius:4px}
-    .origin-concept{background:#fff3cd;border-left:4px solid #ffc107;padding:1rem;margin:1rem 0;border-radius:4px}
-    ul{margin:1rem 0;padding-left:1.5rem}
-    li{margin:0.5rem 0}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeta Vibration Theory</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(90deg, #1e1e1e, #2a2a2a);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #00CED1;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .lang-button {
+            background-color: #333;
+            color: #00CED1;
+            border: 1px solid #00CED1;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .lang-button:hover {
+            background-color: #00CED1;
+            color: #121212;
+            transform: scale(1.05);
+        }
+        .lang-button.active {
+            background-color: #00CED1;
+            color: #121212;
+        }
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+        article {
+            background: #1e1e1e;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            color: #00CED1;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            margin-bottom: 1.5rem;
+        }
+        .math {
+            font-style: italic;
+            color: #b0b0b0;
+        }
+        a {
+            color: #00CED1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #66d9db;
+            text-decoration: underline;
+        }
+        footer {
+            background: #1e1e1e;
+            text-align: center;
+            padding: 1rem;
+            color: #b0b0b0;
+            margin-top: auto;
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 0 1rem;
+            }
+            article {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-  <h1 id="title">Zeta Vibration Theory (ZVT)</h1>
-  <p id="subtitle">A origem da realidade: das vibrações matemáticas ao universo físico</p>
-  <div class="btn-group">
-    <button class="btn" onclick="setLang('en')">English</button>
-    <button class="btn" onclick="setLang('pt')">Português</button>
-    <button class="btn" onclick="showFullArticle()">Full Article</button>
-  </div>
-</header>
+    <header>
+        <h1>Zeta Vibration Theory</h1>
+        <nav>
+            <button class="lang-button active" onclick="switchLanguage('pt')">Português</button>
+            <button class="lang-button" onclick="switchLanguage('en')">English</button>
+        </nav>
+    </header>
+    <main>
+        <article id="article-content">
+            <h2>A Zeta Vibration Theory: Uma Nova Sinfonia para o Cosmos</h2>
+            <p><strong>Por Jefferson M. Okushigue</strong></p>
+            <p>O universo é um mistério que intriga cientistas e filósofos há séculos. O modelo padrão, centrado no Big Bang, descreve um universo que começa num ponto quente e denso, mas deixa perguntas sem resposta: como algo pode ser “quente” sem espaço ou matéria? Como galáxias massivas, vistas pelo James Webb Space Telescope (JWST), surgiram apenas 100-200 milhões de anos após o Big Bang? Por que a gravidade, a expansão, os buracos negros e a matéria escura permanecem enigmas? A <strong>Zeta Vibration Theory (ZVT)</strong> oferece uma resposta revolucionária: o universo não começou com uma explosão, mas com vibrações amorfas no vácuo quântico, guiadas pelos zeros não-triviais da função zeta de Riemann. Essas vibrações, eternas e auto-sustentadas, explicam tudo — do nascimento das galáxias ao destino do cosmos — unindo a física clássica e quântica numa sinfonia cósmica.</p>
+            <h2>Antes do Início: Vibrações no Vácuo Quântico</h2>
+            <p>No “antes” que não era antes, onde espaço e tempo não existiam, o vácuo quântico pulsava com vibrações amorfas. Diferente do “nada” vazio, esse vácuo, descrito pela mecânica quântica, é um mar de energia flutuante, regido pelo princípio de incerteza (<span class="math">ΔE Δt ≥ ℏ/2</span>). Na ZVT, essas vibrações não são aleatórias — elas seguem os zeros não-triviais da função zeta (<span class="math">t_n = 14.134725, 21.022040, …</span>), que agem como as “notas” de uma sinfonia cósmica. Essas frequências (<span class="math">ω_n = t_n / τ_scale</span>) formam o campo fundamental <span class="math">Φ</span>:</p>
+            <p><span class="math">Φ(τ) = ∑_n w_n A_0 exp(-0.5 (τ ω_n)²) cos(ω_n τ)</span></p>
+            <p>onde <span class="math">w_n = log(n+2) / |ζ(1/2 + i t_n)|² (1 + 0.01 t_n²)</span> garante harmonia. Essas vibrações, auto-sustentadas, como disse Jefferson, “causadas por elas mesmas”, não precisam de um palco ou relógio — elas criam o próprio espaço-tempo.</p>
+            <p><strong>Resposta aos Céticos</strong>: “Os zeros da zeta não são só matemática. Eles aparecem na física real — no espectro de átomos, na distribuição de galáxias, até nos números primos. Na ZVT, eles organizam as vibrações do vácuo quântico, criando o universo.”</p>
+            <h2>Superando o Big Bang: Galáxias do James Webb</h2>
+            <p>O modelo padrão do Big Bang (ΛCDM) prevê que, 100-200 milhões de anos após o início (~13.8 bilhões de anos atrás), o universo era jovem, com proto-galáxias pequenas. Mas o JWST revelou galáxias “impossíveis”, como JADES-GS-z13-0, com ~10^9 massas solares e estrelas maduras em z ~13-14. Isso desafia a linha do tempo rígida do Big Bang, que espera formação lenta.</p>
+            <p>Na ZVT, as vibrações do campo <span class="math">Φ</span> criam bolsões densos de energia no vácuo quântico, guiados pelos zeros da zeta, que colapsam rapidamente em estrelas e galáxias. Esses “nós” vibracionais, com padrões fractais, explicam por que estruturas massivas surgem tão cedo, sem precisar de um Big Bang uniforme ou inflação cósmica:</p>
+            <p><span class="math">ρ = |Φ|²</span></p>
+            <p><strong>Resposta aos Céticos</strong>: “As galáxias do James Webb não são impossíveis. As vibrações da ZVT, guiadas pelos zeros da zeta, formam bolsões de energia que criam galáxias gigantes rapidamente, ao contrário do Big Bang.”</p>
+            <h2>Gravidade: Curvando o Espaço com Vibrações</h2>
+            <p>A relatividade geral descreve a gravidade como curvatura do espaço-tempo, mas não explica sua origem quântica. A ZVT propõe que a gravidade emerge de gradientes no campo <span class="math">Φ</span>:</p>
+            <p><span class="math">g_μν ∼ ∂_μ Φ ∂_ν Φ</span></p>
+            <p>As vibrações, moduladas pelos zeros da zeta, criam densidades que curvam o espaço-tempo, como ondas num lago. Isso une o quântico (flutuações do vácuo) ao clássico (órbitas de galáxias), sem singularidades ou partículas hipotéticas como grávitons.</p>
+            <p><strong>Resposta aos Céticos</strong>: “A gravidade na ZVT é o resultado de vibrações quânticas que curvam o espaço em escalas grandes, unificando o clássico e o quântico.”</p>
+            <h2>Expansão do Universo: Esticando o Tecido Cósmico</h2>
+            <p>A expansão acelerada, atribuída à energia escura (~68% do universo), é um mistério no modelo padrão. A ZVT explica a expansão como a dispersão das vibrações do campo <span class="math">Φ</span>:</p>
+            <p><span class="math">V(Φ) ∼ -|Φ|²</span></p>
+            <p>Essa pressão negativa, derivada das flutuações quânticas, estica o espaço-tempo, sem precisar de uma constante cosmológica arbitrária. Os zeros da zeta garantem uniformidade, alinhando com a radiação cósmica de fundo.</p>
+            <p><strong>Resposta aos Céticos</strong>: “A expansão é só a dança das vibrações do vácuo quântico, guiadas pelos zeros da zeta, que esticam o universo como ondas se espalhando.”</p>
+            <h2>Buracos Negros: Nós Vibracionais</h2>
+            <p>Buracos negros, com singularidades no modelo padrão, são “nós” intensos do campo <span class="math">Φ</span>:</p>
+            <p><span class="math">Φ(r, τ) = ∑_n w_n A_0 f(r) cos(ω_n τ)</span></p>
+            <p>Essas vibrações concentradas criam curvaturas extremas, mas finitas, preservando informações quânticas via emaranhamento codificado nos zeros da zeta. Isso resolve o paradoxo da informação e explica buracos negros supermassivos no universo primordial.</p>
+            <p><strong>Resposta aos Céticos</strong>: “Buracos negros na ZVT são vibrações intensas do vácuo, não singularidades, e preservam informações quânticas.”</p>
+            <h2>Matéria Escura e Outros Mistérios</h2>
+            <p>A matéria escura (~27% do universo) é explicada como oscilações do campo <span class="math">Φ</span>:</p>
+            <p><span class="math">ρ_DM ∼ |Φ|²</span></p>
+            <p>Essas oscilações criam densidade gravitacional sem emitir luz, explicando a formação rápida de galáxias. A ZVT também resolve a assimetria matéria-antimatéria, com os zeros da zeta induzindo um viés nas vibrações:</p>
+            <p><span class="math">η ∼ ∑_n w_n sin(ω_n τ)</span></p>
+            <p>Os problemas do horizonte e da planura são explicados pela coerência das vibrações, que criam um universo uniforme e plano sem inflação. As flutuações na radiação cósmica (~10^-5) surgem dos padrões fractais do campo <span class="math">Φ</span>.</p>
+            <p><strong>Resposta aos Céticos</strong>: “Matéria escura, assimetria, uniformidade — tudo vem das vibrações do vácuo, organizadas pelos zeros da zeta, sem hipóteses extras.”</p>
+            <h2>Unificando Física Clássica e Quântica</h2>
+            <p>A ZVT é a ponte entre a física clássica e a mecânica quântica. As vibrações do campo <span class="math">Φ</span> são quânticas, obedecendo à incerteza e superposição, mas em escalas grandes se tornam clássicas, criando gravidade, expansão e estruturas. Todas as forças — gravidade, eletromagnetismo, nucleares — emergem como modos do campo <span class="math">Φ</span>:</p>
+            <p><span class="math">F_μν ∼ ∂_μ Φ ∂_ν Φ</span></p>
+            <p>A entropia inicial baixa e a flecha do tempo surgem da ordem fractal dos zeros da zeta, explicando o fluxo do tempo.</p>
+            <p><strong>Resposta aos Céticos</strong>: “A ZVT unifica o quântico e o clássico: vibrações do vácuo criam o espaço-tempo, forças e galáxias, tudo em harmonia com a mecânica quântica.”</p>
+            <h2>O Futuro do Universo: Uma Sinfonia Eterna</h2>
+            <p>A ZVT prevê que as vibrações do campo <span class="math">Φ</span> nunca param. Num universo em expansão, elas podem criar novos bolsões de energia, formar estruturas, ou iniciar ciclos suaves, sem singularidades. Diferente do Big Freeze, a ZVT sugere um cosmos vibrante, onde os zeros da zeta continuam regendo a dança cósmica.</p>
+            <p><strong>Resposta aos Céticos</strong>: “O universo não morre num deserto frio. As vibrações da ZVT, guiadas pelos zeros da zeta, mantêm o cosmos26. Unificando Física Clássica e Quântica
 
-<main>
-  <!-- English -->
-  <section id="en" class="lang">
-    <h2>The Ultimate Question</h2>
-    <div class="origin-concept">
-      <h3>What existed before the Big Bang?</h3>
-      <p><strong>Not</strong> matter, energy, space, time, light, darkness, or even vacuum.</p>
-      <p>According to ZVT, only <strong>atemporal, aspatial, dimensionless vibrations</strong> existed—pure mathematical patterns that we identify with the non-trivial zeros of the Riemann zeta function.</p>
-    </div>
+Na ZVT, as vibrações do campo <span class="math">Φ</span> são quânticas, obedecendo à incerteza e superposição, mas em escalas grandes se tornam clássicas, criando gravidade, expansão e estruturas. Todas as forças — gravidade, eletromagnetismo, nucleares — emergem como modos do campo <span class="math">Φ</span>:
 
-    <h2>Theory Overview</h2>
-    <p>The <strong>Zeta Vibration Theory (ZVT)</strong> proposes that these primordial vibrations <strong>nucleated spacetime itself</strong>, giving birth to all physical reality. Every quantum phenomenon we observe today—entanglement, wave-function collapse, superposition—are echoes of these original mathematical vibrations.</p>
+\[
+F_{\mu\nu} \sim \partial_{\mu} \Phi \partial_{\nu} \Phi
+\]
 
-    <div class="equation">
-      \[ \rho_n = \frac{1}{2} + it_n \quad \text{(the primordial frequencies)} \]
-    </div>
+A entropia inicial baixa e a flecha do tempo surgem da ordem fractal dos zeros da zeta, explicando o fluxo do tempo.
 
-    <h2>Core Concepts</h2>
-    <div class="nav-tabs">
-      <button class="active" onclick="showTab('origin')">Cosmic Origin</button>
-      <button onclick="showTab('nucleation')">Spacetime Birth</button>
-      <button onclick="showTab('entanglement')">Quantum Entanglement</button>
-      <button onclick="showTab('collapse')">Wave Collapse</button>
-      <button onclick="showTab('superposition')">Superposition</button>
-    </div>
+**Resposta aos Céticos**: “A ZVT unifica o quântico e o clássico: vibrações do vácuo criam o espaço-tempo, forças e galáxias, tudo em harmonia com a mecânica quântica.”
 
-    <div id="origin" class="tab-content">
-      <h3>The DNA of Reality</h3>
-      <p>Before our universe existed, there were only <strong>pure vibrational patterns</strong>:</p>
-      <div class="equation">
-        \[ \rho_n = \frac{1}{2} + it_n \quad \text{(atemporal vibrations)} \]
-      </div>
-      
-      <div class="highlight-box">
-        <h4>These primordial vibrations had paradoxical properties:</h4>
-        <ul>
-          <li><strong>No physical form</strong> yet contained all potential for matter and energy</li>
-          <li><strong>Existed outside time</strong> yet determined all temporal evolution</li>
-          <li><strong>Were dimensionless</strong> yet defined the structure of space</li>
-          <li><strong>Had no location</strong> yet became the foundation of all locations</li>
-          <li><strong>Were purely mathematical</strong> yet became physical reality</li>
-        </ul>
-      </div>
+## O Futuro do Universo: Uma Sinfonia Eterna
 
-      <p>Think of them as the <strong>"source code" of the universe</strong>—abstract mathematical frequencies that contain the blueprint for everything that would ever exist.</p>
-    </div>
+A ZVT prevê que as vibrações do campo <span class="math">Φ</span> nunca param. Num universo em expansão, elas podem criar novos bolsões de energia, formar estruturas, ou iniciar ciclos suaves, sem singularidades. Diferente do Big Freeze, a ZVT sugere um cosmos vibrante, onde os zeros da zeta continuam regendo a dança cósmica.
 
-    <div id="nucleation" class="tab-content hidden">
-      <h3>The Moment of Creation</h3>
-      <p>How did dimensionless vibrations become our 4D spacetime universe?</p>
-      
-      <div class="equation">
-        \[ \Phi(\tau) = \sum_{n=1}^{\infty}\frac{A_0}{(\Im\rho_n)^2}\,e^{-\omega_n\tau} \]
-      </div>
+**Resposta aos Céticos**: “O universo não morre num deserto frio. As vibrações da ZVT, guiadas pelos zeros da zeta, mantêm o cosmos vivo, talvez criando novos universos.”
 
-      <div class="highlight-box">
-        <h4>The Nucleation Process:</h4>
-        <ul>
-          <li><strong>Symmetry Breaking</strong>: The perfect mathematical symmetry of the zeta zeros breaks</li>
-          <li><strong>Dimensional Emergence</strong>: Space and time crystallize from the vibrational patterns</li>
-          <li><strong>Energy Manifestation</strong>: Pure frequencies become quantum fields</li>
-          <li><strong>Matter Formation</strong>: Stable vibration modes become particles</li>
-        </ul>
-      </div>
+## Por que a ZVT?
 
-      <p>This is not just the Big Bang—it's the <strong>birth of existence itself</strong> from pure mathematical abstraction.</p>
-    </div>
+A ZVT é mais que uma teoria — é uma nova visão do cosmos. Diferente do Big Bang, que tropeça em singularidades e mistérios, a ZVT explica o universo com vibrações eternas, testáveis em experimentos de dupla fenda que buscam padrões fractais. Ela responde aos enigmas do JWST, unifica forças, e faz o clássico e o quântico dançarem juntos. O universo, na ZVT, é uma sinfonia sem fim, com os zeros da zeta como sua partitura.
 
-    <div id="entanglement" class="tab-content hidden">
-      <h3>Quantum Entanglement Explained</h3>
-      <p>Particles that share common zeta vibrational modes remain quantum entangled, no matter how far apart:</p>
-      <div class="equation">
-        \[ |\psi_{AB}\rangle = \frac{1}{\sqrt{2}} \sum_n e^{-t_n/\Lambda} (|t_n\rangle_A \otimes |t_n\rangle_B) \]
-      </div>
-      <p>Entanglement is not mysterious—it's simply particles <strong>sharing the same primordial frequency</strong> from the original zeta vibrations.</p>
-    </div>
+**Contato**: Jefferson M. Okushigue (<a href="mailto:okushigue@gmail.com">okushigue@gmail.com</a>)  
+**Repositório da ZVT**: <a href="https://github.com/okushigue/zvt">github.com/okushigue/zvt</a>
 
-    <div id="collapse" class="tab-content hidden">
-      <h3>Wave Function Collapse</h3>
-      <p>Measurement selects the dominant zeta mode from the superposition:</p>
-      <div class="equation">
-        \[ P(t_k) = \frac{|e^{-t_k/\Lambda}|^2}{\sum_n |e^{-t_n/\Lambda}|^2} \]
-      </div>
-      <p>What we call "observation" is actually the universe <strong>choosing which primordial frequency to amplify</strong>.</p>
-    </div>
-
-    <div id="superposition" class="tab-content hidden">
-      <h3>Quantum Superposition</h3>
-      <p>Coherence length depends on the spacing between zeta zeros:</p>
-      <div class="equation">
-        \[ \Delta x \sim \frac{\hbar}{\Lambda \Delta t_n}, \quad \Delta t_n = t_{n+1} - t_n \]
-      </div>
-      <p>Superposition exists because <strong>multiple zeta frequencies can coexist</strong> until measurement forces a choice.</p>
-    </div>
-
-    <h2>Testable Predictions (no free parameters)</h2>
-    <table>
-      <tr>
-        <th>Prediction</th>
-        <th>Value</th>
-        <th>Experimental Test</th>
-        <th>Status</th>
-      </tr>
-      <tr>
-        <td>$Z'$ boson mass</td>
-        <td>6.74 GeV</td>
-        <td>LHCb, Belle II</td>
-        <td>Under investigation</td>
-      </tr>
-      <tr>
-        <td>Coupling constant ($g$)</td>
-        <td>0.100</td>
-        <td>Precision EW tests</td>
-        <td>Awaiting confirmation</td>
-      </tr>
-      <tr>
-        <td>Hubble constant ($H_0$)</td>
-        <td>70.18 km s⁻¹ Mpc⁻¹</td>
-        <td>DESI, CMB-S4</td>
-        <td>Close to observations</td>
-      </tr>
-    </table>
-
-    <div class="highlight-box">
-      <h4>Why This Matters:</h4>
-      <p>If ZVT is correct, we're not just discovering new physics—we're uncovering the <strong>mathematical foundation of existence itself</strong>. The universe isn't just described by mathematics; it <strong>IS</strong> mathematics, vibrating into physical form.</p>
-    </div>
-  </section>
-
-  <!-- Português -->
-  <section id="pt" class="lang hidden">
-    <h2>A Questão Fundamental</h2>
-    <div class="origin-concept">
-      <h3>O que existia antes do Big Bang?</h3>
-      <p><strong>Não</strong> havia matéria, energia, espaço, tempo, luz, trevas ou mesmo vácuo.</p>
-      <p>Segundo a ZVT, existiam apenas <strong>vibrações atemporais, aespaciais e adimensionais</strong>—padrões matemáticos puros que identificamos com os zeros não-triviais da função zeta de Riemann.</p>
-    </div>
-
-    <h2>Visão Geral da Teoria</h2>
-    <p>A <strong>Teoria da Vibração Zeta (ZVT)</strong> propõe que essas vibrações primordiais <strong>nuclearam o próprio espaço-tempo</strong>, dando origem a toda a realidade física. Cada fenômeno quântico que observamos hoje—emaranhamento, colapso da função de onda, superposição—são ecos dessas vibrações matemáticas originais.</p>
-
-    <div class="equation">
-      \[ \rho_n = \frac{1}{2} + it_n \quad \text{(as frequências primordiais)} \]
-    </div>
-
-    <h2>Conceitos Fundamentais</h2>
-    <div class="nav-tabs">
-      <button class="active" onclick="showTab('origem-pt')">Origem Cósmica</button>
-      <button onclick="showTab('nucleacao-pt')">Nascimento do Espaço-Tempo</button>
-      <button onclick="showTab('emaranhamento-pt')">Emaranhamento Quântico</button>
-      <button onclick="showTab('colapso-pt')">Colapso da Onda</button>
-    </div>
-
-    <div id="origem-pt" class="tab-content">
-      <h3>O DNA da Realidade</h3>
-      <p>Antes do nosso universo existir, havia apenas <strong>padrões vibracionais puros</strong>:</p>
-      <div class="equation">
-        \[ \rho_n = \frac{1}{2} + it_n \quad \text{(vibrações atemporais)} \]
-      </div>
-      
-      <div class="highlight-box">
-        <h4>Essas vibrações primordiais tinham propriedades paradoxais:</h4>
-        <ul>
-          <li><strong>Sem forma física</strong>, mas continham todo o potencial para matéria e energia</li>
-          <li><strong>Existiam fora do tempo</strong>, mas determinavam toda evolução temporal</li>
-          <li><strong>Eram adimensionais</strong>, mas definiam a estrutura do espaço</li>
-          <li><strong>Não tinham localização</strong>, mas se tornaram a base de todos os locais</li>
-          <li><strong>Eram puramente matemáticas</strong>, mas se tornaram realidade física</li>
-        </ul>
-      </div>
-
-      <p>Pense nelas como o <strong>"código-fonte" do universo</strong>—frequências matemáticas abstratas que contêm o blueprint de tudo que jamais existiria.</p>
-    </div>
-
-    <div id="nucleacao-pt" class="tab-content hidden">
-      <h3>O Momento da Criação</h3>
-      <p>Como vibrações adimensionais se tornaram nosso universo 4D de espaço-tempo?</p>
-      
-      <div class="equation">
-        \[ \Phi(\tau) = \sum_{n=1}^{\infty}\frac{A_0}{(\Im\rho_n)^2}\,e^{-\omega_n\tau} \]
-      </div>
-
-      <div class="highlight-box">
-        <h4>O Processo de Nucleação:</h4>
-        <ul>
-          <li><strong>Quebra de Simetria</strong>: A simetria matemática perfeita dos zeros zeta se quebra</li>
-          <li><strong>Emergência Dimensional</strong>: Espaço e tempo cristalizam dos padrões vibracionais</li>
-          <li><strong>Manifestação de Energia</strong>: Frequências puras se tornam campos quânticos</li>
-          <li><strong>Formação de Matéria</strong>: Modos vibracionais estáveis se tornam partículas</li>
-        </ul>
-      </div>
-
-      <p>Isso não é apenas o Big Bang—é o <strong>nascimento da própria existência</strong> a partir da abstração matemática pura.</p>
-    </div>
-
-    <div id="emaranhamento-pt" class="tab-content hidden">
-      <h3>Emaranhamento Quântico Explicado</h3>
-      <p>Partículas que compartilham modos vibracionais zeta comuns permanecem emaranhadas quanticamente, não importa quão distantes estejam:</p>
-      <div class="equation">
-        \[ |\psi_{AB}\rangle = \frac{1}{\sqrt{2}} \sum_n e^{-t_n/\Lambda} (|t_n\rangle_A \otimes |t_n\rangle_B) \]
-      </div>
-      <p>O emaranhamento não é misterioso—são simplesmente partículas <strong>compartilhando a mesma frequência primordial</strong> das vibrações zeta originais.</p>
-    </div>
-
-    <div id="colapso-pt" class="tab-content hidden">
-      <h3>Colapso da Função de Onda</h3>
-      <p>A medição seleciona o modo zeta dominante da superposição:</p>
-      <div class="equation">
-        \[ P(t_k) = \frac{|e^{-t_k/\Lambda}|^2}{\sum_n |e^{-t_n/\Lambda}|^2} \]
-      </div>
-      <p>O que chamamos de "observação" é na verdade o universo <strong>escolhendo qual frequência primordial amplificar</strong>.</p>
-    </div>
-
-    <h2>Previsões Testáveis</h2>
-    <table>
-      <tr>
-        <th>Previsão</th>
-        <th>Valor</th>
-        <th>Teste Experimental</th>
-        <th>Status</th>
-      </tr>
-      <tr>
-        <td>Massa do bóson $Z'$</td>
-        <td>6,74 GeV</td>
-        <td>LHCb, Belle II</td>
-        <td>Sob investigação</td>
-      </tr>
-      <tr>
-        <td>Constante de acoplamento ($g$)</td>
-        <td>0,100</td>
-        <td>Testes de precisão EW</td>
-        <td>Aguardando confirmação</td>
-      </tr>
-      <tr>
-        <td>Constante de Hubble ($H_0$)</td>
-        <td>70,18 km s⁻¹ Mpc⁻¹</td>
-        <td>DESI, CMB-S4</td>
-        <td>Próximo das observações</td>
-      </tr>
-    </table>
-
-    <div class="highlight-box">
-      <h4>Por Que Isso Importa:</h4>
-      <p>Se a ZVT estiver correta, não estamos apenas descobrindo nova física—estamos descobrindo o <strong>fundamento matemático da própria existência</strong>. O universo não é apenas descrito pela matemática; ele <strong>É</strong> matemática, vibrando em forma física.</p>
-    </div>
-  </section>
-
-  <!-- Full Article (hidden by default) -->
-  <section id="full-article" class="hidden">
-    <h1>Zeta Vibration Theory: Quantum Phenomena as Emergent Spectral Dynamics</h1>
-    
-    <h2>Abstract</h2>
-    <p>We present a parameter-free derivation of quantum phenomena from the non-trivial zeros of the Riemann zeta function. Starting from the fundamental premise that only atemporal, aspatial vibrations existed before spacetime nucleation, we show how all observed quantum mechanical effects emerge naturally from zeta spectral dynamics.</p>
-    
-    <h2>1. The Primordial State</h2>
-    <p>Before the Big Bang, reality consisted solely of dimensionless mathematical vibrations corresponding to the non-trivial zeros of the Riemann zeta function:</p>
-    <div class="equation">
-      \[ \mathcal{Z}(s) = \prod_{n=1}^\infty \left(1 - \frac{s}{\rho_n}\right), \quad \zeta(\rho_n) = 0 \]
-    </div>
-    
-    <p>These zeros represent pure frequency patterns existing outside spacetime, containing within their mathematical structure the complete blueprint for physical reality.</p>
-    
-    <h2>2. Spacetime Nucleation</h2>
-    <p>The transition from atemporal vibrations to physical spacetime occurs through spontaneous symmetry breaking of the zeta spectral ensemble:</p>
-    <div class="equation">
-      \[ \Phi(\tau) = \sum_{n=1}^{\infty}\frac{A_0}{(\Im\rho_n)^2}\,e^{-\omega_n\tau} \]
-    </div>
-    
-    <h2>3. Quantum Mechanics from Zeta Dynamics</h2>
-    <h3>3.1 Entanglement as Shared Modes</h3>
-    <p>Quantum entanglement emerges when particles share common zeta vibrational modes:</p>
-    <div class="equation">
-      \[ \langle \psi_{AB} | \hat{O} | \psi_{AB} \rangle = \sum_{m,n} e^{-(t_m+t_n)/\Lambda} \langle t_m | \hat{O} | t_n \rangle \]
-    </div>
-    
-    <h3>3.2 Wave Function Collapse</h3>
-    <p>Measurement selects dominant zeta frequencies through environmental decoherence:</p>
-    <div class="equation">
-      \[ P(t_k) = \frac{|e^{-t_k/\Lambda}|^2}{\sum_n |e^{-t_n/\Lambda}|^2} \]
-    </div>
-    
-    <h2>4. Experimental Predictions</h2>
-    <table>
-      <tr>
-        <th>Parameter</th>
-        <th>ZVT Prediction</th>
-        <th>Current Experimental Status</th>
-        <th>Future Tests</th>
-      </tr>
-      <tr>
-        <td>$m_{Z'}$</td>
-        <td>6.740 ± 0.003 GeV</td>
-        <td>Hints in BaBar data</td>
-        <td>LHCb Run 3, Belle II</td>
-      </tr>
-      <tr>
-        <td>$g$ (coupling)</td>
-        <td>0.100 (exact)</td>
-        <td>Within EW precision bounds</td>
-        <td>Future Higgs factory</td>
-      </tr>
-      <tr>
-        <td>$H_0$</td>
-        <td>70.18 km/s/Mpc</td>
-        <td>Consistent with recent DESI</td>
-        <td>CMB-S4, Roman Space Telescope</td>
-      </tr>
-    </table>
-    
-    <h2>5. Philosophical Implications</h2>
-    <p>ZVT suggests that physical reality is not fundamental—rather, it emerges from purely mathematical structures. The universe is not just described by mathematics; it IS mathematics made manifest through vibrational dynamics.</p>
-    
-    <p>This resolves the age-old question of why mathematics is so effective in describing physics: mathematics doesn't describe reality, it IS reality at the most fundamental level.</p>
-    
-    <h2>Conclusion</h2>
-    <p>The Zeta Vibration Theory provides a mathematically elegant and experimentally testable framework connecting the deepest mysteries of number theory to the physical structure of our universe. If confirmed, it would represent not just a new theory of quantum mechanics, but a fundamental revolution in our understanding of the nature of existence itself.</p>
-  </section>
-</main>
-
-<footer>
-  © 2025 Jefferson Massami Okushigue — licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color:#fff">CC-BY 4.0</a>
-</footer>
-
-<script>
-  // Language switching
-  const langs = document.querySelectorAll('.lang');
-  function setLang(l){
-    langs.forEach(el => el.classList.add('hidden'));
-    document.getElementById(l).classList.remove('hidden');
-  }
-
-  // Tab switching
-  function showTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-    document.querySelectorAll('.nav-tabs button.active').forEach(el => el.classList.remove('active'));
-    if (event && event.currentTarget) {
-      event.currentTarget.classList.add('active');
-    }
-    document.getElementById(tabId).classList.remove('hidden');
-  }
-
-  // Show full article
-  function showFullArticle() {
-    document.querySelectorAll('.lang').forEach(el => el.classList.add('hidden'));
-    document.getElementById('full-article').classList.remove('hidden');
-  }
-
-  // Initialize - show first tab
-  document.addEventListener('DOMContentLoaded', function() {
-    showTab('origin');
-  });
-</script>
+</article>
+        <article id="article-content-en" style="display: none;">
+            <h2>The Zeta Vibration Theory: A New Symphony for the Cosmos</h2>
+            <p><strong>By Jefferson M. Okushigue</strong></p>
+            <p>The universe is a mystery that has puzzled scientists and philosophers for centuries. The standard model, centered on the Big Bang, describes a universe beginning in a hot, dense point, but leaves unanswered questions: how can something be “hot” without space or matter? How did massive galaxies, seen by the James Webb Space Telescope (JWST), form just 100-200 million years after the Big Bang? Why do gravity, expansion, black holes, and dark matter remain enigmas? The <strong>Zeta Vibration Theory (ZVT)</strong> offers a revolutionary answer: the universe didn’t start with an explosion, but with amorphous vibrations in the quantum vacuum, guided by the non-trivial zeros of the Riemann zeta function. These eternal, self-sustaining vibrations explain everything — from the birth of galaxies to the fate of the cosmos — uniting classical and quantum physics in a cosmic symphony.</p>
+            <h2>Before the Beginning: Vibrations in the Quantum Vacuum</h2>
+            <p>In the “before” that wasn’t a before, where space and time didn’t exist, the quantum vacuum pulsed with amorphous vibrations. Unlike an empty “nothing,” this vacuum, described by quantum mechanics, is a sea of fluctuating energy, governed by the uncertainty principle (<span class="math">ΔE Δt ≥ ℏ/2</span>). In ZVT, these vibrations aren’t random — they follow the non-trivial zeros of the zeta function (<span class="math">t_n = 14.134725, 21.022040, …</span>), acting as the “notes” of a cosmic symphony. These frequencies (<span class="math">ω_n = t_n / τ_scale</span>) form the fundamental field <span class="math">Φ</span>:</p>
+            <p><span class="math">Φ(τ) = ∑_n w_n A_0 exp(-0.5 (τ ω_n)²) cos(ω_n τ)</span></p>
+            <p>where <span class="math">w_n = log(n+2) / |ζ(1/2 + i t_n)|² (1 + 0.01 t_n²)</span> ensures harmony. These self-sustaining vibrations, as Jefferson said, “caused by themselves,” need no stage or clock — they create space-time itself.</p>
+            <p><strong>Response to Skeptics</strong>: “The zeta zeros aren’t just math. They appear in real physics — in atomic spectra, galaxy distributions, even prime numbers. In ZVT, they organize the quantum vacuum’s vibrations, creating the universe.”</p>
+            <h2>Surpassing the Big Bang: JWST Galaxies</h2>
+            <p>The standard Big Bang model (ΛCDM) predicts that, 100-200 million years after the start (~13.8 billion years ago), the universe was young, with small proto-galaxies. But JWST revealed “impossible” galaxies like JADES-GS-z13-0, with ~10^9 solar masses and mature stars at z ~13-14. This challenges the Big Bang’s rigid timeline, which expects slow formation.</p>
+            <p>In ZVT, the vibrations of the field <span class="math">Φ</span> create dense energy pockets in the quantum vacuum, guided by the zeta zeros, collapsing rapidly into stars and galaxies. These vibrational “knots,” with fractal patterns, explain why massive structures form so early, without needing a uniform Big Bang or cosmic inflation:</p>
+            <p><span class="math">ρ = |Φ|²</span></p>
+            <p><strong>Response to Skeptics</strong>: “JWST galaxies aren’t impossible. ZVT’s vibrations, guided by zeta zeros, form energy pockets that create massive galaxies quickly, unlike the Big Bang.”</p>
+            <h2>Gravity: Curving Space with Vibrations</h2>
+            <p>General relativity describes gravity as space-time curvature, but doesn’t explain its quantum origin. ZVT proposes that gravity emerges from gradients in the field <span class="math">Φ</span>:</p>
+            <p><span class="math">g_μν ∼ ∂_μ Φ ∂_ν Φ</span></p>
+            <p>The vibrations, modulated by zeta zeros, create density patterns that curve space-time, like waves in a lake. This unites the quantum (vacuum fluctuations) and classical (galactic orbits) without singularities or hypothetical particles like gravitons.</p>
+            <p><strong>Response to Skeptics</strong>: “Gravity in ZVT comes from quantum vibrations curving space on large scales, unifying classical and quantum physics.”</p>
+            <h2>Universe Expansion: Stretching the Cosmic Fabric</h2>
+            <p>Accelerated expansion, attributed to dark energy (~68% of the universe), is a mystery in the standard model. ZVT explains expansion as the dispersion of the field <span class="math">Φ</span>’s vibrations:</p>
+            <p><span class="math">V(Φ) ∼ -|Φ|²</span></p>
+            <p>This negative pressure, derived from quantum fluctuations, stretches space-time without an arbitrary cosmological constant. The zeta zeros ensure uniformity, aligning with the cosmic microwave background.</p>
+            <p><strong>Response to Skeptics</strong>: “Expansion is just the dance of quantum vacuum vibrations, guided by zeta zeros, stretching the universe like spreading waves.”</p>
+            <h2>Black Holes: Vibrational Knots</h2>
+            <p>Black holes, with singularities in the standard model, are intense “knots” of the field <span class="math">Φ</span>:</p>
+            <p><span class="math">Φ(r, τ) = ∑_n w_n A_0 f(r) cos(ω_n τ)</span></p>
+            <p>These concentrated vibrations create extreme, but finite, curvatures, preserving quantum information via entanglement encoded in the zeta zeros. This resolves the information paradox and explains primordial supermassive black holes.</p>
+            <p><strong>Response to Skeptics</strong>: “Black holes in ZVT are intense vacuum vibrations, not singularities, preserving quantum information.”</p>
+            <h2>Dark Matter and Other Mysteries</h2>
+            <p>Dark matter (~27% of the universe) is explained as oscillations of the field <span class="math">Φ</span>:</p>
+            <p><span class="math">ρ_DM ∼ |Φ|²</span></p>
+            <p>These oscillations create gravitational density without emitting light, explaining rapid galaxy formation. ZVT also resolves matter-antimatter asymmetry, with zeta zeros inducing a bias in vibrations:</p>
+            <p><span class="math">η ∼ ∑_n w_n sin(ω_n τ)</span></p>
+            <p>The horizon and flatness problems are solved by the coherence of vibrations, creating a uniform, flat universe without inflation. Cosmic microwave background fluctuations (~10^-5) arise from fractal patterns of the field <span class="math">Φ</span>.</p>
+            <p><strong>Response to Skeptics</strong>: “Dark matter, asymmetry, uniformity — all come from vacuum vibrations organized by zeta zeros, no extra hypotheses needed.”</p>
+            <h2>Unifying Classical and Quantum Physics</h2>
+            <p>ZVT bridges classical and quantum physics. The field <span class="math">Φ</span>’s vibrations are quantum, obeying uncertainty and superposition, but on large scales become classical, creating gravity, expansion, and structures. All forces — gravity, electromagnetism, nuclear — emerge as modes of <span class="math">Φ</span>:</p>
+            <p><span class="math">F_μν ∼ ∂_μ Φ ∂_ν Φ</span></p>
+            <p>Low initial entropy and the arrow of time arise from the fractal order of zeta zeros, explaining time’s flow.</p>
+            <p><strong>Response to Skeptics</strong>: “ZVT unifies quantum and classical: vacuum vibrations create space-time, forces, and galaxies, in harmony with quantum mechanics.”</p>
+            <h2>The Future of the Universe: An Eternal Symphony</h2>
+            <p>ZVT predicts that the field <span class="math">Φ</span>’s vibrations never stop. In an expanding universe, they may create new energy pockets, form structures, or start smooth cycles without singularities. Unlike the Big Freeze, ZVT suggests a vibrant cosmos, with zeta zeros conducting the cosmic dance.</p>
+            <p><strong>Response to Skeptics</strong>: “The universe doesn’t die in a cold desert. ZVT’s vibrations, guided by zeta zeros, keep the cosmos alive, perhaps birthing new universes.”</p>
+            <h2>Why ZVT?</h2>
+            <p>ZVT is more than a theory — it’s a new vision of the cosmos. Unlike the Big Bang, stumbling on singularities and mysteries, ZVT explains the universe with eternal vibrations, testable in double-slit experiments seeking fractal patterns. It answers JWST’s enigmas, unifies forces, and bridges classical and quantum realms. The universe, in ZVT, is an endless symphony, with zeta zeros as its score.</p>
+            <p><strong>Contact</strong>: Jefferson M. Okushigue (<a href="mailto:okushigue@gmail.com">okushigue@gmail.com</a>)<br>
+            <strong>ZVT Repository</strong>: <a href="https://github.com/okushigue/zvt">github.com/okushigue/zvt</a></p>
+        </article>
+    </main>
+    <footer>
+        <p>© 2025 Jefferson M. Okushigue. All rights reserved.</p>
+    </footer>
+    <script>
+        function switchLanguage(lang) {
+            const ptArticle = document.getElementById('article-content');
+            const enArticle = document.getElementById('article-content-en');
+            const ptButton = document.querySelector('button[onclick="switchLanguage(\'pt\')]');
+            const enButton = document.querySelector('button[onclick="switchLanguage(\'en\')]');
+            
+            if (lang === 'pt') {
+                ptArticle.style.display = 'block';
+                enArticle.style.display = 'none';
+                ptButton.classList.add('active');
+                enButton.classList.remove('active');
+                document.documentElement.lang = 'pt';
+            } else {
+                ptArticle.style.display = 'none';
+                enArticle.style.display = 'block';
+                ptButton.classList.remove('active');
+                enButton.classList.add('active');
+                document.documentElement.lang = 'en';
+            }
+        }
+    </script>
 </body>
 </html>
