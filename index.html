@@ -3,780 +3,819 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zeta Vibration Theory: Revolutionary unified theory in physics. BREAKTHROUGH: 100,000-zero analysis reveals 2,702 resonant zeros with fine structure constant α=1/137, predicting particles from 313.76 GeV to record-breaking 7,446.75 GeV.">
+    <meta name="description" content="Zeta Vibration Theory: A new unified theory in physics explaining quantum and cosmological phenomena through the zeros of the Riemann zeta function.">
     <title>Zeta Vibration Theory (ZVT)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #fafafa;
-            --bg-secondary: #ffffff;
-            --bg-dark: #2c3e50;
-            --text-primary: #2c3e50;
-            --text-secondary: #34495e;
-            --text-muted: #7f8c8d;
-            --accent-primary: #2980b9;
-            --accent-secondary: #3498db;
-            --accent-success: #27ae60;
-            --accent-warning: #e67e22;
-            --accent-danger: #e74c3c;
-            --border-light: #ecf0f1;
-            --border-medium: #bdc3c7;
-            --shadow-light: rgba(44, 62, 80, 0.1);
-            --shadow-medium: rgba(44, 62, 80, 0.15);
-            --shadow-strong: rgba(44, 62, 80, 0.25);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --bg-dark: #121212;
+            --bg-medium: #1e1e1e;
+            --text-light: #e0e0e0;
+            --accent-color: #00CED1; /* Turquoise */
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --border-color: rgba(0, 206, 209, 0.3);
         }
 
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: 'Source Sans Pro', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
             line-height: 1.7;
-            font-size: 16px;
-        }
-
-        .breakthrough-banner {
-            background: linear-gradient(135deg, var(--accent-danger), var(--accent-warning));
-            color: white;
-            text-align: center;
-            padding: 1rem 2rem;
-            font-weight: 600;
-            font-size: 1rem;
-            box-shadow: 0 2px 8px var(--shadow-medium);
-            border-bottom: 3px solid var(--accent-danger);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .breakthrough-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .breakthrough-banner a {
-            color: white;
-            text-decoration: underline;
-            font-weight: 700;
-        }
-
-        .breakthrough-banner a:hover {
-            color: #fff3cd;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
-            background: var(--bg-secondary);
-            padding: 2.5rem 2rem;
+            background: linear-gradient(90deg, #181818, #282828);
+            padding: 2.5rem;
             text-align: center;
-            box-shadow: 0 4px 12px var(--shadow-light);
-            border-bottom: 1px solid var(--border-light);
-            position: relative;
-        }
-
-        .language-toggle {
-            position: absolute;
-            top: 1rem;
-            right: 2rem;
-            display: flex;
-            gap: 0.5rem;
-            background: var(--bg-primary);
-            border-radius: 25px;
-            padding: 0.3rem;
-            border: 1px solid var(--border-medium);
-            box-shadow: 0 2px 6px var(--shadow-light);
-        }
-
-        .language-toggle button {
-            background: transparent;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-
-        .language-toggle button.active {
-            background: var(--accent-primary);
-            color: white;
-            box-shadow: 0 2px 4px var(--shadow-medium);
-        }
-
-        .language-toggle button:hover:not(.active) {
-            background: var(--border-light);
-            color: var(--text-primary);
+            box-shadow: 0 5px 15px var(--shadow-color);
+            border-bottom: 1px solid var(--border-color);
         }
 
         header h1 {
-            font-family: 'Source Serif Pro', serif;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             margin: 0;
-            color: var(--accent-primary);
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            color: var(--accent-color);
+            text-shadow: 0 0 15px rgba(0, 206, 209, 0.5);
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-            font-weight: 400;
+        .lang-switcher {
+            margin-top: 1.5rem;
+        }
+
+        .lang-button {
+            background-color: var(--bg-medium);
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin: 0 0.5rem;
+        }
+
+        .lang-button:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-dark);
+        }
+
+        .lang-button.active {
+            background-color: var(--accent-color);
+            color: var(--bg-dark);
+            box-shadow: 0 2px 8px rgba(0, 206, 209, 0.4);
         }
 
         nav {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
         }
 
         nav a {
-            color: var(--text-primary);
+            color: var(--text-light);
             text-decoration: none;
             font-weight: 600;
             padding: 0.8rem 1.5rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border-medium);
-            font-size: 0.95rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            background-color: var(--bg-medium);
+            border: 1px solid var(--border-color);
         }
 
         nav a:hover {
-            background-color: var(--accent-primary);
-            color: white;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px var(--shadow-medium);
-            border-color: var(--accent-primary);
+            background-color: var(--accent-color);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 206, 209, 0.2);
         }
 
         main {
-            max-width: 1000px;
+            max-width: 960px;
             margin: 2.5rem auto;
             padding: 0 2rem;
+            flex: 1;
         }
 
         section {
-            background: var(--bg-secondary);
+            background: var(--bg-medium);
             padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px var(--shadow-light);
+            border-radius: 12px;
+            box-shadow: 0 6px 18px var(--shadow-color);
             margin-bottom: 2.5rem;
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--border-color);
         }
 
         h2 {
-            font-family: 'Source Serif Pro', serif;
-            color: var(--accent-primary);
-            font-size: 2.2rem;
+            color: var(--accent-color);
+            font-size: 2.4rem;
             margin-top: 0;
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent-primary);
+            border-bottom: 2px solid var(--accent-color);
             padding-bottom: 0.5rem;
-            font-weight: 600;
+            text-shadow: 0 0 8px rgba(0, 206, 209, 0.3);
         }
 
         h3 {
-            font-family: 'Source Serif Pro', serif;
-            color: var(--text-primary);
-            font-size: 1.6rem;
-            margin: 2rem 0 1rem 0;
-            font-weight: 600;
-        }
-
-        h4 {
-            color: var(--accent-secondary);
-            font-size: 1.3rem;
-            margin: 1.5rem 0 1rem 0;
-            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.3rem;
         }
 
         p, li {
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
         }
 
-        ul, ol {
+        ul {
+            list-style-type: disc;
             padding-left: 1.5rem;
-            margin-bottom: 1.5rem;
+        }
+
+        ol {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
         }
 
         a {
-            color: var(--accent-primary);
+            color: var(--accent-color);
             text-decoration: none;
             transition: color 0.3s ease;
-            font-weight: 500;
         }
 
         a:hover {
-            color: var(--accent-secondary);
+            color: var(--text-light);
             text-decoration: underline;
         }
 
+        /* Styling for mathematical expressions */
         .math-block {
-            background-color: #f8f9fa;
-            border: 1px solid var(--border-medium);
-            border-left: 4px solid var(--accent-primary);
-            padding: 1.5rem;
+            background-color: #2a2a2a;
+            border: 1px solid var(--border-color);
+            padding: 1rem;
             margin: 1.5rem 0;
-            border-radius: 4px;
-            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
-            font-size: 0.95rem;
-            color: var(--text-primary);
+            border-radius: 8px;
             overflow-x: auto;
-            line-height: 1.6;
+            font-family: 'Cascadia Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 1rem;
+            color: #b0e0e6; /* Light blue for code/math */
         }
 
         .math-inline {
-            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
-            background-color: #f8f9fa;
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-        }
-
-        .breakthrough-highlight {
-            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
-            border: 1px solid #f39c12;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            box-shadow: 0 3px 10px rgba(243, 156, 18, 0.2);
-        }
-
-        .breakthrough-highlight strong {
-            color: var(--accent-warning);
-            font-weight: 700;
-        }
-
-        .discovery-box {
-            background: linear-gradient(135deg, #d5f4e6, #a8e6cf);
-            border: 1px solid var(--accent-success);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            box-shadow: 0 3px 10px rgba(39, 174, 96, 0.2);
-        }
-
-        .record-box {
-            background: linear-gradient(135deg, #fce4ec, #f8bbd9);
-            border: 1px solid var(--accent-danger);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            box-shadow: 0 3px 10px rgba(231, 76, 60, 0.2);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .stat-card {
-            background: var(--bg-primary);
-            border: 1px solid var(--border-medium);
-            border-radius: 6px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 6px var(--shadow-light);
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent-primary);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-family: 'Cascadia Mono', 'Fira Code', 'Consolas', monospace;
+            color: #a0d0d6;
+            font-size: 1.05rem;
         }
 
         footer {
-            background-color: var(--bg-dark);
-            color: #ecf0f1;
+            background-color: #1a1a1a;
+            color: #888;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-            border-top: 4px solid var(--accent-primary);
-        }
-
-        footer a {
-            color: var(--accent-secondary);
-        }
-
-        footer a:hover {
-            color: white;
-        }
-
-        .hidden {
-            display: none;
+            padding: 1.5rem;
+            margin-top: 2.5rem;
+            border-top: 1px solid var(--border-color);
         }
 
         @media (max-width: 768px) {
-            .language-toggle {
-                position: static;
-                margin-bottom: 1rem;
-                align-self: center;
-            }
-
-            header {
-                padding: 2rem 1rem;
-            }
-
             header h1 {
                 font-size: 2.5rem;
             }
-
+            .lang-button {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
             nav {
                 flex-direction: column;
-                gap: 0.5rem;
-                align-items: center;
+                gap: 0.8rem;
             }
-
             nav a {
                 width: 80%;
                 text-align: center;
+                margin: 0 auto;
             }
-
             main {
                 padding: 0 1rem;
             }
-
             section {
                 padding: 1.5rem;
             }
-
             h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
-
             h3 {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
             }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .breakthrough-banner {
-                font-size: 0.9rem;
-                padding: 0.8rem 1rem;
+            p, li {
+                font-size: 1rem;
             }
         }
     </style>
     <script type="text/javascript" id="MathJax-script" async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['\\(', '\\)']],
-                displayMath: [['\\[', '\\]']]
-            }
-        };
-    </script>
-</head>
+    </head>
 <body>
-    <div class="breakthrough-banner">
-        📊 COMPUTATIONAL ANALYSIS: 100,000 Riemann zeros analyzed - 2,702 resonant with α=1/137 | Maximum energy: 7,446.75 GeV | <a href="#computational">View Results →</a>
-    </div>
-    
     <header>
-        <div class="language-toggle">
-            <button onclick="setLanguage('en')" class="active" id="btn-en">EN</button>
-            <button onclick="setLanguage('pt')" id="btn-pt">PT</button>
+        <h1>Zeta Vibration Theory (ZVT)</h1>
+        <div class="lang-switcher">
+            <button class="lang-button active" onclick="switchLanguage('en')">English</button>
+            <button class="lang-button" onclick="switchLanguage('pt')">Português</button>
         </div>
-        <h1 data-en="Zeta Vibration Theory (ZVT)" data-pt="Teoria das Vibrações Zeta (ZVT)">Zeta Vibration Theory (ZVT)</h1>
-        <p class="subtitle" data-en="A Mathematical Approach to Fundamental Physics" data-pt="Uma Abordagem Matemática para Física Fundamental">A Mathematical Approach to Fundamental Physics</p>
         <nav>
-            <a href="#overview" data-en="Overview" data-pt="Visão Geral">Overview</a>
-            <a href="#foundations" data-en="Theoretical Foundations" data-pt="Fundamentos Teóricos">Theoretical Foundations</a>
-            <a href="#computational" data-en="100k Zero Discovery" data-pt="Descoberta 100k Zeros">100k Zero Discovery</a>
-            <a href="#mathematics" data-en="Mathematical Framework" data-pt="Framework Matemático">Mathematical Framework</a>
-            <a href="#implications" data-en="Physics Implications" data-pt="Implicações Físicas">Physics Implications</a>
-            <a href="#riemann-hypothesis" data-en="Riemann Hypothesis" data-pt="Hipótese de Riemann">Riemann Hypothesis</a>
-            <a href="#contact" data-en="Contact" data-pt="Contato">Contact</a>
+            <a href="#overview">Overview</a>
+            <a href="#foundations">Theoretical Foundations</a>
+            <a href="#mathematics">Mathematical Review</a>
+            <a href="#implications">Implications and Predictions</a>
+            <a href="#riemann-hypothesis">Riemann Hypothesis in ZVT</a>
+            <a href="#chronology">Chronology</a>
+            <a href="#critiques">Critiques & Responses</a>
+            <a href="#visualizations">Visualizations</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <main>
-        <section id="overview">
-            <h2 data-en="Overview of ZVT" data-pt="Visão Geral da ZVT">Overview of ZVT</h2>
-            
-            <div class="breakthrough-highlight">
-                <p><strong data-en="RECENT FINDINGS:" data-pt="DESCOBERTAS RECENTES:">RECENT FINDINGS:</strong> <span data-en="The systematic analysis of 100,000 non-trivial zeros of the Riemann zeta function has revealed strong correlations between pure mathematics and fundamental physics." data-pt="A análise sistemática de 100.000 zeros não-triviais da função zeta de Riemann revelou fortes correlações entre matemática pura e física fundamental.">The systematic analysis of 100,000 non-trivial zeros of the Riemann zeta function has revealed strong correlations between pure mathematics and fundamental physics.</span></p>
-            </div>
+        <div id="englishContent">
+            <section id="overview">
+                <h2>Overview of ZVT</h2>
+                <p>The Zeta Vibration Theory (ZVT), proposed by Jefferson M. Okushigue, offers a revolutionary vision for understanding the universe. It posits that the cosmos did not begin with an explosion, but rather emerged from amorphous vibrations in the quantum vacuum, guided by the non-trivial zeros of the Riemann zeta function.</p>
+                <p>ZVT seeks to unify classical and quantum physics, explaining phenomena from the birth of galaxies to the fate of the universe through a "cosmic symphony" of eternal and self-sustaining vibrations. It aims to answer questions left unresolved by the standard Big Bang model, such as the existence of massive galaxies observed by the James Webb Space Telescope (JWST) in a young universe, and the nature of gravity, cosmic expansion, black holes, and dark matter.</p>
+            </section>
 
-            <h3 data-en="Key Results" data-pt="Resultados Principais">Key Results</h3>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">100,000</span>
-                    <span class="stat-label" data-en="Riemann Zeros" data-pt="Zeros de Riemann">Riemann Zeros</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">7.447 TeV</span>
-                    <span class="stat-label" data-en="Record Energy" data-pt="Energia Recorde">Record Energy</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">2,702</span>
-                    <span class="stat-label" data-en="Resonant Zeros" data-pt="Zeros Ressonantes">Resonant Zeros</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">99%+</span>
-                    <span class="stat-label" data-en="ZVT Accuracy" data-pt="Precisão ZVT">ZVT Accuracy</span>
-                </div>
-            </div>
-
-            <p data-en="The Zeta Vibration Theory (ZVT), proposed by Jefferson M. Okushigue, posits that the cosmos emerged from amorphous vibrations in the quantum vacuum, guided by the non-trivial zeros of the Riemann zeta function. Recent computational validation through 100,000-zero analysis has provided unprecedented empirical evidence for this revolutionary framework." data-pt="A Teoria das Vibrações Zeta (ZVT), proposta por Jefferson M. Okushigue, postula que o cosmos emergiu de vibrações amorfas no vácuo quântico, guiadas pelos zeros não-triviais da função zeta de Riemann. A validação computacional recente através da análise de 100.000 zeros forneceu evidência empírica sem precedentes para este framework revolucionário.">The Zeta Vibration Theory (ZVT), proposed by Jefferson M. Okushigue, posits that the cosmos emerged from amorphous vibrations in the quantum vacuum, guided by the non-trivial zeros of the Riemann zeta function. Recent computational validation through 100,000-zero analysis has provided unprecedented empirical evidence for this revolutionary framework.</p>
-
-            <div class="record-box">
-                <h4 data-en="Energy Progression Results" data-pt="Resultados da Progressão de Energia">Energy Progression Results</h4>
-                <div class="math-block">
-                    <strong data-en="Analysis Progression:" data-pt="Progressão da Análise:">Analysis Progression:</strong><br>
-                    50k zeros → 3.34 TeV maximum (Zero #40,331)<br>
-                    60k zeros → 4.72 TeV (Zero #59,505)<br>
-                    75k zeros → 5.73 TeV (Zero #74,032)<br>
-                    85k zeros → 6.25 TeV (Zero #81,587)<br>
-                    <strong style="color: #e74c3c;">100k zeros → 7.45 TeV (Zero #99,323)</strong>
-                </div>
-                <p><strong data-en="Total energy growth: +122.7% over the final 50,000 zeros analyzed." data-pt="Crescimento total de energia: +122,7% nos últimos 50.000 zeros analisados.">Total energy growth: +122.7% over the final 50,000 zeros analyzed.</strong></p>
-            </div>
-        </section>
-
-        <section id="foundations">
-            <h2 data-en="Theoretical Foundations of ZVT" data-pt="Fundamentos Teóricos da ZVT">Theoretical Foundations of ZVT</h2>
-            
-            <h3 data-en="Core Principles" data-pt="Princípios Fundamentais">Core Principles</h3>
-            <ul>
-                <li><strong data-en="Vibrations in the Quantum Vacuum:" data-pt="Vibrações no Vácuo Quântico:">Vibrations in the Quantum Vacuum:</strong> <span data-en="In the 'before' where space and time did not exist, the quantum vacuum pulsed with amorphous vibrations, governed by the uncertainty principle" data-pt="No 'antes' onde espaço e tempo não existiam, o vácuo quântico pulsava com vibrações amorfas, governadas pelo princípio da incerteza">In the "before" where space and time did not exist, the quantum vacuum pulsed with amorphous vibrations, governed by the uncertainty principle</span> \(\Delta E \Delta t \geq \hbar/2\).</li>
-                
-                <li><strong data-en="Riemann Zeros as Cosmic Notes:" data-pt="Zeros de Riemann como Notas Cósmicas:">Riemann Zeros as Cosmic Notes:</strong> <span data-en="These vibrations follow the non-trivial zeros of the zeta function, acting as the 'notes' of a cosmic symphony. The computational discovery of 2,702 resonant zeros proves these zeros organize physical reality." data-pt="Essas vibrações seguem os zeros não-triviais da função zeta, agindo como as 'notas' de uma sinfonia cósmica. A descoberta computacional de 2.702 zeros ressonantes prova que esses zeros organizam a realidade física.">These vibrations follow the non-trivial zeros of the zeta function, acting as the "notes" of a cosmic symphony. The computational discovery of 2,702 resonant zeros proves these zeros organize physical reality.</span></li>
-                
-                <li><strong data-en="Fundamental Field (Φ):" data-pt="Campo Fundamental (Φ):">Fundamental Field (Φ):</strong> <span data-en="The frequencies of the zeros form the fundamental field Φ. These self-sustaining vibrations create spacetime itself." data-pt="As frequências dos zeros formam o campo fundamental Φ. Essas vibrações auto-sustentáveis criam o próprio espaço-tempo.">The frequencies of the zeros form the fundamental field Φ. These self-sustaining vibrations create spacetime itself.</span></li>
-            </ul>
-
-            <div class="discovery-box">
-                <h4 data-en="Enhanced Mathematical Framework" data-pt="Framework Matemático Aprimorado">Enhanced Mathematical Framework</h4>
-                <p data-en="Using all 2,702 resonant zeros from 100k analysis:" data-pt="Usando todos os 2.702 zeros ressonantes da análise de 100k:">Using all 2,702 resonant zeros from 100k analysis:</p>
-                <div class="math-block">
-                    \[\Phi_{\text{complete}}(\tau) = \sum_{k \in \mathcal{R}_{100k}} w_k A_0 \exp\left(-\frac{1}{2}(\tau \omega_k)^2\right) \cos(\omega_k \tau)\]
-                </div>
-            </div>
-        </section>
-
-        <section id="computational">
-            <h2 data-en="Computational Results - 100,000 Zero Analysis" data-pt="Resultados Computacionais - Análise de 100.000 Zeros">Computational Results - 100,000 Zero Analysis</h2>
-            
-            <div class="breakthrough-highlight">
-                <p><strong data-en="AUGUST 2025 - COMPUTATIONAL STUDY:" data-pt="AGOSTO 2025 - ESTUDO COMPUTACIONAL:">AUGUST 2025 - COMPUTATIONAL STUDY:</strong> <span data-en="Systematic analysis of 100,000 Riemann zeros reveals organized structure with four distinct clusters and maximum energy prediction of 7.447 TeV." data-pt="Análise sistemática de 100.000 zeros de Riemann revela estrutura organizada com quatro clusters distintos e predição de energia máxima de 7,447 TeV.">Systematic analysis of 100,000 Riemann zeros reveals organized structure with four distinct clusters and maximum energy prediction of 7.447 TeV.</span></p>
-            </div>
-
-            <h3 data-en="Technical Specifications" data-pt="Especificações Técnicas">Technical Specifications</h3>
-            <ul>
-                <li><strong data-en="Precision:" data-pt="Precisão:">Precision:</strong> <span data-en="35 decimal places using mpmath arbitrary precision library" data-pt="35 casas decimais usando biblioteca de precisão arbitrária mpmath">35 decimal places using mpmath arbitrary precision library</span></li>
-                <li><strong data-en="Processing Architecture:" data-pt="Arquitetura de Processamento:">Processing Architecture:</strong> <span data-en="Incremental analysis in 5,000-zero batches" data-pt="Análise incremental em lotes de 5.000 zeros">Incremental analysis in 5,000-zero batches</span></li>
-                <li><strong data-en="Parallelization:" data-pt="Paralelização:">Parallelization:</strong> <span data-en="12-worker concurrent processing with optimal load balancing" data-pt="Processamento concorrente com 12 workers e balanceamento otimizado de carga">12-worker concurrent processing with optimal load balancing</span></li>
-                <li><strong data-en="Total Computation Time:" data-pt="Tempo Total de Computação:">Total Computation Time:</strong> <span data-en="47 hours of continuous processing" data-pt="47 horas de processamento contínuo">47 hours of continuous processing</span></li>
-            </ul>
-
-            <h3 data-en="Highest Resonance Zeros (Top 15)" data-pt="Zeros de Maior Ressonância (Top 15)">Highest Resonance Zeros (Top 15)</h3>
-            <div class="math-block">
-                <strong data-en="Primary Results:" data-pt="Resultados Principais:">Primary Results:</strong><br>
-                1. Zero #39,558 → 3,286.55 GeV (1.230×10⁻⁸ precision)<br>
-                2. Zero #25,841 → 2,258.86 GeV<br>
-                3. Zero #59,505 → 4,718.26 GeV<br>
-                4. Zero #74,032 → 5,729.71 GeV<br>
-                5. Zero #81,587 → 6,247.83 GeV<br>
-                ...<br>
-                <strong style="color: #e74c3c;">14. Zero #99,323 → 7,446.75 GeV (highest observed)</strong>
-            </div>
-
-            <h3 data-en="Four-Cluster Hierarchical Structure" data-pt="Estrutura Hierárquica de Quatro Clusters">Four-Cluster Hierarchical Structure</h3>
-            <div class="discovery-box">
-                <h4 data-en="Cluster Architecture Discovered" data-pt="Arquitetura de Clusters Descoberta">Cluster Architecture Discovered</h4>
+            <section id="foundations">
+                <h2>Theoretical Foundations of ZVT</h2>
+                <p>The structure of ZVT is based on the interpretation of the fundamental properties of the Riemann zeta function and the primordial field:</p>
                 <ul>
-                    <li><strong data-en="Cluster I (30k-50k region):" data-pt="Cluster I (região 30k-50k):">Cluster I (30k-50k region):</strong> <span data-en="Principal Foundation - 3.3 TeV energy scale" data-pt="Fundação Principal - escala de energia 3,3 TeV">Principal Foundation - 3.3 TeV energy scale</span></li>
-                    <li><strong data-en="Cluster II (55k-65k region):" data-pt="Cluster II (região 55k-65k):">Cluster II (55k-65k region):</strong> <span data-en="Secondary Escalation - 4.7-5.0 TeV range" data-pt="Escalação Secundária - faixa 4,7-5,0 TeV">Secondary Escalation - 4.7-5.0 TeV range</span></li>
-                    <li><strong data-en="Cluster III (70k-85k region):" data-pt="Cluster III (região 70k-85k):">Cluster III (70k-85k region):</strong> <span data-en="Ultra-High Energy - 5.7-6.2 TeV range" data-pt="Energia Ultra-Alta - faixa 5,7-6,2 TeV">Ultra-High Energy - 5.7-6.2 TeV range</span></li>
-                    <li><strong data-en="Cluster IV (95k-100k region):" data-pt="Cluster IV (região 95k-100k):">Cluster IV (95k-100k region):</strong> <span data-en="Record-Breaking Mega-Cluster - 7.4+ TeV" data-pt="Mega-Cluster Recorde - 7,4+ TeV">Record-Breaking Mega-Cluster - 7.4+ TeV</span></li>
+                    <li><strong>Vibrations in the Quantum Vacuum:</strong> In the "before" where space and time did not exist, the quantum vacuum pulsed with amorphous vibrations, governed by the uncertainty principle (\[\Delta E \Delta t \geq \hbar/2\]).</li>
+                    <li><strong>Zeros of the Zeta Function:</strong> These vibrations are not random but follow the non-trivial zeros of the zeta function (\[t_n = 14.134725, 21.022040, \dots\]), which act as the "notes" of a cosmic symphony. The zeros of the zeta are not merely a mathematical abstraction but organize the quantum vacuum vibrations, creating the universe.</li>
+                    <li><strong>Fundamental Field ($\Phi$):</strong> The frequencies (\[\omega_n = t_n / \tau_{\text{scale}}\]) of the zeros form the fundamental field \[\Phi\]. These self-sustaining vibrations do not require a "stage" or "clock," as they create spacetime itself.</li>
+                    <li><strong>Fundamental Scale ($\Lambda$):</strong> The scale \[\Lambda\] is defined by physical constants, eliminating free parameters: \[\Lambda = \left( \frac{15 \pi^2}{2} \right)^{1/4} \sqrt{\frac{\hbar c^3}{G}} \approx 1.0000 \times 10^{15} \, \text{GeV}\].</li>
                 </ul>
-            </div>
+            </section>
 
-            <h3 data-en="Statistical Significance" data-pt="Significância Estatística">Statistical Significance</h3>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">2,702</span>
-                    <span class="stat-label" data-en="Resonant Zeros" data-pt="Zeros Ressonantes">Resonant Zeros</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">2,741</span>
-                    <span class="stat-label" data-en="Expected Random" data-pt="Esperado Aleatório">Expected Random</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">0.99×</span>
-                    <span class="stat-label" data-en="Significance" data-pt="Significância">Significance</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">&lt;10⁻²⁴</span>
-                    <span class="stat-label" data-en="P-Value" data-pt="Valor-P">P-Value</span>
-                </div>
-            </div>
+            <section id="mathematics">
+                <h2>Mathematical Review of ZVT</h2>
+                <p>The Zeta Vibration Theory (ZVT) is founded on a mathematical structure that uses the properties of the Riemann zeta function to describe physical phenomena.</p>
 
-            <p data-en="Combined probability for random occurrence is smaller than the number of atoms in Earth (~10⁵⁰). Random occurrence is mathematically impossible." data-pt="A probabilidade combinada de ocorrência aleatória é menor que o número de átomos na Terra (~10⁵⁰). Ocorrência aleatória é matematicamente impossível.">Combined probability for random occurrence is smaller than the number of atoms in Earth (~10⁵⁰). Random occurrence is mathematically impossible.</p>
-        </section>
+                <h3>Fundamentals of the Riemann Zeta Function</h3>
+                <p>ZVT is based on the non-trivial zeros of the Riemann zeta function, \[\zeta(s)\].</p>
+                <ul>
+                    <li><strong>Definition:</strong> For \[\text{Re}(s) > 1\], the zeta function is defined as \[\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}\]. It is analytically continued to the entire complex plane, except for a simple pole at \[s=1\].</li>
+                    <li><strong>Non-Trivial Zeros:</strong> The theory focuses on the zeros \[s = 1/2 + it_n\], where \[t_n\] are the non-trivial zeros. The first zero is \[t_1 \approx 14.134725\].</li>
+                    <li><strong>Functional Equation:</strong> The fundamental symmetry of the zeta is expressed by the functional equation:
+                    <div class="math-block">
+                        \[\pi^{-s/2}\Gamma(s/2)\zeta(s) = \pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s)\]
+                    </div>
+                    where \[\Gamma(s)\] is the Gamma function.
+                    </li>
+                </ul>
 
-        <section id="mathematics">
-            <h2 data-en="Mathematical Framework" data-pt="Framework Matemático">Mathematical Framework</h2>
-            
-            <h3 data-en="Fundamentals of the Riemann Zeta Function" data-pt="Fundamentos da Função Zeta de Riemann">Fundamentals of the Riemann Zeta Function</h3>
-            <p data-en="ZVT is based on the non-trivial zeros of the Riemann zeta function" data-pt="ZVT é baseada nos zeros não-triviais da função zeta de Riemann">ZVT is based on the non-trivial zeros of the Riemann zeta function</p> \(\zeta(s)\).
-            
-            <div class="math-block">
-                <strong data-en="Definition:" data-pt="Definição:">Definition:</strong> For \(\text{Re}(s) > 1\):<br>
-                \[\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}\]
-                
-                <strong data-en="Functional Equation:" data-pt="Equação Funcional:">Functional Equation:</strong><br>
-                \[\pi^{-s/2}\Gamma(s/2)\zeta(s) = \pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s)\]
-            </div>
+                <h3>The Primordial Scalar Field ($\Phi$)</h3>
+                <p>The field \[\Phi\] is the central component of ZVT, whose dynamics are governed by the zeta zeros.</p>
+                <ul>
+                    <li><strong>Spectral Interpretation:</strong> ZVT posits that the zeros \[t_n\] are eigenvalues of a self-adjoint operator \[\hat{H}\], such that \[\hat{H}\psi_n = t_n\psi_n\], where \[\{\psi_n\}\] forms an orthonormal basis.</li>
+                    <li><strong>Field Expansion:</strong> The primordial scalar field \[\phi(x,t)\] (or \[\Phi(\tau)\] in a simplified representation) is expanded into modes associated with these zeros:
+                    <div class="math-block">
+                        \[\phi(x,t) = \sum_n a_n(t)\psi_n(x)\]
+                    </div>
+                    </li>
+                    <li><strong>Mode Dynamics:</strong> The temporal coefficients \[a_n(t)\] are governed by the differential equation:
+                    <div class="math-block">
+                        \[\frac{\partial^2 a_n}{\partial t^2} + \left( \frac{t_n^2}{\Lambda^2} \right) a_n = 0\]
+                    </div>
+                    </li>
+                    <li><strong>Form of the Field \[\Phi(\tau)\]:</strong> In some representations, the field is described as:
+                    <div class="math-block">
+                        \[\Phi(\tau) = \sum_n w_n A_0 \exp(-0.5 (\tau \omega_n)^2) \cos(\omega_n \tau)\]
+                    </div>
+                    where \[\omega_n = t_n / \tau_{\text{scale}}\] are the vibrational frequencies and \[A_0\] is a base amplitude. The weights \[w_n\] are defined as:
+                    <div class="math-block">
+                        \[w_n = \frac{\log(n+2)}{|\zeta(1/2 + i t_n)|^2 (1 + 0.01 t_n^2)}\]
+                    </div>
+                    </li>
+                    <li><strong>Euclidean Propagator:</strong> The propagator connects the zeros to quantum dynamics and the Planck mass (\[M_{\text{Pl}}\]):
+                    <div class="math-block">
+                        \[\Phi(\tau) = \frac{8}{\pi} \frac{\Lambda^3}{M_{\text{Pl}}^2} \sum_n \frac{1}{t_n^2} e^{-t_n \tau / \Lambda}\]
+                    </div>
+                    </li>
+                </ul>
 
-            <h3 data-en="The Primordial Scalar Field (Φ)" data-pt="O Campo Escalar Primordial (Φ)">The Primordial Scalar Field (Φ)</h3>
-            <p data-en="Enhanced with complete 100,000-zero analysis:" data-pt="Aprimorado com análise completa de 100.000 zeros:">Enhanced with complete 100,000-zero analysis:</p>
-            
-            <div class="math-block">
-                <strong data-en="Field Expansion:" data-pt="Expansão do Campo:">Field Expansion:</strong><br>
-                \[\phi(x,t) = \sum_n a_n(t)\psi_n(x)\]
-                
-                <strong data-en="Mode Dynamics:" data-pt="Dinâmica dos Modos:">Mode Dynamics:</strong><br>
-                \[\frac{\partial^2 a_n}{\partial t^2} + \left( \frac{t_n^2}{\Lambda^2} \right) a_n = 0\]
-                
-                <strong data-en="Enhanced Weighting Function:" data-pt="Função de Peso Aprimorada:">Enhanced Weighting Function:</strong><br>
-                \[w_k = \frac{\log(k+2)}{|\zeta(1/2 + i t_k)|^2 (1 + 0.001 t_k^2)} \cdot \exp\left(-\frac{|\gamma_k \bmod \alpha|}{\alpha}\right)\]
-            </div>
+                <h3>Mathematics of Quantum Phenomena</h3>
+                <ul>
+                    <li><strong>Entanglement:</strong> The form of entangled states is given by:
+                    <div class="math-block">
+                        \[|\psi_{AB}\rangle = \frac{1}{\sqrt{\mathcal{N}}} \sum_k e^{-t_k / \Lambda} |t_k\rangle_A \otimes |t_k\rangle_B\]
+                    </div>
+                    where \[\mathcal{N} = \sum_k e^{-2 t_k / \Lambda}\] is the normalization factor.
+                    </li>
+                    <li><strong>Entanglement Entropy:</strong> Calculated as:
+                    <div class="math-block">
+                        \[S_{\text{ent}} = -\sum_k P(t_k) \log P(t_k)\]
+                    </div>
+                    with probability \[P(t_k) = e^{-2 t_k / \Lambda} / \mathcal{N}\].
+                    </li>
+                    <li><strong>Wave Function Collapse:</strong> The characteristic timescale is \[\tau_{\text{collapse}} = \frac{\Lambda}{t_1} \approx 10^{-23} \, \text{s}\].</li>
+                    <li><strong>Superposition:</strong> Quantum states are linear combinations: \[|\psi\rangle = \sum_n c_n e^{-t_n \tau / \Lambda} |t_n\rangle\].</li>
+                </ul>
 
-            <h3 data-en="Information-Theoretic Enhancement" data-pt="Aprimoramento Teórico-Informacional">Information-Theoretic Enhancement</h3>
-            <p data-en="Ultra-high energy zeros carry maximum information content:" data-pt="Zeros de ultra-alta energia carregam conteúdo máximo de informação:">Ultra-high energy zeros carry maximum information content:</p>
-            
-            <div class="math-block">
-                I(γ₉₉₃₂₃) = -log₂ P(γ₉₉₃₂₃ mod α < ε) = 13.1 bits<br>
-                I(γ₃₉₅₅₈) = -log₂ P(γ₃₉₅₅₈ mod α < ε) = 26.3 bits<br>
-                <strong data-en="Average random zero:" data-pt="Zero aleatório médio:">Average random zero:</strong> I_random = 5.2 bits
-            </div>
-        </section>
+                <h3>Mathematics of Particle Physics Predictions</h3>
+                <ul>
+                    <li><strong>Z' Boson:</strong>
+                        <ul>
+                            <li><strong>Mass (\[m_{Z'}\]):</strong> The mass of the Z' boson is derived using coupling \[g=0.100\], \[\Lambda=10^{15} \, \text{GeV}\], and the identity \[\sum_n \frac{1}{t_n^2} = \frac{\pi^2}{15}\]:
+                            <div class="math-block">
+                                \[m_{Z'} = \frac{g \Lambda^2}{2 \sqrt{30} \hbar} = 6.74 \, \text{GeV}\]
+                            </div>
+                            </li>
+                            <li><strong>Decay Width (\[\Gamma\]):</strong> The decay width for electrons is:
+                            <div class="math-block">
+                                \[\Gamma(Z' \to e^+ e^-) = 2.21 \, \text{keV}\]
+                            </div>
+                            </li>
+                            <li><strong>Coupling Lagrangian:</strong> The coupling to the Standard Model is given by:
+                            <div class="math-block">
+                                \[\mathcal{L}_{\text{int}} = g Z'_{\mu} \sum_f Q_f \bar{f} \gamma^{\mu} f\]
+                            </div>
+                            where \[Q_f\] are the fermion charges.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
 
-        <section id="implications">
-            <h2 data-en="Physics Implications and Predictions" data-pt="Implicações e Predições Físicas">Physics Implications and Predictions</h2>
-            
-            <h3 data-en="Beyond Standard Model Physics" data-pt="Física Além do Modelo Padrão">Beyond Standard Model Physics</h3>
-            <div class="record-box">
-                <h4 data-en="Six Ultra-High Energy Discoveries (5-7.4 TeV)" data-pt="Seis Descobertas de Ultra-Alta Energia (5-7,4 TeV)">Six Ultra-High Energy Discoveries (5-7.4 TeV)</h4>
-                <div class="math-block">
-                    <strong data-en="Complete Spectrum:" data-pt="Espectro Completo:">Complete Spectrum:</strong><br>
-                    • 5.05 TeV (Zero #64,218) - 40.4× Higgs mass<br>
-                    • 5.73 TeV (Zero #74,032) - Supersymmetry scale<br>
-                    • 6.25 TeV (Zero #81,587) - 50.0× Higgs mass<br>
-                    • <strong style="color: #e74c3c;">7.45 TeV (Zero #99,323) - 59.6× Higgs mass</strong>
-                </div>
-                <p><strong data-en="Physical Significance:" data-pt="Significado Físico:">Physical Significance:</strong> <span data-en="All predictions are 2.5-3.7× beyond current LHC capabilities, pointing to next-generation physics." data-pt="Todas as predições estão 2,5-3,7× além das capacidades atuais do LHC, apontando para física da próxima geração.">All predictions are 2.5-3.7× beyond current LHC capabilities, pointing to next-generation physics.</span></p>
-            </div>
+                <h3>Mathematics of Cosmological Applications</h3>
+                <ul>
+                    <li><strong>Vacuum Energy Density (\[\rho_{\Lambda}\]):</strong> Directly derived from the field \[\Phi(0)\]:
+                    <div class="math-block">
+                        \[\rho_{\Lambda} = \Phi(0) = \frac{8 \pi G \Lambda^4}{3 c^5} = 2.89 \times 10^{-12} \, \text{eV}^4\]
+                    </div>
+                    </li>
+                    <li><strong>Hubble Constant (\[H_0\]):</strong> Related to the vacuum energy density:
+                    <div class="math-block">
+                        \[H_0 = \sqrt{\frac{8 \pi G}{3} \rho_{\Lambda}} = 70.18 \, \text{km} \, \text{s}^{-1} \, \text{Mpc}^{-1}\]
+                    </div>
+                    </li>
+                    <li><strong>Tensor-to-Scalar Ratio (\[r\]):</strong>
+                    <div class="math-block">
+                        \[r = \frac{8}{\pi} \frac{\Lambda^4}{M_{\text{Pl}}^4} \frac{1}{A_s} = 0.0060\]
+                    </div>
+                    where \[A_s\] is the amplitude of the primordial scalar spectrum.
+                    </li>
+                    <li><strong>Spectral Index (\[n_s\]):</strong>
+                    <div class="math-block">
+                        \[n_s - 1 = -\frac{2}{\Lambda^2} \sum_n \frac{1}{t_n^3} = -0.034 \implies n_s = 0.966\]
+                    </div>
+                    </li>
+                    <li><strong>Dark Matter Density (\[\rho_{\text{DM}}\]):</strong> Explained as oscillations of the field \[\Phi\]:
+                    <div class="math-block">
+                        \[\rho_{\text{DM}} \sim |\Phi|^2\]
+                    </div>
+                    </li>
+                    <li><strong>Matter-Antimatter Asymmetry (\[\eta\]):</strong> Induced by vibrations of the field \[\Phi\]:
+                    <div class="math-block">
+                        \[\eta \sim \sum_n w_n \sin(\omega_n \tau)\]
+                    </div>
+                    </li>
+                    <li><strong>Formation of Gravity:</strong> Gradients in the field \[\Phi\] generate the metric:
+                    <div class="math-block">
+                        \[g_{\mu\nu} \sim \partial_\mu \Phi \partial_\nu \Phi\]
+                    </div>
+                    </li>
+                    <li><strong>Universe Expansion:</strong> Acceleration caused by a negative pressure of the field \[\Phi\]:
+                    <div class="math-block">
+                        \[V(\Phi) \sim -|\Phi|^2\]
+                    </div>
+                    </li>
+                </ul>
 
-            <h3 data-en="Experimental Timeline" data-pt="Cronograma Experimental">Experimental Timeline</h3>
-            <h4 data-en="Current Generation (2025-2030)" data-pt="Geração Atual (2025-2030)">Current Generation (2025-2030)</h4>
-            <ul>
-                <li><strong data-en="LHC Run 3:" data-pt="LHC Run 3:">LHC Run 3:</strong> <span data-en="2.0 TeV maximum energy" data-pt="2,0 TeV energia máxima">2.0 TeV maximum energy</span></li>
-                <li><strong data-en="Testable Prediction:" data-pt="Predição Testável:">Testable Prediction:</strong> <span data-en="Only Zero #2,605 (313.76 GeV)" data-pt="Apenas Zero #2.605 (313,76 GeV)">Only Zero #2,605 (313.76 GeV)</span></li>
-            </ul>
+                <h3>Computational Complexity</h3>
+                <p>Precise calculations in ZVT require using a large number of Riemann zeta zeros, with a computational complexity of the order of \[O(T^{3/2})\], where \[T\] is the upper limit for the zeros. However, \[10^6\] zeros are already considered sufficient for most applications of the theory, with up to \[10^{10}\] zeros potentially needed for higher precision.</p>
+            </section>
 
-            <h4 data-en="Next Generation (2040-2050)" data-pt="Próxima Geração (2040-2050)">Next Generation (2040-2050)</h4>
-            <ul>
-                <li><strong data-en="Future Circular Collider:" data-pt="Colisor Circular Futuro:">Future Circular Collider:</strong> <span data-en="10 TeV capability - All predictions accessible" data-pt="10 TeV de capacidade - Todas as predições acessíveis">10 TeV capability - All predictions accessible</span></li>
-                <li><strong data-en="Required Luminosity:" data-pt="Luminosidade Necessária:">Required Luminosity:</strong> <span data-en="1-10 ab⁻¹ for discovery-level significance" data-pt="1-10 ab⁻¹ para significância de nível de descoberta">1-10 ab⁻¹ for discovery-level significance</span></li>
-            </ul>
+            <section id="implications">
+                <h2>Implications and Predictions of ZVT</h2>
+                <p>ZVT offers explanations for various physical phenomena and predicts new particles and cosmological values:</p>
+                <h3>Quantum Phenomena</h3>
+                <ul>
+                    <li><strong>Entanglement:</strong> Arises from correlated states of \[t_k\] zeros.</li>
+                    <li><strong>Wave Function Collapse:</strong> Interpreted as the selection of a dominant zero during measurement, with a characteristic timescale of \[\tau_{\text{collapse}} \approx 10^{-23} \, \text{s}\].</li>
+                    <li><strong>Superposition:</strong> Modeled as linear combinations of \[|t_n\rangle\] states.</li>
+                </ul>
 
-            <h3 data-en="Cosmological Applications" data-pt="Aplicações Cosmológicas">Cosmological Applications</h3>
-            <div class="discovery-box">
-                <h4 data-en="ZVT Cosmological Predictions" data-pt="Predições Cosmológicas ZVT">ZVT Cosmological Predictions</h4>
-                <div class="math-block">
-                    <strong data-en="Vacuum Energy Density:" data-pt="Densidade de Energia do Vácuo:">Vacuum Energy Density:</strong><br>
-                    ρ_Λ = 3.34 × 10⁻¹² eV⁴<br>
-                    
-                    <strong data-en="Hubble Constant:" data-pt="Constante de Hubble:">Hubble Constant:</strong><br>
-                    H₀ = 73.6 km s⁻¹ Mpc⁻¹ (resolves Hubble tension)<br>
-                    
-                    <strong data-en="Tensor-to-Scalar Ratio:" data-pt="Razão Tensor-Escalar:">Tensor-to-Scalar Ratio:</strong><br>
-                    r = 0.0060 (testable by future CMB experiments)
-                </div>
-            </div>
+                <h3>Particle Physics</h3>
+                <ul>
+                    <li><strong>Z' Boson:</strong> ZVT predicts the existence of a new boson with a mass of \[6.74 \, \text{GeV}\], and a narrow decay width (\[2.21 \, \text{keV}\] for \[e^+ e^-\]).</li>
+                </ul>
 
-            <h3 data-en="Quantum Phenomena Explanations" data-pt="Explicações de Fenômenos Quânticos">Quantum Phenomena Explanations</h3>
-            <ul>
-                <li><strong data-en="Entanglement:" data-pt="Emaranhamento:">Entanglement:</strong> <span data-en="Arises from correlated states of Riemann zeros" data-pt="Surge de estados correlacionados dos zeros de Riemann">Arises from correlated states of Riemann zeros</span></li>
-                <li><strong data-en="Wave Function Collapse:" data-pt="Colapso da Função de Onda:">Wave Function Collapse:</strong> <span data-en="Selection of dominant zero during measurement (τ ≈ 10⁻²³ s)" data-pt="Seleção de zero dominante durante medição (τ ≈ 10⁻²³ s)">Selection of dominant zero during measurement (τ ≈ 10⁻²³ s)</span></li>
-                <li><strong data-en="Dark Matter:" data-pt="Matéria Escura:">Dark Matter:</strong> <span data-en="Oscillations of field Φ creating gravitational density without light emission" data-pt="Oscilações do campo Φ criando densidade gravitacional sem emissão de luz">Oscillations of field Φ creating gravitational density without light emission</span></li>
-            </ul>
-        </section>
+                <h3>Cosmology</h3>
+                <ul>
+                    <li><strong>Vacuum Energy Density (\[\rho_{\Lambda}\]):</strong> Consistent with the observed dark energy density (\[2.89 \times 10^{-12} \, \text{eV}^4\]).</li>
+                    <li><strong>Hubble Constant (\[H_0\]):</strong> Predicted to be \[70.18 \, \text{km} \, \text{s}^{-1} \, \text{Mpc}^{-1}\], close to Planck 2018 measurements.</li>
+                    <li><strong>Tensor-to-Scalar Ratio (\[r\]):</strong> Predicted to be \[0.0060\], testable by future CMB experiments.</li>
+                    <li><strong>Spectral Index (\[n_s\]):</strong> Predicted to be \[0.966\], consistent with Planck 2018 observations.</li>
+                    <li><strong>Galaxy Formation (JWST):</strong> Explains the rapid formation of massive galaxies through "dense energy pockets" or "vibrational nodes" in the quantum vacuum, which quickly collapse.</li>
+                    <li><strong>Dark Matter:</strong> Explained as oscillations of the field \[\Phi\], which create gravitational density without emitting light, stabilizing galaxies.</li>
+                    <li><strong>Gravity:</strong> Proposed as emerging from gradients in the field \[\Phi\], unifying quantum and classical aspects.</li>
+                    <li><strong>Universe Expansion:</strong> Acceleration explained by the dispersion of the field \[\Phi\] vibrations, generating negative pressure.</li>
+                    <li><strong>Black Holes:</strong> Described as intense "nodes" of the field \[\Phi\], creating extreme but finite curvatures, and preserving quantum information.</li>
+                    <li><strong>Matter-Antimatter Asymmetry:</strong> The field \[\Phi\] vibrations induce a bias favoring matter formation.</li>
+                    <li><strong>CMB Fluctuations:</strong> Fractal patterns of vibrations generate density fluctuations.</li>
+                    <li><strong>Horizon and Flatness Problems:</strong> Resolved by the coherence of vibrations, creating a uniform and flat universe without inflation.</li>
+                </ul>
+            </section>
 
-        <section id="riemann-hypothesis">
-            <h2 data-en="The Riemann Hypothesis in ZVT" data-pt="A Hipótese de Riemann na ZVT">The Riemann Hypothesis in ZVT</h2>
-            
-            <div class="breakthrough-highlight">
-                <p><strong data-en="Physical Proof Framework:" data-pt="Framework de Prova Física:">Physical Proof Framework:</strong> <span data-en="The stability of the universe in ZVT intrinsically depends on the validity of the Riemann Hypothesis. The discovery of 2,702 resonant zeros provides computational evidence for this fundamental mathematical truth." data-pt="A estabilidade do universo na ZVT depende intrinsecamente da validade da Hipótese de Riemann. A descoberta de 2.702 zeros ressonantes fornece evidência computacional para esta verdade matemática fundamental.">The stability of the universe in ZVT intrinsically depends on the validity of the Riemann Hypothesis. The discovery of 2,702 resonant zeros provides computational evidence for this fundamental mathematical truth.</span></p>
-            </div>
+            <section id="riemann-hypothesis">
+                <h2>The Riemann Hypothesis Proof in ZVT</h2>
+                <p>The stability of the universe in ZVT intrinsically depends on the validity of the Riemann Hypothesis. If there existed a non-trivial zero of the zeta function \[s_n = \sigma + i t_n\] where \[\sigma \neq 1/2\], the behavior of the fundamental field \[\Phi(\tau)\] and, consequently, the energy density \[\rho(\tau) = |\Phi(\tau)|^2\] would become asymmetrical, complex, and divergent.</p>
+                <p>Such a scenario would lead to chaotic and unstable energy density, contradicting the observation of a coherent, organized, and stable universe. Therefore, the condition that the real part of all non-trivial zeros is \[\text{Re}(s_n) = 1/2\] is a physical requirement for the stability and observable existence of the cosmos in ZVT, effectively "proving" the Riemann Hypothesis within the scope of the theory.</p>
+            </section>
 
-            <p data-en="If there existed a non-trivial zero with Re(s) ≠ 1/2, the fundamental field Φ(τ) would become asymmetrical and divergent, leading to chaotic energy density that contradicts our observed stable universe. Therefore, the condition Re(s_n) = 1/2 is a physical requirement for cosmic stability." data-pt="Se existisse um zero não-trivial com Re(s) ≠ 1/2, o campo fundamental Φ(τ) se tornaria assimétrico e divergente, levando a densidade de energia caótica que contradiz nosso universo estável observado. Portanto, a condição Re(s_n) = 1/2 é um requisito físico para estabilidade cósmica.">If there existed a non-trivial zero with Re(s) ≠ 1/2, the fundamental field Φ(τ) would become asymmetrical and divergent, leading to chaotic energy density that contradicts our observed stable universe. Therefore, the condition Re(s_n) = 1/2 is a physical requirement for cosmic stability.</p>
+            <section id="chronology">
+                <h2>Chronology of Events Explained by ZVT</h2>
+                <ol>
+                    <li><strong>Vibrations in the Quantum Vacuum (Before Spacetime):</strong> Creation of spacetime from organized quantum fluctuations.</li>
+                    <li><strong>Origin of Low Entropy and Arrow of Time:</strong> Fractal patterns of zeta zeros generate an initial low-entropy state, defining the direction of time.</li>
+                    <li><strong>Emergence of Spacetime:</strong> Vibrations of the field \[\Phi\] form the fabric of spacetime, creating the classical geometric metric.</li>
+                    <li><strong>Unification of Forces:</strong> Gravity, electromagnetism, and nuclear forces emerge as vibrational modes of the field \[\Phi\] at different scales.</li>
+                    <li><strong>Matter-Antimatter Asymmetry:</strong> Vibrations of the field \[\Phi\] induce a bias, favoring matter formation.</li>
+                    <li><strong>CMB Fluctuations:</strong> Fractal patterns of vibrations generate density fluctuations (~\[10^{-5}\]), seeds of cosmic radiation.</li>
+                    <li><strong>Horizon and Flatness Problems:</strong> Resolved by the coherence of vibrations, creating a uniform and flat universe without inflation.</li>
+                    <li><strong>Formation of Energy Pockets and Galaxies (JWST):</strong> Vibrational "nodes" collapse into dense pockets, forming massive galaxies seen by the JWST.</li>
+                    <li><strong>Dark Matter:</strong> Oscillations of the field \[\Phi\] create gravitational densities without emitting light, stabilizing galaxies.</li>
+                    <li><strong>Quantum Gravity:</strong> Gradients of the field \[\Phi\] generate spacetime curvature, uniting quantum and classical aspects.</li>
+                    <li><strong>Universe Expansion:</strong> Dispersion of the field \[\Phi\] vibrations generates negative pressure, driving accelerated expansion.</li>
+                    <li><strong>Black Holes:</strong> Intense "nodes" of the field \[\Phi\] create finite, extreme curvatures, and preserving quantum information.</li>
+                    <li><strong>Unification of Classical and Quantum Physics:</strong> Quantum vibrations of the field \[\Phi\] manifest classical phenomena on large scales.</li>
+                    <li><strong>Future of the Universe:</strong> Vibrations continue, creating energy pockets, structures, or smooth cycles, avoiding a "Big Freeze." ZVT suggests a vibrant cosmos, where zeta zeros continue to orchestrate the cosmic dance.</li>
+                </ol>
+            </section>
 
-            <div class="math-block">
-                <strong data-en="Mathematical Requirement:" data-pt="Requisito Matemático:">Mathematical Requirement:</strong><br>
-                ∀n: Re(s_n) = 1/2 ⟺ Stable Universe<br>
-                
-                <strong data-en="Computational Evidence:" data-pt="Evidência Computacional:">Computational Evidence:</strong><br>
-                100,000 zeros tested: 100% satisfy Re(s) = 1/2<br>
-                2,702 resonant zeros: Perfect mathematical structure
-            </div>
-        </section>
+            <section id="critiques">
+                <h2>Critiques and Responses (To Skeptics)</h2>
+                <p>ZVT addresses potential skepticism directly within its framework:</p>
+                <ul>
+                    <li><strong>Validity of Zeta Zeros in Physics:</strong> The theory asserts that zeta zeros are not merely mathematical but appear in real physics, organizing quantum vacuum vibrations and creating the universe.</li>
+                    <li><strong>Formation of Impossible Galaxies:</strong> JWST galaxies are not impossible, as ZVT vibrations rapidly form energy pockets that generate giant galaxies, unlike the Big Bang.</li>
+                    <li><strong>Origin of Gravity:</strong> Gravity in ZVT results from quantum vibrations that curve space on large scales, unifying classical and quantum.</li>
+                    <li><strong>Nature of Cosmic Expansion:</strong> Expansion is described as the "dance of quantum vacuum vibrations, guided by zeta zeros, stretching the universe like spreading waves."</li>
+                    <li><strong>Nature of Black Holes:</strong> Black holes are "intense vibrations of the vacuum, not singularities, and preserve quantum information."</li>
+                    <li><strong>Explanation of Dark Matter, Asymmetry, and Uniformity:</strong> All these phenomena are explained by vacuum vibrations, organized by zeta zeros, without extra hypotheses.</li>
+                    <li><strong>Unification of Physics:</strong> ZVT unifies quantum and classical, where vacuum vibrations create spacetime, forces, and galaxies in harmony with quantum mechanics.</li>
+                </ul>
+            </section>
 
-        <section id="contact">
-            <h2 data-en="Contact Information" data-pt="Informações de Contato">Contact Information</h2>
-            
-            <div class="discovery-box">
-                <h4 data-en="Principal Investigator" data-pt="Investigador Principal">Principal Investigator</h4>
-                <p><strong>Jefferson M. Okushigue</strong><br>
-                Email: <a href="mailto:okushigue@gmail.com">okushigue@gmail.com</a><br>
-                GitHub: <a href="https://github.com/okushigue/zvt" target="_blank">ZVT Repository</a><br>
-                arXiv: <a href="https://arxiv.org/search/math.NT?searchtype=author&query=Okushigue,+J+M" target="_blank">J.M. Okushigue</a></p>
-            </div>
+            <section id="visualizations">
+                <h2>ZVT Visualizations</h2>
+                <p>ZVT can be visualized through computational simulations of the \[\Phi\] field vibrations and spacetime curvature. Click to see examples:</p>
+                <ul>
+                    <li><a href="zvt_field_simulation.png" target="_blank">Simulation of the Vibrational Field and Energy Density</a></li>
+                    <li><a href="zvt_gravity_simulation.png" target="_blank">Space-Time Curvature (Quantum Gravity)</a></li>
+                    <li><a href="riemann_hypothesis_test.png" target="_blank">Test of the Riemann Hypothesis via ZVT</a></li>
+                </ul>
+            </section>
 
-            <h3 data-en="Research Status" data-pt="Status da Pesquisa">Research Status</h3>
-            <p data-en="Complete manuscript prepared for submission to Physical Review Letters. All computational data, analysis code, and visualization tools available for peer review and independent verification." data-pt="Manuscrito completo preparado para submissão à Physical Review Letters. Todos os dados computacionais, código de análise e ferramentas de visualização disponíveis para revisão por pares e verificação independente.">Complete manuscript prepared for submission to Physical Review Letters. All computational data, analysis code, and visualization tools available for peer review and independent verification.</p>
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>For more information or contact:</p>
+                <p><strong>Jefferson M. Okushigue</strong> (<a href="mailto:okushigue@gmail.com">okushigue@gmail.com</a>)</p>
+            </section>
+        </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">100,000</span>
-                    <span class="stat-label" data-en="Zeros Analyzed" data-pt="Zeros Analisados">Zeros Analyzed</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">47</span>
-                    <span class="stat-label" data-en="Hours Computing" data-pt="Horas de Computação">Hours Computing</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">6</span>
-                    <span class="stat-label" data-en="TeV Predictions" data-pt="Predições TeV">TeV Predictions</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label" data-en="Reproducible" data-pt="Reproduzível">Reproducible</span>
-                </div>
-            </div>
+        <div id="portugueseContent" style="display:none;">
+            <section id="overview-pt">
+                <h2>Visão Geral da ZVT</h2>
+                <p>A Teoria da Vibração Zeta (ZVT), proposta por Jefferson M. Okushigue, oferece uma visão revolucionária para a compreensão do universo. Ela postula que o cosmos não teve um início explosivo, mas sim emergiu de vibrações amorfas no vácuo quântico, guiadas pelos zeros não-triviais da função zeta de Riemann.</p>
+                <p>A ZVT busca unificar a física clássica e quântica, explicando fenômenos desde o nascimento das galáxias até o destino do universo através de uma "sinfonia cósmica" de vibrações eternas e auto-sustentadas. Ela se propõe a responder a questões não resolvidas pelo modelo padrão do Big Bang, como a existência de galáxias massivas observadas pelo James Webb Space Telescope (JWST) em um universo jovem, e a natureza da gravidade, expansão cósmica, buracos negros e matéria escura.</p>
+            </section>
 
-            <h3 data-en="Open Science Commitment" data-pt="Compromisso com Ciência Aberta">Open Science Commitment</h3>
-            <ul>
-                <li><strong data-en="Complete Dataset:" data-pt="Dataset Completo:">Complete Dataset:</strong> <span data-en="All 100,000 zeros and 2,702 resonances publicly available" data-pt="Todos os 100.000 zeros e 2.702 ressonâncias publicamente disponíveis">All 100,000 zeros and 2,702 resonances publicly available</span></li>
-                <li><strong data-en="Source Code:" data-pt="Código Fonte:">Source Code:</strong> <span data-en="Open source implementation with full documentation" data-pt="Implementação código aberto com documentação completa">Open source implementation with full documentation</span></li>
-                <li><strong data-en="Reproducibility:" data-pt="Reprodutibilidade:">Reproducibility:</strong> <span data-en="Complete computational logs and verification protocols" data-pt="Logs computacionais completos e protocolos de verificação">Complete computational logs and verification protocols</span></li>
-            </ul>
-        </section>
+            <section id="foundations-pt">
+                <h2>Fundamentos Teóricos da ZVT</h2>
+                <p>A estrutura da ZVT baseia-se na interpretação das propriedades fundamentais da função zeta de Riemann e do campo primordial:</p>
+                <ul>
+                    <li><strong>Vibrações no Vácuo Quântico:</strong> No "antes" onde espaço e tempo não existiam, o vácuo quântico pulsava com vibrações amorfas, regidas pelo princípio da incerteza (\[\Delta E \Delta t \geq \hbar/2\]).</li>
+                    <li><strong>Zeros da Função Zeta:</strong> Essas vibrações não são aleatórias, mas seguem os zeros não-triviais da função zeta (\[t_n = 14.134725, 21.022040, \dots\]), que agem como as "notas" de uma sinfonia cósmica. Os zeros da zeta não são apenas uma abstração matemática, mas organizam as vibrações do vácuo quântico, criando o universo.</li>
+                    <li><strong>Campo Fundamental ($\Phi$):</strong> As frequências (\[\omega_n = t_n / \tau_{\text{scale}}\]) dos zeros formam o campo fundamental \[\Phi\]. Essas vibrações, sendo auto-sustentadas, não necessitam de um "palco" ou "relógio", pois criam o próprio espaço-tempo.</li>
+                    <li><strong>Escala Fundamental ($\Lambda$):</strong> A escala \[\Lambda\] é definida por constantes físicas, eliminando parâmetros livres: \[\Lambda = \left( \frac{15 \pi^2}{2} \right)^{1/4} \sqrt{\frac{\hbar c^3}{G}} \approx 1.0000 \times 10^{15} \, \text{GeV}\].</li>
+                </ul>
+            </section>
+
+            <section id="mathematics-pt">
+                <h2>Revisão Matemática da ZVT</h2>
+                <p>A Teoria da Vibração Zeta (ZVT) é fundamentada em uma estrutura matemática que utiliza as propriedades da função zeta de Riemann para descrever os fenômenos físicos. </p>
+
+                <h3>Fundamentos da Função Zeta de Riemann</h3>
+                <p>A ZVT tem como pilar os zeros não-triviais da função zeta de Riemann, \[\zeta(s)\].</p>
+                <ul>
+                    <li><strong>Definição:</strong> Para \[\text{Re}(s) > 1\], a função zeta é definida como \[\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}\]. Ela é estendida analiticamente para todo o plano complexo, exceto por um polo simples em \[s=1\].</li>
+                    <li><strong>Zeros Não-Triviais:
+                :</strong> A teoria foca nos zeros \[s = 1/2 + it_n\], onde \[t_n\] são os zeros não-triviais. O primeiro zero é \[t_1 \approx 14.134725\].</li>
+                    <li><strong>Equação Funcional:</strong> A simetria fundamental da zeta é expressa por:
+                    <div class="math-block">
+                        \[\pi^{-s/2}\Gamma(s/2)\zeta(s) = \pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s)\]
+                    </div>
+                    onde \[\Gamma(s)\] é a função Gama.
+                    </li>
+                </ul>
+
+                <h3>O Campo Escalar Primordial ($\Phi$)</h3>
+                <p>O campo \[\Phi\] é o componente central da ZVT, cuja dinâmica é governada pelos zeros da zeta.</p>
+                <ul>
+                    <li><strong>Interpretação Espectral:</strong> A ZVT postula que os zeros \[t_n\] são autovalores de um operador auto-adjunto \[\hat{H}\], tal que \[\hat{H}\psi_n = t_n\psi_n\], onde \[\{\psi_n\}\] forma uma base ortonormal.</li>
+                    <li><strong>Expansão do Campo:</strong> O campo escalar primordial \[\phi(x,t)\] (ou \[\Phi(\tau)\] em uma representação mais simplificada) é expandido em modos associados a esses zeros:
+                    <div class="math-block">
+                        \[\phi(x,t) = \sum_n a_n(t)\psi_n(x)\]
+                    </div>
+                    </li>
+                    <li><strong>Dinâmica dos Modos:</strong> Os coeficientes temporais \[a_n(t)\] são governados pela equação diferencial:
+                    <div class="math-block">
+                        \[\frac{\partial^2 a_n}{\partial t^2} + \left( \frac{t_n^2}{\Lambda^2} \right) a_n = 0\]
+                    </div>
+                    </li>
+                    <li><strong>Forma do Campo \[\Phi(\tau)\]:</strong> Em algumas representações, o campo é descrito como:
+                    <div class="math-block">
+                        \[\Phi(\tau) = \sum_n w_n A_0 \exp(-0.5 (\tau \omega_n)^2) \cos(\omega_n \tau)\]
+                    </div>
+                    where \[\omega_n = t_n / \tau_{\text{scale}}\] são as frequências vibracionais e \[A_0\] é uma amplitude base. Os pesos \[w_n\] são definidos como:
+                    <div class="math-block">
+                        \[w_n = \frac{\log(n+2)}{|\zeta(1/2 + i t_n)|^2 (1 + 0.01 t_n^2)}\]
+                    </div>
+                    </li>
+                    <li><strong>Propagador Euclidiano:</strong> O propagador conecta os zeros à dinâmica quântica e à massa de Planck (\[M_{\text{Pl}}\]):
+                    <div class="math-block">
+                        \[\Phi(\tau) = \frac{8}{\pi} \frac{\Lambda^3}{M_{\text{Pl}}^2} \sum_n \frac{1}{t_n^2} e^{-t_n \tau / \Lambda}\]
+                    </div>
+                    </li>
+                </ul>
+
+                <h3>Matemática dos Fenômenos Quânticos</h3>
+                <ul>
+                    <li><strong>Emaranhamento:</strong> A forma dos estados emaranhados é dada por:
+                    <div class="math-block">
+                        \[|\psi_{AB}\rangle = \frac{1}{\sqrt{\mathcal{N}}} \sum_k e^{-t_k / \Lambda} |t_k\rangle_A \otimes |t_k\rangle_B\]
+                    </div>
+                    onde \[\mathcal{N} = \sum_k e^{-2 t_k / \Lambda}\] é o fator de normalização.
+                    </li>
+                    <li><strong>Entropia de Emaranhamento:</strong> Calculada como:
+                    <div class="math-block">
+                        \[S_{\text{ent}} = -\sum_k P(t_k) \log P(t_k)\]
+                    </div>
+                    com a probabilidade \[P(t_k) = e^{-2 t_k / \Lambda} / \mathcal{N}\].
+                    </li>
+                    <li><strong>Colapso da Função de Onda:</strong> A escala de tempo característica é \[\tau_{\text{collapse}} = \frac{\Lambda}{t_1} \approx 10^{-23} \, \text{s}\].</li>
+                    <li><strong>Superposição:</strong> Estados quânticos são combinações lineares: \[|\psi\rangle = \sum_n c_n e^{-t_n \tau / \Lambda} |t_n\rangle\].</li>
+                </ul>
+
+                <h3>Matemática das Previsões em Física de Partículas</h3>
+                <ul>
+                    <li><strong>Bóson Z':</strong>
+                        <ul>
+                            <li><strong>Massa (\[m_{Z'}\]):</strong> A massa do bóson Z' é derivada usando o acoplamento \[g=0.100\], \[\Lambda=10^{15} \, \text{GeV}\], e a identidade \[\sum_n \frac{1}{t_n^2} = \frac{\pi^2}{15}\]:
+                            <div class="math-block">
+                                \[m_{Z'} = \frac{g \Lambda^2}{2 \sqrt{30} \hbar} = 6.74 \, \text{GeV}\]
+                            </div>
+                            </li>
+                            <li><strong>Largura de Decaimento (\[\Gamma\]):</strong> A largura de decaimento para elétrons é:
+                            <div class="math-block">
+                                \[\Gamma(Z' \to e^+ e^-) = 2.21 \, \text{keV}\]
+                            </div>
+                            </li>
+                            <li><strong>Lagrangiana de Acoplamento:</strong> O acoplamento ao Modelo Padrão é dado por:
+                            <div class="math-block">
+                                \[\mathcal{L}_{\text{int}} = g Z'_{\mu} \sum_f Q_f \bar{f} \gamma^{\mu} f\]
+                            </div>
+                            onde \[Q_f\] são as cargas dos férmions.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Matemática das Aplicações Cosmológicas</h3>
+                <ul>
+                    <li><strong>Densidade de Energia do Vácuo (\[\rho_{\Lambda}\]):</strong> Derivada diretamente do campo \[\Phi(0)\]:
+                    <div class="math-block">
+                        \[\rho_{\Lambda} = \Phi(0) = \frac{8 \pi G \Lambda^4}{3 c^5} = 2.89 \times 10^{-12} \, \text{eV}^4\]
+                    </div>
+                    </li>
+                    <li><strong>Constante de Hubble (\[H_0\]):</strong> Relacionada à densidade de energia do vácuo:
+                    <div class="math-block">
+                        \[H_0 = \sqrt{\frac{8 \pi G}{3} \rho_{\Lambda}} = 70.18 \, \text{km} \, \text{s}^{-1} \, \text{Mpc}^{-1}\]
+                    </div>
+                    </li>
+                    <li><strong>Razão Tensor-Escalar (\[r\]):</strong>
+                    <div class="math-block">
+                        \[r = \frac{8}{\pi} \frac{\Lambda^4}{M_{\text{Pl}}^4} \frac{1}{A_s} = 0.0060\]
+                    </div>
+                    onde \[A_s\] é a amplitude do espectro escalar primordial.
+                    </li>
+                    <li><strong>Índice Espectral (\[n_s\]):</strong>
+                    <div class="math-block">
+                        \[n_s - 1 = -\frac{2}{\Lambda^2} \sum_n \frac{1}{t_n^3} = -0.034 \implies n_s = 0.966\]
+                    </div>
+                    </li>
+                    <li><strong>Densidade de Matéria Escura (\[\rho_{\text{DM}}\]):</strong> Explicada como oscilações do campo \[\Phi\]:
+                    <div class="math-block">
+                        \[\rho_{\text{DM}} \sim |\Phi|^2\]
+                    </div>
+                    </li>
+                    <li><strong>Assimetria Matéria-Antiméria (\[\eta\]):</strong> Induzida pelas vibrações do campo \[\Phi\]:
+                    <div class="math-block">
+                        \[\eta \sim \sum_n w_n \sin(\omega_n \tau)\]
+                    </div>
+                    </li>
+                    <li><strong>Formação da Gravidade:</strong> Gradientes no campo \[\Phi\] geram a métrica:
+                    <div class="math-block">
+                        \[g_{\mu\nu} \sim \partial_\mu \Phi \partial_\nu \Phi\]
+                    </div>
+                    </li>
+                    <li><strong>Expansão do Universo:</strong> Aceleração causada por uma pressão negativa do campo \[\Phi\]:
+                    <div class="math-block">
+                        \[V(\Phi) \sim -|\Phi|^2\]
+                    </div>
+                    </li>
+                </ul>
+
+                <h3>Computational Complexity</h3>
+                <p>Precise calculations in ZVT require using a large number of Riemann zeta zeros, with a computational complexity of the order of \[O(T^{3/2})\], where \[T\] is the upper limit for the zeros. However, \[10^6\] zeros are already considered sufficient for most applications of the theory, with up to \[10^{10}\] zeros potentially needed for higher precision.</p>
+            </section>
+
+            <section id="implications-pt">
+                <h2>Implicações e Previsões da ZVT</h2>
+                <p>A ZVT oferece explicações para diversos fenômenos físicos e prevê novas partículas e valores cosmológicos:</p>
+                <h3>Fenômenos Quânticos</h3>
+                <ul>
+                    <li><strong>Emaranhamento:</strong> Surge de estados correlacionados dos zeros \[t_k\].</li>
+                    <li><strong>Colapso da Função de Onda:</strong> Interpretado como a seleção de um zero dominante durante a medição, com uma escala de tempo característica de \[\tau_{\text{collapse}} \approx 10^{-23} \, \text{s}\].</li>
+                    <li><strong>Superposição:</strong> Modelada como combinações lineares dos estados \[|t_n\rangle\].</li>
+                </ul>
+
+                <h3>Física de Partículas</h3>
+                <ul>
+                    <li><strong>Bóson Z':</strong> A ZVT prevê a existência de um novo bóson com massa de \[6.74 \, \text{GeV}\], e uma largura de decaimento estreita (\[2.21 \, \text{keV}\] para \[e^+ e^-\]).</li>
+                </ul>
+
+                <h3>Cosmologia</h3>
+                <ul>
+                    <li><strong>Densidade de Energia do Vácuo (\[\rho_{\Lambda}\]):</strong> Em linha com a densidade de energia escura observada (\[2.89 \times 10^{-12} \, \text{eV}^4\]).</li>
+                    <li><strong>Constante de Hubble (\[H_0\]):</strong> Previsão de \[70.18 \, \text{km} \, \text{s}^{-1} \, \text{Mpc}^{-1}\], próxima às medições do Planck 2018.</li>
+                    <li><strong>Razão Tensor-Escalar (\[r\]):</strong> Previsão de \[0.0060\], testável por futuros experimentos de CMB.</li>
+                    <li><strong>Índice Espectral (\[n_s\]):</strong> Previsão de \[0.966\], consistente com as observações do Planck 2018.</li>
+                    <li><strong>Formação de Galáxias (JWST):</strong> Explica a rápida formação de galáxias massivas através de "bolsões densos de energia" ou "nós vibracionais" no vácuo quântico, que colapsam rapidamente.</li>
+                    <li><strong>Matéria Escura:</strong> Explicada como oscilações do campo \[\Phi\], que criam densidade gravitacional sem emitir luz, estabilizando galáxias.</li>
+                    <li><strong>Gravidade:</strong> Proposta como emergindo de gradientes no campo \[\Phi\], unindo o quântico ao clássico.</li>
+                    <li><strong>Expansão do Universo:</strong> Aceleração explicada pela dispersão das vibrações do campo \[\Phi\], gerando pressão negativa.</li>
+                    <li><strong>Buracos Negros:</strong> Descritos como "nós" intensos do campo \[\Phi\], que criam curvaturas extremas, mas finitas, e preservam informações quânticas.</li>
+                    <li><strong>Assimetria Matéria-Antimatéria:</strong> As vibrações do campo \[\Phi\] induzem um viés que favorece a formação de matéria.</li>
+                    <li><strong>Flutuações na Radiação Cósmica de Fundo:</strong> Padrões fractais das vibrações geram flutuações de densidade.</li>
+                    <li><strong>Problemas do Horizonte e da Planura:</strong> Resolvidos pela coerência das vibrações, criando um universo uniforme e plano sem inflação.</li>
+                </ul>
+            </section>
+
+            <section id="riemann-hypothesis-pt">
+                <h2>A Prova da Hipótese de Riemann na ZVT</h2>
+                <p>A estabilidade do universo na ZVT depende intrinsecamente da validade da Hipótese de Riemann. Se existisse um zero não-trivial da função zeta \[s_n = \sigma + i t_n\] onde \[\sigma \neq 1/2\], o comportamento do campo fundamental \[\Phi(\tau)\] e, consequentemente, a densidade de energia \[\rho(\tau) = |\Phi(\tau)|^2\] se tornariam assimétricos, complexos e divergentes.</p>
+                <p>Um cenário como esse levaria a uma densidade de energia caótica e instável, contradizendo a observação de um universo coerente, organizado e estável. Portanto, a condição de que a parte real de todos os zeros não-triviais seja \[\text{Re}(s_n) = 1/2\] é uma exigência física para a estabilidade e a existência observável do cosmos na ZVT, efetivamente "provando" a Hipótese de Riemann dentro do escopo da teoria.</p>
+            </section>
+
+            <section id="chronology-pt">
+                <h2>Cronologia dos Eventos Explicados pela ZVT</h2>
+                <ol>
+                    <li><strong>Vibrações no Vácuo Quântico (Antes do Espaço-Tempo):</strong> Criação do espaço-tempo a partir de flutuações quânticas organizadas.</li>
+                    <li><strong>Origem da Entropia Baixa e Flecha do Tempo:</strong> Padrões fractais dos zeros da zeta geram um estado inicial de baixa entropia, definindo a direção do tempo.</li>
+                    <li><strong>Emergência do Espaço-Tempo:</strong> Vibrações do campo \[\Phi\] formam o tecido do espaço-tempo, criando a métrica geométrica clássica.</li>
+                    <li><strong>Unificação das Forças:</strong> Gravidade, eletromagnetismo e forças nucleares emergem como modos vibracionais do campo \[\Phi\] em diferentes escalas.</li>
+                    <li><strong>Assimetria Matéria-Antimatéria:</strong> Vibrações do campo \[\Phi\] induzem um viés, favorecendo a formação de matéria.</li>
+                    <li><strong>Flutuações na Radiação Cósmica de Fundo:</strong> Padrões fractais das vibrações geram flutuações de densidade (~\[10^{-5}\]), sementes da radiação cósmica.</li>
+                    <li><strong>Problemas do Horizonte e da Planura:</strong> Resolvidos pela coerência das vibrações, criando um universo uniforme e plano, sem inflação.</li>
+                    <li><strong>Formação de Bolsões de Energia e Galáxias (JWST):</strong> "Nós" vibracionais colapsam em bolsões densos, formando galáxias massivas vistas pelo JWST.</li>
+                    <li><strong>Matéria Escura:</strong> Oscilações do campo \[\Phi\] criam densidades gravitacionais sem emitir luz, estabilizando galáxias.</li>
+                    <li><strong>Gravidade Quântica:</strong> Gradientes do campo \[\Phi\] geram curvatura do espaço-tempo, unindo o quântico ao clássico.</li>
+                    <li><strong>Expansão do Universo:</strong> Dispersão das vibrações do campo \[\Phi\] gera pressão negativa, impulsionando a expansão acelerada.</li>
+                    <li><strong>Buracos Negros:</strong> "Nós" intensos do campo \[\Phi\] criam curvaturas finitas, preservando informações quânticas.</li>
+                    <li><strong>Unificação Física Clássica e Quântica:</strong> Vibrações quânticas do campo \[\Phi\] manifestam fenômenos clássicos em escalas grandes.</li>
+                    <li><strong>Futuro do Universo:</strong> As vibrações continuam, criando bolsões de energia, estruturas ou ciclos suaves, evitando um "Big Freeze". A ZVT sugere um cosmos vibrante, onde os zeros da zeta continuam regendo a dança cósmica.</li>
+                </ol>
+            </section>
+
+            <section id="critiques-pt">
+                <h2>Críticas e Respostas (Aos Céticos)</h2>
+                <p>A ZVT aborda potenciais ceticismos diretamente dentro de sua estrutura:</p>
+                <ul>
+                    <li><strong>Validade dos Zeros da Zeta na Física:</strong> A teoria afirma que os zeros da zeta não são meramente matemáticos, mas aparecem na física real, organizando as vibrações do vácuo quântico e criando o universo.</li>
+                    <li><strong>Formação de Galáxias Impossíveis:</strong> As galáxias do JWST não são impossíveis, pois as vibrações da ZVT formam rapidamente bolsões de energia que geram galáxias gigantes, ao contrário do Big Bang.</li>
+                    <li><strong>Origem da Gravidade:</strong> A gravidade na ZVT resulta de vibrações quânticas que curvam o espaço em grandes escalas, unificando o clássico e o quântico.</li>
+                    <li><strong>Natureza da Expansão Cósmica:</strong> A expansão é descrita como a "dança das vibrações do vácuo quântico, guiadas pelos zeros da zeta, que esticam o universo como ondas se espalhando".</li>
+                    <li><strong>Natureza dos Buracos Negros:</strong> Buracos negros são "vibrações intensas do vácuo, não singularidades, e preservam informações quânticas".</li>
+                    <li><strong>Explicação de Matéria Escura, Assimetria e Uniformidade:</strong> Todos esses fenômenos são explicados pelas vibrações do vácuo, organizadas pelos zeros da zeta, sem a necessidade de hipóteses extras.</li>
+                    <li><strong>Unificação de Físicas:</strong> A ZVT unifica o quântico e o clássico, onde as vibrações do vácuo criam o espaço-tempo, forças e galáxias em harmonia com a mecânica quântica.</li>
+                </ul>
+            </section>
+
+            <section id="visualizations-pt">
+                <h2>Visualizações da ZVT</h2>
+                <p>A ZVT pode ser visualizada através de simulações computacionais das vibrações do campo \[\Phi\] e da curvatura do espaço-tempo. Clique para ver exemplos:</p>
+                <ul>
+                    <li><a href="zvt_field_simulation.png" target="_blank">Simulação do Campo Vibracional e Densidade de Energia</a></li>
+                    <li><a href="zvt_gravity_simulation.png" target="_blank">Curvatura do Espaço-Tempo (Gravidade Quântica)</a></li>
+                    <li><a href="riemann_hypothesis_test.png" target="_blank">Teste da Hipótese de Riemann via ZVT</a></li>
+                </ul>
+            </section>
+
+            <section id="contact-pt">
+                <h2>Contato</h2>
+                <p>Para mais informações ou contato:</p>
+                <p><strong>Jefferson M. Okushigue</strong> (<a href="mailto:okushigue@gmail.com">okushigue@gmail.com</a>)</p>
+            </section>
+        </div>
     </main>
 
     <footer>
-        <p data-en="© 2025 Jefferson M. Okushigue. All rights reserved." data-pt="© 2025 Jefferson M. Okushigue. Todos os direitos reservados.">© 2025 Jefferson M. Okushigue. All rights reserved.</p>
-        <p><em data-en='"The universe is not only stranger than we imagine, it is stranger than we can imagine. But perhaps, through the zeros of Riemann, we can finally understand its deepest mathematical songs." - J.M. Okushigue, 2025' data-pt='"O universo não é apenas mais estranho do que imaginamos, é mais estranho do que podemos imaginar. Mas talvez, através dos zeros de Riemann, possamos finalmente entender suas canções matemáticas mais profundas." - J.M. Okushigue, 2025'>"The universe is not only stranger than we imagine, it is stranger than we can imagine. But perhaps, through the zeros of Riemann, we can finally understand its deepest mathematical songs." - J.M. Okushigue, 2025</em></p>
+        <p>© 2025 Jefferson M. Okushigue. All rights reserved. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.</p>
     </footer>
 
     <script>
-        let currentLanguage = 'en';
+        // Função para alternar o idioma do conteúdo
+        function switchLanguage(lang) {
+            const englishContent = document.getElementById('englishContent');
+            const portugueseContent = document.getElementById('portugueseContent');
+            const englishButton = document.querySelector('.lang-button:nth-child(1)');
+            const portugueseButton = document.querySelector('.lang-button:nth-child(2)');
+            const htmlTag = document.documentElement; // Pega a tag <html>
 
-        function setLanguage(lang) {
-            currentLanguage = lang;
-            
-            // Update button states
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
-            
-            // Update all elements with data attributes
-            const elements = document.querySelectorAll('[data-' + lang + ']');
-            elements.forEach(element => {
-                element.textContent = element.getAttribute('data-' + lang);
-            });
-            
-            // Update HTML lang attribute
-            document.documentElement.lang = lang;
-            
-            // Store preference
-            localStorage.setItem('zvt-language', lang);
+            if (lang === 'en') {
+                englishContent.style.display = 'block';
+                portugueseContent.style.display = 'none';
+                englishButton.classList.add('active');
+                portugueseButton.classList.remove('active');
+                htmlTag.lang = 'en'; // Define o atributo lang para inglês
+                updateNavLinks('en');
+            } else {
+                englishContent.style.display = 'none';
+                portugueseContent.style.display = 'block';
+                englishButton.classList.remove('active');
+                portugueseButton.classList.add('active');
+                htmlTag.lang = 'pt'; // Define o atributo lang para português
+                updateNavLinks('pt');
+            }
         }
 
-        // Load saved language preference
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedLang = localStorage.getItem('zvt-language') || 'en';
-            setLanguage(savedLang);
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // Função para atualizar os links de navegação
+        function updateNavLinks(lang) {
+            const navLinks = document.querySelectorAll('nav a');
+            // Mapeamento de texto dos links de navegação para cada idioma
+            const sectionsText = {
+                'en': {
+                    'overview': 'Overview',
+                    'foundations': 'Theoretical Foundations',
+                    'mathematics': 'Mathematical Review',
+                    'implications': 'Implications and Predictions',
+                    'riemann-hypothesis': 'Riemann Hypothesis in ZVT',
+                    'chronology': 'Chronology',
+                    'critiques': 'Critiques & Responses',
+                    'visualizations': 'Visualizations',
+                    'contact': 'Contact'
+                },
+                'pt': {
+                    'overview': 'Visão Geral',
+                    'foundations': 'Fundamentos Teóricos',
+                    'mathematics': 'Revisão Matemática',
+                    'implications': 'Implicações e Previsões',
+                    'riemann-hypothesis': 'Hipótese de Riemann na ZVT',
+                    'chronology': 'Cronologia',
+                    'critiques': 'Críticas e Respostas',
+                    'visualizations': 'Visualizações',
+                    'contact': 'Contato'
                 }
-            });
-        });
+            };
 
-        // Add subtle animations on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+            // Itera sobre cada link de navegação
+            navLinks.forEach(link => {
+                let currentHref = link.getAttribute('href');
+                // Pega o ID base (sem '#' e sem '-pt' se existir)
+                let baseId = currentHref.replace('#', '').replace('-pt', '');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                // Define o novo texto do link
+                link.textContent = sectionsText[lang][baseId];
+
+                // Define o novo href do link com base no idioma
+                let newHref = `#${baseId}`;
+                if (lang === 'pt') {
+                    newHref += '-pt'; // Adiciona -pt para links em português (agora que IDs estão padronizados)
                 }
+                link.setAttribute('href', newHref);
             });
-        }, observerOptions);
+        }
 
-        // Observe all sections
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(section);
-            });
+        // Inicializa o idioma na carga da página
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage('en'); // Padrão para inglês
         });
     </script>
 </body>
