@@ -1,0 +1,61 @@
+{
+  "last_processed_index": 2001052,
+  "best_resonances": {
+    "gravity_acceleration": {
+      "zero_index": 588196,
+      "gamma": 370171.617550355,
+      "quality": 3.549965885696338e-07,
+      "tolerance": 0.01,
+      "constant_name": "gravity_acceleration",
+      "constant_value": 9.80665,
+      "energy_gev": 37017.1617550355
+    },
+    "gas_constant": {
+      "zero_index": 272337,
+      "gamma": 184265.120540704,
+      "quality": 5.879893336668829e-07,
+      "tolerance": 0.01,
+      "constant_name": "gas_constant",
+      "constant_value": 8.314462618,
+      "energy_gev": 18426.5120540704
+    },
+    "vacuum_permittivity": {
+      "zero_index": 700417,
+      "gamma": 433893.394303054,
+      "quality": 9.8254845937623e-18,
+      "tolerance": 1e-11,
+      "constant_name": "vacuum_permittivity",
+      "constant_value": 8.8541878128e-12,
+      "energy_gev": 43389.3394303054
+    },
+    "elementary_charge": {
+      "zero_index": 1670594,
+      "gamma": 959774.510331835,
+      "quality": 2.4219363737512794e-26,
+      "tolerance": 1e-18,
+      "constant_name": "elementary_charge",
+      "constant_value": 1.602176634e-19,
+      "energy_gev": 95977.4510331835
+    },
+    "proton_mass": {
+      "zero_index": 174667,
+      "gamma": 123502.256272352,
+      "quality": 1.5099528603294696e-34,
+      "tolerance": 1e-26,
+      "constant_name": "proton_mass",
+      "constant_value": 1.67262192369e-27,
+      "energy_gev": 12350.225627235199
+    },
+    "bohr_radius": {
+      "zero_index": 360861,
+      "gamma": 237650.912672216,
+      "quality": 2.9631673680395198e-18,
+      "tolerance": 1e-10,
+      "constant_name": "bohr_radius",
+      "constant_value": 5.29177210903e-11,
+      "energy_gev": 23765.0912672216
+    }
+  },
+  "start_time": 1755858252.6640775,
+  "total_zeros": 2001052
+}

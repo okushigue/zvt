@@ -1,0 +1,25 @@
+{
+  "last_processed_index": 2001052,
+  "best_resonances": {
+    "fine_structure": {
+      "zero_index": 118412,
+      "gamma": 87144.85303004,
+      "quality": 9.09126119871817e-10,
+      "tolerance": 0.0001,
+      "constant_name": "fine_structure",
+      "constant_value": 0.0072973525692838015,
+      "energy_gev": 8714.485303004
+    },
+    "electron_mass": {
+      "zero_index": 1658483,
+      "gamma": 953397.367270938,
+      "quality": 3.2097713090812483e-37,
+      "tolerance": 1e-30,
+      "constant_name": "electron_mass",
+      "constant_value": 9.1093837015e-31,
+      "energy_gev": 95339.7367270938
+    }
+  },
+  "start_time": 1755857988.6856182,
+  "total_zeros": 2001052
+}

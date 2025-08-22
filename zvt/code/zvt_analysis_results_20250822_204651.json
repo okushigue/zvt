@@ -1,0 +1,276 @@
+{
+  "analysis_timestamp": "2025-08-22T20:46:51.786617",
+  "total_events": 500,
+  "sensitivity_analysis": {
+    "traditional_detections": 334,
+    "zvt_detections": 415,
+    "high_confidence_zvt": 123,
+    "sensitivity_gain": 1.2425149700598803,
+    "improvement_percent": 24.251497005988032,
+    "high_confidence_ratio": 0.2963855421686747,
+    "total_events": 500
+  },
+  "zvt_clusters": 26,
+  "alerts_generated": 72,
+  "high_priority_alerts": 59,
+  "cluster_details": [
+    {
+      "cluster_id": 0,
+      "size": 15,
+      "mean_zvt_strength": 0.7067543214072263,
+      "mean_energy": 2.957085217830484e+16
+    },
+    {
+      "cluster_id": 1,
+      "size": 17,
+      "mean_zvt_strength": 0.9231474808507386,
+      "mean_energy": 3.4735160204226704e+16
+    },
+    {
+      "cluster_id": 2,
+      "size": 14,
+      "mean_zvt_strength": 0.6855592528330974,
+      "mean_energy": 8.952716717479728e+16
+    },
+    {
+      "cluster_id": 3,
+      "size": 18,
+      "mean_zvt_strength": 0.9318589661302501,
+      "mean_energy": 6.783599943336697e+16
+    },
+    {
+      "cluster_id": 4,
+      "size": 16,
+      "mean_zvt_strength": 0.9988352675537887,
+      "mean_energy": 6.257019137824114e+16
+    },
+    {
+      "cluster_id": 5,
+      "size": 17,
+      "mean_zvt_strength": 0.5138810455119606,
+      "mean_energy": 7.439548807201461e+16
+    },
+    {
+      "cluster_id": 6,
+      "size": 15,
+      "mean_zvt_strength": 0.8057207210666638,
+      "mean_energy": 6.299241286604475e+16
+    },
+    {
+      "cluster_id": 7,
+      "size": 33,
+      "mean_zvt_strength": 0.9282358452794136,
+      "mean_energy": 6.376062403657355e+16
+    },
+    {
+      "cluster_id": 8,
+      "size": 17,
+      "mean_zvt_strength": 0.9812412906405179,
+      "mean_energy": 4.007788107915387e+16
+    },
+    {
+      "cluster_id": 9,
+      "size": 12,
+      "mean_zvt_strength": 0.9949567883677037,
+      "mean_energy": 8.193054725872997e+16
+    },
+    {
+      "cluster_id": 10,
+      "size": 18,
+      "mean_zvt_strength": 0.5982334770779129,
+      "mean_energy": 9.618912916463202e+16
+    },
+    {
+      "cluster_id": 11,
+      "size": 15,
+      "mean_zvt_strength": 0.8627210146528719,
+      "mean_energy": 3.713615434583973e+16
+    },
+    {
+      "cluster_id": 12,
+      "size": 9,
+      "mean_zvt_strength": 0.9819369118262888,
+      "mean_energy": 1.0081337345499976e+17
+    },
+    {
+      "cluster_id": 13,
+      "size": 12,
+      "mean_zvt_strength": 0.8722734925306944,
+      "mean_energy": 4.13881458283346e+16
+    },
+    {
+      "cluster_id": 14,
+      "size": 7,
+      "mean_zvt_strength": 0.604334692556063,
+      "mean_energy": 1.5674759244070294e+17
+    },
+    {
+      "cluster_id": 15,
+      "size": 12,
+      "mean_zvt_strength": 0.744838498662963,
+      "mean_energy": 1.072604427027086e+17
+    },
+    {
+      "cluster_id": 16,
+      "size": 18,
+      "mean_zvt_strength": 0.8360031309825411,
+      "mean_energy": 5.647746919266012e+16
+    },
+    {
+      "cluster_id": 17,
+      "size": 16,
+      "mean_zvt_strength": 0.7214009376570892,
+      "mean_energy": 6.169490599961713e+16
+    },
+    {
+      "cluster_id": 18,
+      "size": 17,
+      "mean_zvt_strength": 0.9893196037959006,
+      "mean_energy": 9.638605828213469e+16
+    },
+    {
+      "cluster_id": 19,
+      "size": 6,
+      "mean_zvt_strength": 0.9753756297199233,
+      "mean_energy": 1.166302871492128e+17
+    },
+    {
+      "cluster_id": 20,
+      "size": 11,
+      "mean_zvt_strength": 0.8377551621800823,
+      "mean_energy": 7.18047144523672e+16
+    },
+    {
+      "cluster_id": 21,
+      "size": 5,
+      "mean_zvt_strength": 0.9948842792251196,
+      "mean_energy": 1.2847071872805978e+16
+    },
+    {
+      "cluster_id": 22,
+      "size": 7,
+      "mean_zvt_strength": 0.7983760470690658,
+      "mean_energy": 2.6123761604315016e+16
+    },
+    {
+      "cluster_id": 23,
+      "size": 10,
+      "mean_zvt_strength": 0.95246075260702,
+      "mean_energy": 8.58420670877655e+16
+    },
+    {
+      "cluster_id": 24,
+      "size": 6,
+      "mean_zvt_strength": 0.5431594280252589,
+      "mean_energy": 2.846513210754605e+17
+    },
+    {
+      "cluster_id": 25,
+      "size": 3,
+      "mean_zvt_strength": 0.9999485705227006,
+      "mean_energy": 3832764562407794.5
+    }
+  ],
+  "top_alerts": [
+    {
+      "event_id": "IC2024000479",
+      "timestamp": "2024-09-24T07:56:43.640732",
+      "energy_eV": 1770996328908384.5,
+      "energy_log10": 15.248217660943613,
+      "zenith": 1.0845718862487301,
+      "azimuth": 2.6025011697731095,
+      "zvt_strength": 0.9999892794061342,
+      "phase_coherence": 0.9985271622197217,
+      "predicted_source": "Galactic",
+      "source_type": "Supernova Remnant or Pulsar",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "Critical",
+      "confidence": "High",
+      "recommended_action": "Immediate multi-messenger follow-up",
+      "coordinates": {
+        "zenith_deg": 62.14139166059504,
+        "azimuth_deg": 149.1123332058589
+      }
+    },
+    {
+      "event_id": "IC2024000345",
+      "timestamp": "2024-01-22T17:26:10.950167",
+      "energy_eV": 6582763025507370.0,
+      "energy_log10": 15.818408221100443,
+      "zenith": 0.16064653867701548,
+      "azimuth": 1.6185939018242155,
+      "zvt_strength": 0.9999297707605274,
+      "phase_coherence": 0.9962346294286951,
+      "predicted_source": "Galactic",
+      "source_type": "Supernova Remnant or Pulsar",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "Critical",
+      "confidence": "High",
+      "recommended_action": "Immediate multi-messenger follow-up",
+      "coordinates": {
+        "zenith_deg": 9.20436865957813,
+        "azimuth_deg": 92.73859932013987
+      }
+    },
+    {
+      "event_id": "IC2024000459",
+      "timestamp": "2024-12-15T12:24:34.891683",
+      "energy_eV": 3144534332807630.0,
+      "energy_log10": 15.497556340825579,
+      "zenith": 0.795141936098928,
+      "azimuth": 2.8290308638602295,
+      "zvt_strength": 0.9999266614014404,
+      "phase_coherence": 0.9961523351990457,
+      "predicted_source": "Galactic",
+      "source_type": "Supernova Remnant or Pulsar",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "Critical",
+      "confidence": "High",
+      "recommended_action": "Immediate multi-messenger follow-up",
+      "coordinates": {
+        "zenith_deg": 45.55827705232957,
+        "azimuth_deg": 162.09152861144054
+      }
+    },
+    {
+      "event_id": "IC2024000054",
+      "timestamp": "2024-01-26T07:36:17.984399",
+      "energy_eV": 5.849831853005528e+17,
+      "energy_log10": 17.767143382943487,
+      "zenith": 2.844242925691973,
+      "azimuth": 1.2301919813841253,
+      "zvt_strength": 0.9998496229140454,
+      "phase_coherence": 0.9944949250388255,
+      "predicted_source": "Extragalactic",
+      "source_type": "AGN or Blazar",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "Critical",
+      "confidence": "High",
+      "recommended_action": "Immediate multi-messenger follow-up",
+      "coordinates": {
+        "zenith_deg": 162.96311555209147,
+        "azimuth_deg": 70.48480852414671
+      }
+    },
+    {
+      "event_id": "IC2024000034",
+      "timestamp": "2024-09-20T16:40:49.906887",
+      "energy_eV": 2893498807797733.5,
+      "energy_log10": 15.461423307758155,
+      "zenith": 1.54728996866433,
+      "azimuth": 1.2267478722625165,
+      "zvt_strength": 0.9980011095632909,
+      "phase_coherence": 0.9800717911548815,
+      "predicted_source": "Galactic",
+      "source_type": "Supernova Remnant or Pulsar",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "Critical",
+      "confidence": "High",
+      "recommended_action": "Immediate multi-messenger follow-up",
+      "coordinates": {
+        "zenith_deg": 88.65318488739551,
+        "azimuth_deg": 70.28747560729602
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-08-22T20:43:33.431822",
+  "additional_constants": {
+    "speed_of_light": 299792458.0,
+    "elementary_charge": 1.602176634e-19,
+    "bohr_radius": 5.29177210903e-11,
+    "mu_0": 1.25663706212e-06,
+    "vacuum_permittivity": 8.8541878128e-12,
+    "rydberg": 10973731.56816,
+    "avogadro": 6.02214076e+23,
+    "boltzmann": 1.380649e-23,
+    "stefan_boltzmann": 5.670374419e-08
+  },
+  "additional_zeros": {
+    "speed_of_light_zero": 299792.458,
+    "elementary_charge_zero": 160217.6634,
+    "bohr_radius_zero": 52917.72109,
+    "mu_0_zero": 125663.706212,
+    "vacuum_permittivity_zero": 88541.878128
+  },
+  "magnitude_groups": {
+    "8": [
+      "speed_of_light"
+    ],
+    "-18": [
+      "elementary_charge"
+    ],
+    "-10": [
+      "bohr_radius"
+    ],
+    "-5": [
+      "mu_0"
+    ],
+    "-11": [
+      "vacuum_permittivity"
+    ],
+    "7": [
+      "rydberg"
+    ],
+    "23": [
+      "avogadro"
+    ],
+    "-22": [
+      "boltzmann"
+    ],
+    "-7": [
+      "stefan_boltzmann"
+    ]
+  },
+  "suggested_experiments": []
+}
