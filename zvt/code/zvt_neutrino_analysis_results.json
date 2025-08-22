@@ -1,0 +1,214 @@
+{
+  "analysis_date": "2025-08-22T19:39:59.270231",
+  "total_events": 1000,
+  "source_classifications": {
+    "Atmospheric": [
+      {
+        "source": "Atmospheric",
+        "confidence": "Medium",
+        "type": "Conventional"
+      },
+      {
+        "source": "Atmospheric",
+        "confidence": "Low",
+        "type": "Background"
+      },
+      {
+        "source": "Atmospheric",
+        "confidence": "Low",
+        "type": "Background"
+      },
+      {
+        "source": "Atmospheric",
+        "confidence": "Low",
+        "type": "Background"
+      },
+      {
+        "source": "Atmospheric",
+        "confidence": "Medium",
+        "type": "Conventional"
+      },
+      {
+        "source": "Atmospheric",
+        "confidence": "Low",
+        "type": "Background"
+      },
+      {
+        "source": "Atmospheric",
+        "confidence": "Medium",
+        "type": "Conventional"
+      },
+      {
+        "source": "Atmospheric",
+        "confidence": "Medium",
+        "type": "Conventional"
+      },
+      {
+        "source": "Atmospheric",
+        "confidence": "Low",
+        "type": "Background"
+      },
+      {
+        "source": "Atmospheric",
+        "confidence": "Low",
+        "type": "Background"
+      }
+    ],
+    "Cosmic Ray": [
+      {
+        "source": "Cosmic Ray",
+        "confidence": "Medium",
+        "type": "Atmospheric"
+      },
+      {
+        "source": "Cosmic Ray",
+        "confidence": "Medium",
+        "type": "Atmospheric"
+      },
+      {
+        "source": "Cosmic Ray",
+        "confidence": "Medium",
+        "type": "Atmospheric"
+      },
+      {
+        "source": "Cosmic Ray",
+        "confidence": "Medium",
+        "type": "Atmospheric"
+      },
+      {
+        "source": "Cosmic Ray",
+        "confidence": "Medium",
+        "type": "Atmospheric"
+      },
+      {
+        "source": "Cosmic Ray",
+        "confidence": "Medium",
+        "type": "Atmospheric"
+      }
+    ],
+    "Galactic": [
+      {
+        "source": "Galactic",
+        "confidence": "High",
+        "type": "Supernova Remnant"
+      },
+      {
+        "source": "Galactic",
+        "confidence": "High",
+        "type": "Supernova Remnant"
+      },
+      {
+        "source": "Galactic",
+        "confidence": "High",
+        "type": "Supernova Remnant"
+      }
+    ],
+    "Extragalactic": [
+      {
+        "source": "Extragalactic",
+        "confidence": "High",
+        "type": "AGN or GRB"
+      }
+    ]
+  },
+  "zvt_clusters": 43,
+  "sensitivity_gain": {
+    "traditional_detections": 655,
+    "zvt_detections": 806,
+    "sensitivity_gain": 1.2305343511450382,
+    "improvement_percent": 23.053435114503817
+  },
+  "high_priority_alerts": 193,
+  "top_alerts": [
+    {
+      "event_id": "IC2024000123",
+      "energy_eV": 3.351462799558781e+17,
+      "zvt_strength": 0.9999959365904297,
+      "predicted_source": "Extragalactic",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "High",
+      "recommended_action": "Immediate follow-up observation"
+    },
+    {
+      "event_id": "IC2024000650",
+      "energy_eV": 1566839092049320.2,
+      "zvt_strength": 0.9999900565702101,
+      "predicted_source": "Galactic",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "High",
+      "recommended_action": "Immediate follow-up observation"
+    },
+    {
+      "event_id": "IC2024000900",
+      "energy_eV": 3942718058529927.0,
+      "zvt_strength": 0.9999590352960234,
+      "predicted_source": "Galactic",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "High",
+      "recommended_action": "Immediate follow-up observation"
+    },
+    {
+      "event_id": "IC2024000470",
+      "energy_eV": 6555054071451564.0,
+      "zvt_strength": 0.9998902799938496,
+      "predicted_source": "Galactic",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "High",
+      "recommended_action": "Immediate follow-up observation"
+    },
+    {
+      "event_id": "IC2024000300",
+      "energy_eV": 1301639474340907.0,
+      "zvt_strength": 0.9998786397153643,
+      "predicted_source": "Galactic",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "High",
+      "recommended_action": "Immediate follow-up observation"
+    },
+    {
+      "event_id": "IC2024000794",
+      "energy_eV": 6.963097560355972e+17,
+      "zvt_strength": 0.9998402744006449,
+      "predicted_source": "Extragalactic",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "High",
+      "recommended_action": "Immediate follow-up observation"
+    },
+    {
+      "event_id": "IC2024000013",
+      "energy_eV": 1803750643128180.2,
+      "zvt_strength": 0.9997625507417357,
+      "predicted_source": "Galactic",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "High",
+      "recommended_action": "Immediate follow-up observation"
+    },
+    {
+      "event_id": "IC2024000087",
+      "energy_eV": 1.6062560954780524e+16,
+      "zvt_strength": 0.9997040615476671,
+      "predicted_source": "Extragalactic",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "High",
+      "recommended_action": "Immediate follow-up observation"
+    },
+    {
+      "event_id": "IC2024000348",
+      "energy_eV": 9.230545627535928e+16,
+      "zvt_strength": 0.9996899832673318,
+      "predicted_source": "Extragalactic",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "High",
+      "recommended_action": "Immediate follow-up observation"
+    },
+    {
+      "event_id": "IC2024000266",
+      "energy_eV": 2148727319612891.5,
+      "zvt_strength": 0.9995934958874496,
+      "predicted_source": "Galactic",
+      "alert_type": "High-Energy Astrophysical Neutrino",
+      "priority": "High",
+      "recommended_action": "Immediate follow-up observation"
+    }
+  ]
+}

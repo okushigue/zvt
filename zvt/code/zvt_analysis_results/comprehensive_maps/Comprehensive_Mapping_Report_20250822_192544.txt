@@ -1,0 +1,109 @@
+================================================================================
+ZVT DATA MAPPER - COMPREHENSIVE MAPPING REPORT
+================================================================================
+
+Date: 2025-08-22T19:25:44.941782
+Zeros analyzed: 2,001,052
+Constants mapped: 38
+Physical categories: 11
+
+GENERAL STATISTICS:
+Best overall quality: 1.69e-45
+Worst overall quality: 1.41e+01
+Average energy: 54511.42 GeV
+Median energy: 48077.75 GeV
+Energy standard deviation: 40716.70 GeV
+
+TOP 10 BEST RESONANCES:
+ 1. gravitational_force       | Error: 2.86e-05%
+     Zero # 1,593,106 | γ=918912.088619 | E=91891.21 GeV
+     Category: Fundamental Forces   | Script: calculated
+ 2. hbar                      | Error: 6.41e-06%
+     Zero # 1,845,153 | γ=1051303.966566 | E=105130.40 GeV
+     Category: Quantum Constants    | Script: calculated
+ 3. planck                    | Error: 1.38e-06%
+     Zero #   165,900 | γ=117917.258010 | E=11791.73 GeV
+     Category: Quantum Constants    | Script: calculated
+ 4. electron_mass             | Error: 3.52e-05%
+     Zero # 1,658,483 | γ=953397.367271 | E=95339.74 GeV
+     Category: Quantum Constants    | Script: calculated
+ 5. proton_mass               | Error: 9.03e-06%
+     Zero #   174,667 | γ=123502.256272 | E=12350.23 GeV
+     Category: Quantum Constants    | Script: calculated
+ 6. boltzmann                 | Error: 1.18e-05%
+     Zero #   107,196 | γ=79721.750490 | E=7972.18 GeV
+     Category: Thermodynamics       | Script: calculated
+ 7. elementary_charge         | Error: 1.51e-05%
+     Zero # 1,670,594 | γ=959774.510332 | E=95977.45 GeV
+     Category: Quantum Constants    | Script: calculated
+ 8. bohr_radius               | Error: 5.60e-06%
+     Zero #   360,861 | γ=237650.912672 | E=23765.09 GeV
+     Category: Atomic Structure     | Script: calculated
+ 9. vacuum_permittivity       | Error: 1.11e-04%
+     Zero #   700,417 | γ=433893.394303 | E=43389.34 GeV
+     Category: Electromagnetism     | Script: calculated
+10. gravitational             | Error: 2.52e-05%
+     Zero #   833,507 | γ=508397.511089 | E=50839.75 GeV
+     Category: Gravitation          | Script: calculated
+
+BY CATEGORY:
+Quantum Constants:
+  • Total: 6 constants
+  • Best: hbar (6.41e-06%)
+  • Average energy: 54884.00 GeV
+Fundamental Forces:
+  • Total: 4 constants
+  • Best: gravitational_force (2.86e-05%)
+  • Average energy: 61724.68 GeV
+Thermodynamics:
+  • Total: 4 constants
+  • Best: boltzmann (1.18e-05%)
+  • Average energy: 56409.99 GeV
+Electromagnetism:
+  • Total: 4 constants
+  • Best: vacuum_permittivity (1.11e-04%)
+  • Average energy: 49512.20 GeV
+Gravitation:
+  • Total: 2 constants
+  • Best: gravitational (2.52e-05%)
+  • Average energy: 43928.46 GeV
+Atomic Structure:
+  • Total: 2 constants
+  • Best: bohr_radius (5.60e-06%)
+  • Average energy: 11883.25 GeV
+Chemistry/Macroscopic:
+  • Total: 1 constants
+  • Best: avogadro (2.35e-21%)
+  • Average energy: 1.41 GeV
+Cosmology:
+  • Total: 5 constants
+  • Best: dark_energy (5.86e-07%)
+  • Average energy: 80645.03 GeV
+Particle Physics:
+  • Total: 5 constants
+  • Best: fermi_coupling (7.11e-06%)
+  • Average energy: 73584.12 GeV
+Magnetic Properties:
+  • Total: 3 constants
+  • Best: gyromagnetic_proton (1.82e-05%)
+  • Average energy: 42757.89 GeV
+Mathematical:
+  • Total: 2 constants
+  • Best: euler_mascheroni (9.70e-06%)
+  • Average energy: 30249.20 GeV
+
+BY SCRIPT:
+calculated:
+  • Resonances: 38.0
+  • Best quality: 0.00e+00
+  • Average quality: 1.12e+00
+  • Average energy: 54511.42 ± 40716.70 GeV
+
+FILES GENERATED:
+- comprehensive_overview_map.png
+- quality_comparison_map.png
+- energy_spectrum_map.png
+- physics_relations_network_map.png
+- clustering_patterns_map.png
+- script_comparison_map.png
+================================================================================

@@ -1,0 +1,43 @@
+{
+  "last_processed_index": 2001052,
+  "best_resonances": {
+    "planck": {
+      "zero_index": 165900,
+      "gamma": 117917.258010105,
+      "quality": 9.128298018443766e-42,
+      "tolerance": 1e-33,
+      "constant_name": "planck",
+      "constant_value": 6.62607015e-34,
+      "energy_gev": 11791.7258010105
+    },
+    "boltzmann": {
+      "zero_index": 107196,
+      "gamma": 79721.750489817,
+      "quality": 1.6330303713007553e-30,
+      "tolerance": 1e-22,
+      "constant_name": "boltzmann",
+      "constant_value": 1.380649e-23,
+      "energy_gev": 7972.1750489817005
+    },
+    "stefan_boltzmann": {
+      "zero_index": 1511421,
+      "gamma": 875670.651588886,
+      "quality": 1.302901148146625e-14,
+      "tolerance": 1e-07,
+      "constant_name": "stefan_boltzmann",
+      "constant_value": 5.670374419e-08,
+      "energy_gev": 87567.06515888861
+    },
+    "wien": {
+      "zero_index": 1970736,
+      "gamma": 1116741.96508736,
+      "quality": 1.6067235042438455e-09,
+      "tolerance": 0.01,
+      "constant_name": "wien",
+      "constant_value": 0.002897771955,
+      "energy_gev": 111674.196508736
+    }
+  },
+  "start_time": 1755858136.242169,
+  "total_zeros": 2001052
+}

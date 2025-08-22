@@ -1,0 +1,170 @@
+{
+  "analysis_date": "2025-08-22T20:29:51.639094",
+  "precision_analysis": {
+    "Extreme Resonance (0.95-1.00)": {
+      "count": 10,
+      "energy_range": [
+        1301639474340907.0,
+        6.963097560355972e+17
+      ],
+      "avg_energy": 1.1571427818807278e+17,
+      "sources": [
+        "Galactic",
+        "Extragalactic"
+      ],
+      "avg_zvt": 0.9998304314010706
+    },
+    "High Resonance (0.90-0.95)": {
+      "count": 0
+    },
+    "Moderate Resonance (0.80-0.90)": {
+      "count": 0
+    },
+    "Low Resonance (0.70-0.80)": {
+      "count": 0
+    },
+    "Minimal Resonance (<0.70)": {
+      "count": 0
+    }
+  },
+  "optimal_energy_windows": {
+    "Very Low (10\u00b9\u2074-10\u00b9\u2075 eV)": {
+      "count": 0
+    },
+    "Low (10\u00b9\u2075-10\u00b9\u2076 eV)": {
+      "count": 6,
+      "energy_range": [
+        1000000000000000.0,
+        1e+16
+      ],
+      "avg_zvt": 0.9998456763674386,
+      "max_zvt": 0.9999900565702101,
+      "min_zvt": 0.9995934958874496,
+      "zvt_std": 0.0001337141351127397,
+      "sources": [
+        "Galactic"
+      ]
+    },
+    "Medium-Low (10\u00b9\u2076-5\u00d710\u00b9\u2076 eV)": {
+      "count": 1,
+      "energy_range": [
+        1e+16,
+        5e+16
+      ],
+      "avg_zvt": 0.9997040615476671,
+      "max_zvt": 0.9997040615476671,
+      "min_zvt": 0.9997040615476671,
+      "zvt_std": 0.0,
+      "sources": [
+        "Extragalactic"
+      ]
+    },
+    "Medium-High (5\u00d710\u00b9\u2076-10\u00b9\u2077 eV)": {
+      "count": 1,
+      "energy_range": [
+        5e+16,
+        1e+17
+      ],
+      "avg_zvt": 0.9996899832673318,
+      "max_zvt": 0.9996899832673318,
+      "min_zvt": 0.9996899832673318,
+      "zvt_std": 0.0,
+      "sources": [
+        "Extragalactic"
+      ]
+    },
+    "High (10\u00b9\u2077-5\u00d710\u00b9\u2077 eV)": {
+      "count": 1,
+      "energy_range": [
+        1e+17,
+        5e+17
+      ],
+      "avg_zvt": 0.9999959365904297,
+      "max_zvt": 0.9999959365904297,
+      "min_zvt": 0.9999959365904297,
+      "zvt_std": 0.0,
+      "sources": [
+        "Extragalactic"
+      ]
+    },
+    "Very High (5\u00d710\u00b9\u2077-10\u00b9\u2078 eV)": {
+      "count": 1,
+      "energy_range": [
+        5e+17,
+        1e+18
+      ],
+      "avg_zvt": 0.9998402744006449,
+      "max_zvt": 0.9998402744006449,
+      "min_zvt": 0.9998402744006449,
+      "zvt_std": 0.0,
+      "sources": [
+        "Extragalactic"
+      ]
+    },
+    "Extreme (>10\u00b9\u2078 eV)": {
+      "count": 0
+    }
+  },
+  "probability_map_regions": [
+    {
+      "zvt_range": [
+        0.9896551724137931,
+        1.0
+      ],
+      "energy_range": [
+        1389495494373136.0,
+        2023589647725155.5
+      ],
+      "probability": 1.0
+    }
+  ],
+  "refined_predictions": {
+    "Magnetar Giant Flares": {
+      "energy_range": "10\u00b9\u2077-5\u00d710\u00b9\u2077 eV",
+      "zvt_signature": "0.92-0.98",
+      "detection_probability": "Very High (95%)",
+      "best_time": "During magnetar active periods",
+      "best_observatory": "IceCube, radio arrays",
+      "scientific_value": "Extreme physics, magnetic reconnection"
+    },
+    "GRB Prompt Emission": {
+      "energy_range": "10\u00b9\u2076-10\u00b9\u2077 eV",
+      "zvt_signature": "0.88-0.95",
+      "detection_probability": "High (80%)",
+      "best_time": "First 100 seconds of GRB",
+      "best_observatory": "IceCube, Swift",
+      "scientific_value": "Jet physics, relativistic shocks"
+    },
+    "AGN Coronal Activity": {
+      "energy_range": "10\u00b9\u2075-5\u00d710\u00b9\u2076 eV",
+      "zvt_signature": "0.85-0.92",
+      "detection_probability": "High (75%)",
+      "best_time": "During AGN flaring states",
+      "best_observatory": "IceCube, KM3NeT",
+      "scientific_value": "Black hole physics, accretion disks"
+    },
+    "Supernova Shock Breakout": {
+      "energy_range": "5\u00d710\u00b9\u2076-10\u00b9\u2077 eV",
+      "zvt_signature": "0.90-0.96",
+      "detection_probability": "Very High (85%)",
+      "best_time": "Hours after core collapse",
+      "best_observatory": "IceCube, Super-K",
+      "scientific_value": "Stellar evolution, nucleosynthesis"
+    },
+    "Tidal Disruption Events": {
+      "energy_range": "10\u00b9\u2076-2\u00d710\u00b9\u2077 eV",
+      "zvt_signature": "0.87-0.93",
+      "detection_probability": "High (78%)",
+      "best_time": "Weeks to months after disruption",
+      "best_observatory": "IceCube, ZTF",
+      "scientific_value": "Black hole dynamics, galaxy evolution"
+    }
+  },
+  "key_insights": {
+    "total_high_priority_events": 10,
+    "optimal_zvt_range": "0.85-0.98",
+    "optimal_energy_range": "10\u00b9\u2076-10\u00b9\u2077 eV",
+    "highest_probability_source": "Magnetar Giant Flares (95%)",
+    "detection_strategy": "Focus on high-energy transients with ZVT monitoring"
+  }
+}
