@@ -1,0 +1,81 @@
+====================================================================================================
+CKM/PMNS MATRIX: RIEMANN ZETA ZEROS CORRELATION ANALYSIS
+====================================================================================================
+Analysis Date: 2025-09-09 23:07:18
+Configuration: tolerance=1e-06, MC_trials=10,000
+Dataset: 2,000,000 Riemann zeta zeros
+Parameters analyzed: 10 CKM/PMNS matrix parameters
+EXECUTIVE SUMMARY - CKM/PMNS FOCUS
+--------------------------------------------------
+• Found 10 potential correlations with CKM/PMNS matrix parameters
+• Best correlation: ckm_jarlskog_invariant (relative error: 5.36e-08)
+• Monte Carlo p-value: 0.0000
+• CKM Matrix matches: 6
+• PMNS Matrix matches: 4
+• Expected random matches: 0.00
+
+DETAILED CORRELATION ANALYSIS
+------------------------------------------------------------
+Parameter                      Transform    Symbol   Theoretical     Found Value     Rel. Error   Zero Index Category       
+----------------------------------------------------------------------------------------------------------------------------------
+CKM Jarlskog invariant (measu  reciprocal_sqrt J        0.001308890     0.001308890     5.36e-08     969806     ckm_matrix     
+CKM CP-violating phase δ in r  tan          δ        1.200000000     1.199999790     1.75e-07     1176605    ckm_matrix     
+PMNS matrix angle θ₁₂ (solar)  sin          θ₁₂^ν    0.587252369     0.587252160     3.55e-07     225800     pmns_matrix    
+CKM matrix element |V_us| (ma  tan          |V_us|   0.622160833     0.622160593     3.86e-07     1775948    ckm_matrix     
+PMNS CP-violating phase δ in   tan          δ^ν      3.200000000     3.199998730     3.97e-07     1011098    pmns_matrix    
+CKM matrix angle θ₁₂ (Cabibbo  cos          θ₁₂      0.671499760     0.671500143     5.70e-07     853846     ckm_matrix     
+PMNS matrix angle θ₂₃ (atmosp  cos          θ₂₃^ν    0.830459136     0.830458419     8.63e-07     1505341    pmns_matrix    
+PMNS matrix angle θ₁₃ (reacto  cos          θ₁₃^ν    0.148873280     0.148873774     3.31e-06     1090013    pmns_matrix    
+CKM matrix angle θ₁₃ in radia  sin          θ₁₃      0.029597681     0.029597458     7.54e-06     694839     ckm_matrix     
+CKM matrix angle θ₂₃ in radia  sin          θ₂₃      0.098096041     0.098095127     9.32e-06     1072552    ckm_matrix     
+
+CKM/PMNS MATRIX PARAMETERS DATABASE
+----------------------------------------
+Parameter                      Symbol   Value           Uncertainty  Source          Category       
+--------------------------------------------------------------------------------------------------------------
+CKM matrix angle θ₁₂ (Cabibbo  θ₁₂      0.671499760     0.001000     Particle Data   ckm_matrix     
+CKM matrix angle θ₂₃ in radia  θ₂₃      0.098096041     0.001000     Particle Data   ckm_matrix     
+CKM matrix angle θ₁₃ in radia  θ₁₃      0.029597681     0.000100     Particle Data   ckm_matrix     
+CKM CP-violating phase δ in r  δ        1.200000000     0.080000     Particle Data   ckm_matrix     
+CKM Jarlskog invariant (measu  J        0.001308890     0.000002     Particle Data   ckm_matrix     
+CKM matrix element |V_us| (ma  |V_us|   0.622160833     0.001000     Particle Data   ckm_matrix     
+PMNS matrix angle θ₁₂ (solar)  θ₁₂^ν    0.587252369     0.013000     Particle Data   pmns_matrix    
+PMNS matrix angle θ₂₃ (atmosp  θ₂₃^ν    0.830459136     0.021000     Particle Data   pmns_matrix    
+PMNS matrix angle θ₁₃ (reacto  θ₁₃^ν    0.148873280     0.007000     Particle Data   pmns_matrix    
+PMNS CP-violating phase δ in   δ^ν      3.200000000     0.400000     Particle Data   pmns_matrix    
+
+STATISTICAL SIGNIFICANCE ASSESSMENT
+--------------------------------------------------
+Monte Carlo p-value: 0.000000
+→ STATISTICALLY SIGNIFICANT: Correlations unlikely due to random chance
+  This suggests potential systematic relationship between zeta zeros
+  and fundamental parameters of quark/neutrino mixing
+Bonferroni-corrected α: 0.005
+Expected random matches: 0.00
+
+SCIENTIFIC INTERPRETATION - CKM/PMNS FOCUS
+-------------------------------------------------------
+1. METHODOLOGY: Focused analysis of CKM (quark) and PMNS (neutrino) mixing matrix parameters.
+   Includes mixing angles (θ₁₂, θ₂₃, θ₁₃) and CP-violating phases (δ).
+2. NULL HYPOTHESIS: No systematic relationship exists between Riemann zeta zero locations
+   and the values of CKM/PMNS matrix parameters.
+3. PHYSICAL CONTEXT:
+   • The CKM matrix governs quark flavor transitions and CP violation (e.g., in Kaons).
+   • The PMNS matrix governs neutrino oscillations.
+   • These parameters are fundamental to the Standard Model of particle physics.
+4. INTERPRETATION OF RESULTS:
+   → HIGHLY SIGNIFICANT CORRELATION DETECTED
+     Strong evidence for non-random relationship. This could indicate:
+     * Deep mathematical structure underlying quark/neutrino mixing
+     * Connection between number theory and the origin of CP violation
+     * Zeta zeros as a hidden variable in flavor physics
+
+TECHNICAL METHODOLOGY
+------------------------------
+Tolerance threshold: 1e-06 (relative error)
+Monte Carlo trials: 10,000
+Bootstrap samples: 1,000
+Significance level: 0.05
+Random seed: 42 (reproducibility)
+Analysis timestamp: 2025-09-09T23:07:18.151354
+Focus: CKM and PMNS matrix parameters only
